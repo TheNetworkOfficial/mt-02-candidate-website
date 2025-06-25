@@ -1,397 +1,209 @@
-/* Index Landing Page */
-#header-placeholder {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
-}
+/* ────────────────────────────────────────────────────────────────────────
+   index.css — page-specific styles for a high-impact, voter-friendly homepage
+   ──────────────────────────────────────────────────────────────────────── */
 
-/* Hero Section Styles */
-.hero {
-  height: 60vh; /* Sets the height to 100% of the viewport height */
+/* 1) Hero Section — Full-bleed background + gradient overlay */
+#hero {
+  position: relative;
+  height: 90vh;
+  background: url('../../../assets/images/hero/hero.jpg') center/cover no-repeat;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 20px 300px 20px 150px;
-  background-image: url('../../../assets/images/hero/ReptileUniverseHero.png'); /* Replace with actual background image */
-  background-size: cover;
-  background-position: center;
-  color: #fff;
+  justify-content: center;
+  padding: 0 var(--padding-side);
 }
-
-.hero-content-overlay {
-  background-color: rgba(0, 0, 0, 0.6); /* Black with 60% transparency */
-  padding: 40px 20px;
-  border-radius: 10px; /* Optional: rounded corners */
-}
-
-.hero-content {
-  max-width: 50%;
-  position: relative; /* Ensure positioning context for the overlay */
-}
-
-.hero-image {
-  /* constrain size responsively */
-  width: clamp(150px, 30vw, 400px);
-  aspect-ratio: 1 / 1;
-  overflow: hidden;
-  border-radius: 50%;
-  /* keep your existing flex positioning: */
-  margin-left: 28vw;
-  display: flex;
-  justify-content: flex-start;
-}
-
-.hero-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.hero-content h1 {
-  font-size: 48px;
-  margin-bottom: 20px;
-}
-
-.hero-content p {
-  font-size: 20px;
-  margin-bottom: 30px;
-}
-
-.btn-get-started {
-  background-color: #ff6f61;
-  color: #fff;
-  padding: 15px 30px;
-  border-radius: 5px;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.btn-get-started:hover {
-  background-color: #ff5a4d;
-}
-
-/* Features Section Styles */
-.features {
-  padding: 80px 50px;
-  background-color: #f9f9f9;
-  text-align: center;
-}
-
-.features-grid {
-  display: flex;
-  justify-content: space-evenly;
-}
-
-.feature-item-left {
-  width: 45%;
-  background-color: #bbbbbb;
-  padding: 1%;
-  border-radius: 10px;
-  text-align: center;
-}
-
-.feature-item-right {
-    display: flex;
-    width: 25%;
-    background-color: #bbbbbb;
-    padding: 1%;
-    border-radius: 10px;
-    text-align: center;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.feature-item-left h3, .feature-item-right h3 {
-  color: #1f1f1f;
-  font-size: 30px;
-  font-weight: 700;
-  margin-bottom: 15px;
-  margin-top: 0px;
-}
-
-.feature-item-left p, .feature-item-right p {
-  color: #1f1f1f;
-  font-size: 24px;
-  margin-bottom: 20px;
-}
-
-.hours-dropdown {
-  position: relative;
-  margin: 20px 0;
-  text-align: left;
-}
-
-.selected-day {
-  background-color: #e0e0e0;
-  padding: 10px;
-  border-radius: 6px;
-  cursor: pointer;
-  color: #1f1f1f;
-  font-weight: bold;
-  font-size: 20px;
-}
-
-.all-hours {
+#hero::before {
+  content: "";
   position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  /* let it grow to fit all days */
-  max-height: none;
-  overflow: visible;
-  background-color: #e0e0e0;
-  color: #1f1f1f;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-  border-radius: 0 0 6px 6px;
-  padding: 10px;
-  display: none;
-  z-index: 2;
+  inset: 0;
+  background: linear-gradient(135deg,
+    rgba(0, 86, 166, 0.7),
+    rgba(0, 0, 0, 0.3)
+  );
 }
-
-.hours-dropdown.expanded .all-hours {
-  display: block;
-}
-
-.all-hours li {
-  padding: 6px 0;
-  border-bottom: 1px solid #ccc;
-}
-
-.all-hours li::marker {
-  content: none;
-}
-
-.selected-day {
+.hero-content {
   position: relative;
-  z-index: 3;
-}
-
-.section-divider {
-  border: 0;
-  border-top: 2px solid #1f1f1f;
-  width: 80%;
-  margin: 30px auto;  /* space above/below */
-}
-
-.map-container {
-  width: 100%;
-  height: 200px;
-  margin: 10px 0;
-  overflow: hidden;
-  border-radius: 6px;
-  position: relative;
-  z-index: 1;      /* sit under the hours-dropdown */
-}
-
-.map-container iframe {
-  width: 100%;
-  height: 100%;
-  border: 0;
-}
-
-.features-social-media {
-  display: flex;
-  justify-content: center;
-  margin-top: 30px;
-}
-
-.features-social-media a {
-  color: #000000;
-  margin: 10px;
-  font-size: 40px;
-}
-
-
-/* Creature Feature Section */
-.creature-feature {
-  padding: 80px 50px;
-  background-color: #1f1f1f;
+  max-width: 600px;
+  text-align: center;
   color: #fff;
+}
+.hero-content h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+.hero-content p {
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  margin-bottom: 2rem;
+}
+.hero-buttons .btn {
+  margin: 0 .5rem;
+  min-width: 140px;
+}
+
+/* ─── Video Section ───────────────────────────────────────────────────── */
+.video-section {
+  padding: var(--section-vertical) 0;
+  background: var(--background-main);
   text-align: center;
 }
-
-.creature-feature h2 {
-  font-size: 36px;
-  margin-bottom: 20px;
+.video-section video {
+  max-width: 100%;
+  border-radius: var(--radius);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-/* Grid of Tiles: exactly 5 × 300px, centered */
-#creature-feature-list {
+/* ─── News Section ─────────────────────────────────────────────────────── */
+.news-section {
+  padding: var(--section-vertical) 0;
+  background: var(--background-main);
+}
+.news-list {
   display: grid;
-  grid-template-columns: repeat(5, 300px);
-  grid-auto-rows: 300px;
-  gap: 20px;
-  justify-content: center;
-  margin-top: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
 }
-
-/* Base Tile Styling */
-#creature-feature-list .animal-tile {
-  display: flex;
-  flex-direction: column;
-  text-decoration: none;
-  color: #333;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  background-color: #fff;
+.news-list li {
+  background: var(--background-main);
+  border-radius: var(--radius);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: transform .2s;
 }
-
-/* Hover Effect */
-#creature-feature-list .animal-tile:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.news-list li:hover {
+  transform: translateY(-4px);
 }
-
-/* Image (top 80%) */
-#creature-feature-list .animal-tile img {
-  flex: 0 0 80%;
-  width: 100%;
-  object-fit: cover;
+.news-list a {
   display: block;
-  overflow: hidden;
+  padding: 1rem;
+  color: var(--text-main);
+}
+.news-list h3 {
+  margin-bottom: .5rem;
+  color: var(--primary-color);
+}
+.news-list time {
+  font-size: .85rem;
+  color: #666;
 }
 
-/* Info Panel (bottom 20%) */
-#creature-feature-list .animal-tile .tile-info {
-  flex: 1;
-  padding: 5px 10px;
-  background-color: #f8f8f8;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+/* 2) About Section — Two-column with candidate photo */
+.section.about .container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
   align-items: center;
 }
-
-/* Name & Species */
-#creature-feature-list .animal-tile .tile-info h3 {
-  margin: 0;
-  font-size: 20px;
-  font-weight: 600;
-  color: #000;
+.about-text h2 {
+  margin-bottom: .5rem;
+}
+.about-text p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+.about-image img {
+  width: 100%;
+  border-radius: var(--radius);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  object-fit: cover;
 }
 
-#creature-feature-list .animal-tile .tile-info p {
-  margin: 0;
-  font-size: 16px;
-  color: #000;
+/* 3) Issues Section — Interactive cards */
+.issues-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+.issues-list li {
+  background: var(--background-main);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: transform .3s, box-shadow .3s;
+}
+.issues-list li:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+.issues-list li h3 {
+  color: var(--primary-color);
+  margin-bottom: .75rem;
+}
+.issues-list li p {
+  color: var(--text-main);
+  font-size: .95rem;
+  line-height: 1.6;
 }
 
-/* “See All” Tile Overrides */
-#creature-feature-list .animal-tile.see-all {
-  background-color: #f8f8f8;
-}
-
-#creature-feature-list .animal-tile.see-all img {
-  display: none;
-}
-
-#creature-feature-list .animal-tile.see-all .tile-info {
-  height: 100% !important;
-  padding: 0;
-  background-color: #f8f8f8;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-#creature-feature-list .animal-tile.see-all .tile-info h3 {
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin: 0;
-}
-
-.see-all-icon {
-  font-size: 3rem;
-  margin-bottom: 0.5rem;
-  color: #1f1f1f;
-}
-
-.btn-sign-up {
-  background-color: #ff6f61;
+/* 4) Get Involved — Accent-color banner */
+.section.get-involved {
+  background: var(--secondary-color);
   color: #fff;
-  padding: 15px 30px;
-  border-radius: 5px;
-  text-decoration: none;
-  font-weight: bold;
+  text-align: center;
+  padding: var(--section-vertical) 0;
+}
+.section.get-involved .btn-primary {
+  background: #fff;
+  color: var(--secondary-color);
+}
+.section.get-involved .btn-primary:hover {
+  background: var(--container-background);
 }
 
-.btn-sign-up:hover {
-  background-color: #ff5a4d;
+/* 5) Events Section — Vertical timeline */
+.events-list {
+  position: relative;
+  margin-top: 2rem;
+  padding-left: 2rem;
+}
+.events-list::before {
+  content: "";
+  position: absolute;
+  left: 1rem;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--primary-color);
+}
+.events-list li {
+  position: relative;
+  margin-bottom: 1.5rem;
+  padding-left: 1.5rem;
+}
+.events-list li::before {
+  content: "";
+  position: absolute;
+  left: -8px;
+  top: 0;
+  width: 16px;
+  height: 16px;
+  background: var(--primary-color);
+  border-radius: 50%;
+}
+.events-list li strong {
+  display: block;
+  margin-bottom: .25rem;
+  color: var(--text-main);
 }
 
+/* 6) Contact Section — Centered card */
+.section.contact .container {
+  display: flex;
+  justify-content: center;
+}
+.section.contact p {
+  max-width: 600px;
+  text-align: center;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
 
-/* Extra Small Devices (Portrait phones <576px) */
-@media (max-width: 767.98px) {
-  /* Hero → stack content vertically */
-  .hero {
-    flex-direction: column;
-    height: auto;
-    padding: 20px;
-  }
-  .hero-content {
-    max-width: 100%;
-    margin-bottom: 20px;
-  }
-  .hero-content h1 {
-    font-size: 1.8rem;
-  }
-  .hero-content p {
-    font-size: 1rem;
-  }
-  .btn-get-started {
-    font-size: 1rem;
-    padding: 10px 20px;
-    margin-top: 10px;
-    display: inline-block;
-  }
-  .hero-image {
-    display: none; /* Hide image on small screens */
-  }
-
-  /* Features → single column */
-  .features {
-    padding: 20px 10px;
-    background-color: #f9f9f9;
-    text-align: center;
-  }
-
-  .features-grid {
-    flex-direction: column;
-    gap: 20px;
-  }
-  .feature-item-left,
-  .feature-item-right {
-    width: 100%;
-    padding: 20px 0px;
-  }
-
-  /* Creature Feature → fluid grid */
-  .creature-feature {
-    padding: 20px 50px;
-  }
-
-  #creature-feature-list {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    gap: 12px;              /* adjust gutter as you like */
-    justify-items: center;  
-    align-items: center;
-  }
-  /* make each tile a perfect square */
-  #creature-feature-list > * {
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    /* if your tiles have background-images or <img> inside: */
-    object-fit: cover;      
-  }
-    /* hide every tile after the 4th */
-  #creature-feature-list > .animal-tile:nth-child(n+4):not(.see-all) {
-    display: none;
-  }
+/* 7) Responsive tweaks */
+@media (max-width: 768px) {
+  #hero { height: 70vh; }
+  .section.about .container { grid-template-columns: 1fr; }
+  .events-list::before { left: .5rem; }
+  .events-list li { padding-left: 1rem; }
+  .events-list li::before { left: -6px; width: 12px; height: 12px; }
 }

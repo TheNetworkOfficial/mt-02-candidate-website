@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home | Reptile Universe</title>
+    <title>Home | Sam Lux For Congress</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
@@ -21,80 +21,151 @@
 
     <!-- Main Content -->
     <main>
-      <!-- Hero Section -->
-      <section class="hero">
-            <div class="hero-content">
-              <div class="hero-content-overlay">
-                  <h1>Find Your Scaly Companion Today</h1>
-                  <p>Explore our vibrant collection of reptiles and amphibians, ready for adoption today.</p>
-                  <a href="list.html" class="btn-get-started">Get Started</a>
-              </div>
+      <!-- Hero -->
+      <section id="hero" class="hero">
+        <div class="container hero-content">
+          <h1>Elect Sam Lux</h1>
+          <p>Your Voice. Your Future. Our Community.</p>
+          <div class="hero-buttons">
+            <a href="#volunteer" class="btn btn-primary">Volunteer</a>
+            <a href="#donate"    class="btn btn-secondary">Donate</a>
           </div>
-          <div class="hero-image">
-              <!-- Placeholder for Hero Image -->
-              <img src="../../assets/images/logos/reptileUniverseLogo.jpg" alt="Hero Image">
-          </div>
+        </div>
       </section>
 
-      <!-- Features Showcase -->
-      <section class="features">
-          <div class="features-grid">
-              <div class="feature-item-left">
-                <h3>Our Mission</h3>
-                <p>At Reptile Universe, we are dedicated to connecting people with healthy, well-cared-for reptiles that make wonderful companions. 
-                  Our passion drives us to ensure that each reptile finds a loving home, and we strive to make reptile ownership accessible and rewarding for everyone.</p>
-                <a href="adoptionForm.html" class="btn">Adoption Application</a>
-
-                <hr class="section-divider" />
-
-                <h3>Adoption Policy</h3>
-                <p>Learn more about the adoption process here</p>
-                <a href="adoptionPolicy.html" class="btn">Learn More</a>
-
-              </div>
-              <div class="feature-item-right">
-                <div class="hours-container">
-                  <!-- Hours Dropdown -->
-                  <h3>Today's Hours</h3>
-                  <div class="hours-dropdown" id="hoursDropdown">
-                    <div class="selected-day" id="selectedDay">Loading...</div>
-                    <ul class="all-hours" id="allHours"></ul>
-                  </div>
-                </div>
-
-                <div class="map-container">
-                  <iframe
-                    src="https://www.google.com/maps?q=404+1st+Ave+NW+Great+Falls+MT+59404&output=embed"
-                    frameborder="0"
-                    allowfullscreen
-                    loading="lazy"
-                  ></iframe>
-                </div>
-
-                <!-- Get Directions Button -->
-                <a
-                  href="https://www.google.com/maps/dir/?api=1&destination=404+1st+Ave+NW+Great+Falls+MT+59404"
-                  class="btn directions-btn"
-                  target="_blank"
-                >
-                  Get Directions
-                </a>
-
-                <div class="features-social-media">
-                  <a href="https://www.facebook.com/profile.php?id=100064250825243"><i class="fab fa-facebook"></i></a>
-                  <a href="https://www.instagram.com/reptileuniversemt/"><i class="fab fa-instagram"></i></a>
-                  <a href="https://www.tiktok.com/@reptile.universe"><i class="fab fa-tiktok"></i></a>
-                </div>
-              </div>
+      <!-- About -->
+      <section id="about" class="section about">
+        <div class="container">
+          <div class="about-text">
+            <h2>About Sam Lux</h2>
+            <p>Sam Lux is a proud Montanan and small-business owner fighting to bring real change to MT-02. Committed to fiscal responsibility, quality healthcare, and education reform, [he/she/they] will always put constituents first.</p>
           </div>
+          <div class="about-image">
+            <img src="../../assets/images/icons/defaultAvatar.png" alt="Sam Lux">
+          </div>
+        </div>
       </section>
 
-      <!-- Creature Feature -->
-      <section class="creature-feature">
-        <h2>Featured Creatures</h2>
+      <!-- Video Intro -->
+      <section id="video" class="section video-section">
+        <div class="container">
+          <video controls preload="metadata" poster="../../assets/images/hero/hero.jpg">
+            <!-- <source src="assets/videos/intro.mp4" type="video/mp4"> -->
+            Your browser does not support HTML5 video.
+          </video>
+        </div>
+      </section>
 
-        <!-- container for our tiles -->
-        <div id="creature-feature-list"></div>
+      <!-- Recent News -->
+      <section id="news" class="section news-section">
+        <div class="container">
+          <h2>Recent News</h2>
+          <ul class="news-list">
+            <li>
+              <a href="news/july-1-press-release.html">
+                <h3>Campaign Launch Press Release</h3>
+                <time datetime="2025-07-01">July 1, 2025</time>
+              </a>
+            </li>
+            <li>
+              <a href="news/local-tv-interview.html">
+                <h3>Interview on Great Falls News Channel</h3>
+                <time datetime="2025-06-28">June 28, 2025</time>
+              </a>
+            </li>
+            <li>
+              <a href="news/community-forum-video.html">
+                <h3>Community Forum Highlights</h3>
+                <time datetime="2025-06-25">June 25, 2025</time>
+              </a>
+            </li>
+            <!-- add more as needed -->
+          </ul>
+        </div>
+      </section>
+
+
+      <!-- Issues -->
+      <section id="issues" class="section issues">
+        <div class="container">
+          <h2>Key Issues</h2>
+          <ul class="issues-list">
+            <li id="economic">
+              <h3>Economic Stability &amp; Cost of Living</h3>
+              <p>Keeping prices down and wages fair for working families.</p>
+            </li>
+            <li id="housing">
+              <h3>Housing Affordability</h3>
+              <p>Making homeownership and rental housing accessible in rural & urban MT.</p>
+            </li>
+            <li id="immigration">
+              <h3>Immigration, Border Security &amp; Crime</h3>
+              <p>Balanced reform that secures our borders while supporting our workforce.</p>
+            </li>
+            <li id="agriculture">
+              <h3>Agriculture &amp; Rural Livelihoods</h3>
+              <p>Supporting Montana’s farmers, ranchers, and rural communities.</p>
+            </li>
+            <li id="energy">
+              <h3>Energy Production &amp; Environmental Stewardship</h3>
+              <p>Investing in clean energy while protecting our public lands.</p>
+            </li>
+            <li id="health">
+              <h3>Health Care &amp; Social Services</h3>
+              <p>Affordable, accessible care for every Montanan.</p>
+            </li>
+            <li id="education">
+              <h3>Education &amp; Community Values</h3>
+              <p>Strengthening schools, supporting teachers, and promoting civic engagement.</p>
+            </li>
+            <li id="guns">
+              <h3>Gun Rights &amp; Second Amendment</h3>
+              <p>Protecting lawful ownership with sensible safety measures.</p>
+            </li>
+            <li id="social">
+              <h3>Social &amp; Cultural Issues</h3>
+              <p>Defending personal freedoms from abortion access to LGBTQ+ rights.</p>
+            </li>
+            <li id="tribal">
+              <h3>Tribal Community Support &amp; Infrastructure</h3>
+              <p>Partnering with Tribal Nations for economic opportunity and services.</p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+
+      <!-- Get Involved -->
+      <section id="get-involved" class="section get-involved">
+        <div class="container">
+          <h2>Get Involved</h2>
+          <div class="hero-buttons">
+            <a href="#volunteer" class="btn btn-primary">Volunteer</a>
+            <a href="#donate"    class="btn btn-secondary">Donate</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Events -->
+      <section id="events" class="section events">
+        <div class="container">
+          <h2>Upcoming Events</h2>
+          <ul class="events-list">
+            <li><strong>July 4, 2025</strong> — Independence Day Parade in Great Falls</li>
+            <li><strong>July 12, 2025</strong> — Town Hall Meeting at Community Center</li>
+            <li><strong>July 20, 2025</strong> — Volunteer Kickoff BBQ</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact" class="section contact">
+        <div class="container">
+          <h2>Contact Us</h2>
+          <p>
+            Have questions? <a href="mailto:campaign@[yourdomain].org">Email the Campaign</a>
+          </p>
+        </div>
       </section>
     </main>
 

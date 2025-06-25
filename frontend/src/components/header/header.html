@@ -1,87 +1,55 @@
 <header class="site-header">
-    <div class="logo-wrapper">
-        <!-- Wrap the logo and site title in an anchor tag -->
-        <a href="index.html" class="logo-link">
-            <img src="../../assets/images/logos/reptileUniverseLogo.jpg" alt="Reptile Universe Logo" class="logo-image" />
-            <span class="logo-title">Reptile Universe</span>
-        </a>
+  <div class="container header-inner">
+    <div class="logo">
+      <a href="index.html" class="logo-link">
+        <!-- replace with your own logo file -->
+        <img src="../../assets/images/icons/defaultAvatar.png" alt="Sam Lux logo" class="logo-image" />
+        <span class="logo-title">Sam Lux</span>
+      </a>
     </div>
-
-    <div class="nav-and-toolkit">
-        <nav class="navigation">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="list.html">Adoptions</a></li>
-            <li class="dropdown">
-                <a href="#" class="account-display dropdown-trigger">Forms <i class="fas fa-caret-down"></i></a>
-                <ul class="dropdown-content">
-                    <li><a href="adoptionForm.html">Adoption Form</a></li>
-                    <li><a href="surrenderForm.html">Surrender Form</a></li>
-                    <li><a href="volunteerForm">Volunteer Form</a></li>
-                    <!-- Add more feature links as needed -->
-                </ul>
-            </li>
-            <!-- LOGIN button, shown when not authenticated -->
-            <li id="login-container">
-                <a href="login.html" class="btn-login">Log In</a>
-            </li>
-
-            <!-- PROFILE dropdown, hidden by default -->
-            <li id="profile-dropdown" class="dropdown" style="display:none;">
-                <a href="#" class="dropdown-trigger">
-                <img src="../../assets/images/icons/defaultAvatar.png"
-                    alt="Avatar"
-                    class="profile-pic"
-                    width="24" height="24"/>
-                <span class="profile-username">User</span>
-                <i class="fas fa-caret-down"></i>
-                </a>
-                <ul class="dropdown-content">
-                <li><a href="profile.html">My Profile</a></li>
-                <li><a href="myAdoptions.html">Pending Adoptions</a></li>
-                <li><a href="#" id="logout-btn">Log Out</a></li>
-                </ul>
-            </li>
-        </nav>
-
-        <!-- Mobile Menu Toggle -->
-        <div class="mobile-menu-toggle">
-            <i class="fas fa-bars"></i>
-        </div>
-    </div>
-</header>
-
-<!-- Mobile Menu (Hidden by default) -->
-<div class="mobile-menu" id="mobileMenu">
-    <div class="mobile-menu-content">
-      <div class="mobile-menu-close" id="mobileMenuClose">
-        <i class="fas fa-times"></i>
-      </div>
-      <ul>
+    <nav class="site-nav" id="siteNav">
+      <ul class="nav-list">
         <li><a href="index.html">Home</a></li>
-        <li><a href="list.html">Adoptions</a></li>
-        <li><a href="#" id="logout-btn">Log Out</a></li>
+        <li><a href="about.html">About</a></li>
+        <li class="dropdown">
+        <a href="#">Issues</a>
+        <div class="dropdown-content">
+            <a href="issues.html#economic">Economic Stability & Cost of Living</a>
+            <a href="issues.html#housing">Housing Affordability</a>
+            <a href="issues.html#immigration">Immigration, Border Security & Crime</a>
+            <a href="issues.html#agriculture">Agriculture & Rural Livelihoods</a>
+            <a href="issues.html#energy">Energy Production & Environmental Stewardship</a>
+            <a href="issues.html#health">Health Care & Social Services</a>
+            <a href="issues.html#education">Education & Community Values</a>
+            <a href="issues.html#guns">Gun Rights & Second Amendment</a>
+            <a href="issues.html#social">Social & Cultural Issues</a>
+            <a href="issues.html#tribal">Tribal Community Support & Infrastructure</a>
+        </div>
+        </li>
+        <li><a href="volunteer.html">Volunteer</a></li>
+        <li><a href="donate.html">Donate</a></li>
       </ul>
-      
-      <!-- Mobile version of Quick Links and Contact Us -->
-      <div class="mobile-footer-extra">
-        <div class="mobile-footer-contact">
-          <h3>Contact Us</h3>
-          <h4>Phone:</h4> 
-          <a href="tel:4068992633">(406) 899-2633</a>
-          <h4>Email:</h4> 
-          <a href="mailto:reptileuniverse@yahoo.com">reptileuniverse@yahoo.com</a>
-        </div>
-        <div class="mobile-footer-links">
-            <h3>Quick Links</h3>
-            <div class="social-media">
-                <a href="https://www.facebook.com/profile.php?id=100064250825243"><i class="fab fa-facebook"></i></a>
-                <a href="https://www.instagram.com/reptileuniversemt/"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.tiktok.com/@reptile.universe"><i class="fab fa-tiktok"></i></a>
-            </div>
-        </div>
-      </div>
-      
+    </nav>
+    <div class="header-actions">
+      <a href="donate.html" class="btn btn-secondary">Donate</a>
+      <button class="btn mobile-nav-toggle" id="navToggle" aria-label="Toggle menu">
+        ☰
+      </button>
     </div>
-</div>
-<!-- Overlay element -->
-<div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+  </div>
+
+  <!-- mobile menu (injected/controlled by mobileMenu.js) -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-content">
+      <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu">×</button>
+      <ul class="nav-list-mobile">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="issues.html">Issues</a></li>
+        <li><a href="volunteer.html">Volunteer</a></li>
+        <li><a href="donate.html">Donate</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+</header>

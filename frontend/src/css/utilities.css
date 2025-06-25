@@ -1,27 +1,164 @@
-/* Universal Button Styles */
-.btn, button.btn, a.btn {
-    font-family: var(--font-family);
-    font-weight: 600;
-    background-color: #ff6f61;
-    color: #fff;
-    padding: 15px 30px;
-    border: none;
-    cursor: pointer;
-    font-size: 20px;
-    border-radius: 5px;
-    text-decoration: none;
+/*────────────────────────────────────────────────────────────────────────*/
+/* 1) Buttons                                                            */
+/*────────────────────────────────────────────────────────────────────────*/
+
+.btn {
+  display:        inline-block;
+  padding:        0.75rem 1.5rem;
+  background:     var(--button-bg);
+  color:          #fff;
+  border-radius:  var(--radius);
+  font-size:      1rem;
+  font-weight:    600;
+  text-align:     center;
+  transition:     background 0.3s;
+}
+
+.btn:hover,
+.btn:focus {
+  background: var(--button-hover);
+}
+
+.btn-secondary {
+  background: var(--secondary-color);
+}
+.btn-secondary:hover,
+.btn-secondary:focus {
+  background: #c0273d;
+}
+
+/*────────────────────────────────────────────────────────────────────────*/
+/* 2) Sections                                                           */
+/*────────────────────────────────────────────────────────────────────────*/
+
+.section {
+  padding: var(--section-vertical) 0;
+}
+
+/*────────────────────────────────────────────────────────────────────────*/
+/* 3) Header & Nav                                                       */
+/*────────────────────────────────────────────────────────────────────────*/
+
+.site-header {
+  position: fixed;
+  top:        0;
+  width:      100%;
+  background: var(--background-main);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  z-index:    1000;
+}
+.header-inner {
+  display:        flex;
+  align-items:    center;
+  justify-content: space-between;
+}
+.logo {
+  font-size:    1.5rem;
+  font-weight:  bold;
+  color:        var(--primary-color);
+}
+.site-nav {
+  display: flex;
+}
+.nav-list {
+  display: flex;
+  gap:     1rem;
+}
+.nav-list a {
+  padding:        0.5rem 1rem;
+  border-radius:  var(--radius);
+  transition:     background 0.2s;
+}
+.nav-list a:hover {
+  background: rgba(0,0,0,0.05);
+}
+.header-actions {
+  display: flex;
+  gap:     1rem;
+}
+.mobile-nav-toggle {
+  display: none;
+}
+
+/*────────────────────────────────────────────────────────────────────────*/
+/* 4) Hero & Lists                                                       */
+/*────────────────────────────────────────────────────────────────────────*/
+
+.hero {
+  text-align:      center;
+  padding:         var(--section-vertical) 0;
+  background:      var(--primary-color);
+  color:           #fff;
+}
+.hero-content {
+  max-width: 600px;
+  margin:    0 auto;
+}
+.hero-buttons {
+  display: flex;
+  gap:     1rem;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.issues-list,
+.events-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+.issues-list li,
+.events-list li {
+  background: var(--background-main);
+  padding:    1rem;
+  border-radius: var(--radius);
+}
+.issues-list li h3 {
+  margin-bottom: 0.5rem;
+}
+
+/*────────────────────────────────────────────────────────────────────────*/
+/* 5) Footer                                                             */
+/*────────────────────────────────────────────────────────────────────────*/
+
+.site-footer {
+  background: var(--background-main);
+  text-align: center;
+  padding:    2rem 0;
+}
+.social-links {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+.social-links a {
+  font-size: 1.25rem;
+  color:     var(--text-main);
+}
+
+/*────────────────────────────────────────────────────────────────────────*/
+/* 6) Responsive                                                         */
+/*────────────────────────────────────────────────────────────────────────*/
+
+@media (max-width: 768px) {
+  .site-nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: var(--background-main);
+    flex-direction: column;
+    display: none;
+  }
+  .site-nav.open {
+    display: flex;
+  }
+  .mobile-nav-toggle {
     display: inline-block;
-    text-align: center;
+    background: var(--primary-color);
+    color: #fff;
+    border-radius: var(--radius);
+  }
 }
-
-.btn:hover, button.btn:hover, a.btn:hover {
-    background-color: #ff5a4d;
-}
-
-/* Specific Styles for Back and Next Buttons */
-.btn-back, .btn-next {
-    display: inline-block; /* Ensure consistency */
-}
-
-/* Additional button states if needed */
-/* .btn:disabled { ... } */

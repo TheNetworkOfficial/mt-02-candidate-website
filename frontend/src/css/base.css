@@ -1,69 +1,60 @@
-/* Global font and color themes */
+/*────────────────────────────────────────────────────────────────────────*/
+/* 1) Theme & Layout Variables                                          */
+/*────────────────────────────────────────────────────────────────────────*/
+
 :root {
-  --font-family: "Gideon Roman", serif;
-  --background-color-main: #121212;
-  --background-color-alternate: #5b92e5;
-  --text-color-main: white;
-  --text-color-alternate: #5b92e5;
-  --container-background: #16213e;
-  --button-background: #0f3460;
-  --button-hover-background: #5b92e5;
-  --border-radius: 5px;
-  --header-footer-background: #333;
-  --main-padding: 20px;
-  --header-padding: 0.5rem 1rem;
-  --header-left-padding: 150px;
-  --link-hover-decoration: underline;
-  --icon-size: 20px;
-  --logo-size: 80px;
-  --logo-font-size: 2.5rem;
-  --logo-font-color: #5b92e5;
-  --underline-height: 1px;
-  --underline-width: 150px;
-  --underline-color: #5b92e5;
-  --info-block-min-width: 18vw;
-  --info-block-max-width: 22vw;
-  --info-block-min-height: 8vw;
-  --info-icon-size: 50px;
-  --heading-color: #5b92e5;
-  --paragraph-line-height: 1.6;
-  --button-padding: 10px 20px;
-  --button-font-size: 16px;
-  --input-width: 50px;
-  --input-padding: 10px;
-  --carousel-max-width: 500px;
-  --carousel-width: 80vw;
-  --thumbnail-size: 15%;
-  --video-section-margin: 10px 50px;
-  --video-height: calc(60vh - 50px);
-  --italic-heading-color: #ffffff;
-  --list-indent: 20px;
-  --list-item-spacing: 10px;
-  --fade-in-animation: fadeIn 2s;
+  --font-family:       "Gideon Roman", serif;
+  --background-main:   #ffffff;
+  --text-main:         #333333;
+
+  --primary-color:     #0056a6;   /* Campaign blue */
+  --secondary-color:   #e63946;   /* Accent red */
+
+  --button-bg:         var(--primary-color);
+  --button-hover:      #004080;
+  --link-color:        var(--primary-color);
+
+  --radius:            5px;
+
+  --container-max:     1200px;
+  --padding-side:      1rem;
+  --section-vertical:  4rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-main: #121212;
+    --text-main:       #ffffff;
+    --button-hover:    #003064;
+  }
 }
 
 html, body {
-  height: 100%;
-  overflow-x: hidden;
-}
-
-main {
-  flex: 1; /* Allows main to grow and take available space */
-  display: flex;
-  flex-direction: column;
+  margin:     0;
+  padding:    0;
+  box-sizing: border-box;
 }
 
 body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh; /* Ensure the body takes the full height of the viewport */
-  margin: 0;
-  padding-top: 60px;
-  font-family: var(--font-family);
-  background-color: var(--background-color-main);
-  color: var(--text-color-main);
+  font-family:     var(--font-family);
+  background-color: var(--background-main);
+  color:           var(--text-main);
+  line-height:     1.6;
+  min-height:      100vh;
+  display:         flex;
+  flex-direction:  column;
 }
 
-#footer-placeholder {
-  flex-shrink: 0;
+.container {
+  max-width: var(--container-max);
+  margin:     0 auto;
+  padding:    0 var(--padding-side);
+}
+
+/*────────────────────────────────────────────────────────────────────────*/
+/* 2) Flex helper                                                     */
+/*────────────────────────────────────────────────────────────────────────*/
+.flex {
+  display: flex;
+  gap:     1rem;
 }
