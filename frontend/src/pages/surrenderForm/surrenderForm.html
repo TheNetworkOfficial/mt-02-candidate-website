@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Adoption Application | Reptile Universe</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gideon+Roman&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Header -->
+    <div id="header-placeholder"></div>
+
+    <!-- Main Content -->
+    <main>
+      <section class="form-section" style="padding: 80px 50px;">
+        <h2>Statement of Surrender/Abandonment/Stray</h2>
+        <form action="confirmation.html" method="get">
+
+          <!-- Step 1: Animal Status & Info -->
+          <div class="form-step active">
+            <fieldset>
+              <legend>Animal Status & Info</legend>
+
+              <div class="form-group">
+                <p>Was the animal (Circle One):</p>
+                <label><input type="radio" name="status" value="Surrender" required /> Surrender</label>
+                <label><input type="radio" name="status" value="Abandoned" /> Abandoned</label>
+                <label><input type="radio" name="status" value="Stray" /> Stray</label>
+              </div>
+
+              <div class="form-group">
+                <label for="typeOfAnimal">Type of Animal:</label>
+                <input type="text" id="typeOfAnimal" name="typeOfAnimal" required />
+              </div>
+
+              <div class="form-group">
+                <label for="gender">Gender:</label>
+                <input type="text" id="gender" name="gender" required />
+              </div>
+
+              <div class="form-group">
+                <label for="age">Age:</label>
+                <input type="text" id="age" name="age" required />
+              </div>
+
+              <div class="form-group">
+                <label for="animalName">Animal's Name:</label>
+                <input type="text" id="animalName" name="animalName" required />
+              </div>
+
+              <div class="form-group">
+                <label for="eating">What is it eating?</label>
+                <input type="text" id="eating" name="eating" required />
+              </div>
+
+              <div class="form-group">
+                <label for="feedingFrequency">How often is it eating?</label>
+                <input type="text" id="feedingFrequency" name="feedingFrequency" required />
+              </div>
+
+              <div class="form-group">
+                <label for="substrate">What type of substrate?</label>
+                <input type="text" id="substrate" name="substrate" required />
+              </div>
+
+              <div class="form-group">
+                <label for="ownershipDuration">How long have you owned the animal?</label>
+                <input type="text" id="ownershipDuration" name="ownershipDuration" required />
+              </div>
+
+              <div class="form-group">
+                <label for="lighting">What type of lighting are you using?</label>
+                <input type="text" id="lighting" name="lighting" required />
+              </div>
+
+              <div class="form-group">
+                <p>Do you have a vet?</p>
+                <label><input type="radio" name="haveVet" value="Yes" required /> Yes</label>
+                <label><input type="radio" name="haveVet" value="No" /> No</label>
+              </div>
+
+              <div class="form-group">
+                <label for="vetExplanation">If yes, explain:</label>
+                <input type="text" id="vetExplanation" name="vetExplanation" />
+              </div>
+
+            </fieldset>
+            <div class="form-navigation">
+              <button type="button" class="btn-next">Continue →</button>
+            </div>
+          </div>
+
+          <!-- Step 2: Surrender Details -->
+          <div class="form-step">
+            <fieldset>
+              <legend>Surrender Details</legend>
+
+              <div class="form-group">
+                <label for="reasonForSurrender">Reason for Surrender (Optional):</label>
+                <textarea id="reasonForSurrender" name="reasonForSurrender" rows="3"></textarea>
+              </div>
+
+              <div class="form-group">
+                <label for="healthIssues">Current or Previous Health Issues:</label>
+                <textarea id="healthIssues" name="healthIssues" rows="3"></textarea>
+              </div>
+
+              <div class="form-group">
+                <label for="additionalNotes">Note (Behavior, favorite, food, etc.):</label>
+                <textarea id="additionalNotes" name="additionalNotes" rows="3"></textarea>
+              </div>
+
+            </fieldset>
+            <div class="form-navigation">
+              <button type="button" class="btn-back">← Back</button>
+              <button type="button" class="btn-next">Continue →</button>
+            </div>
+          </div>
+
+          <!-- Step 3: Terms and Conditions -->
+          <div class="form-step">
+            <fieldset>
+              <legend>Terms &amp; Conditions</legend>
+
+              <p>Thank you for bringing your animal to Reptile Universe LLC. We will evaluate your animal for possible placement. Every effort will be made to place your animal in a good home. The animals may be humanely euthanized if health problems are too severe.</p>
+
+              <p>By placing your animal with us you will forfeit all rights, title, and interest in the animals to Reptile Universe. We cannot answer inquiries as to the disposition or whereabouts of the animal after being adopted.</p>
+
+              <p>Stray reptiles will be held for 72 hours from the time they are put into RU’s care. After 72 hours the animal will be assessed and put up for adoption. If an owner is found in the 72-hour period, he/she may get the animal back, after paying compensation on all costs that may have occurred during the time that Reptile Universe was caring for the animal.</p>
+
+              <p>Abandoned reptiles will be held for 72 hours from the time they are put into Reptile Universe care. After the 72-hour period, the animal will be assessed and put up for adoption. If an owner is found within 72 hours, there will be an investigation into the abandoned reptiles. The owner could possibly face legal charges for the abandonment of the reptiles if the owner is convicted.</p>
+
+              <p>Per Montana Code, Title 45, Chapter 8: the person who is convicted of the offense of cruelty to the animal shall be fined an amount not to exceed $1,000 or be imprisoned in the county jail for a term not to exceed 1 year, or both.</p>
+
+              <p>Please note that by clicking “Continue” you agree to these terms.</p>
+            </fieldset>
+            <div class="form-navigation">
+              <button type="button" class="btn-back">← Back</button>
+              <button type="button" class="btn-next">Continue →</button>
+            </div>
+          </div>
+
+          <!-- Step 4: Signature -->
+          <div class="form-step">
+            <fieldset>
+              <legend>Signature</legend>
+              <div class="form-group">
+                <label for="signature">Signature:</label>
+                <input type="text" id="signature" name="signature" required />
+              </div>
+
+              <div class="form-group">
+                <label for="date">Date:</label>
+                <input type="date" id="date" name="date" required />
+              </div>
+
+            </fieldset>
+            <div class="form-navigation">
+              <button type="button" class="btn-back">← Back</button>
+              <button type="submit" class="btn-submit" disabled>Submit Form</button>
+            </div>
+          </div>
+        </form>
+      </section>
+    </main>
+
+
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+  </body>
+</html>

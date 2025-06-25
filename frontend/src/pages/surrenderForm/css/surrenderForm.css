@@ -1,0 +1,152 @@
+/* Adoption Application Page Styles */
+
+.form-section {
+  padding: 80px 50px;
+  max-width: 800px;
+  margin: 0 auto;
+  font-family: 'Gideon Roman', serif;
+  color: #1f1f1f;
+}
+
+.form-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.form-section p {
+  font-size: 1rem;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  color: #f9f9f9;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  margin-right: 8px;
+  transform: scale(1.2);
+}
+
+.form-group:has(input[required]) > label,
+.form-group:has(select[required]) > label,
+.form-group:has(textarea[required]) > label {
+  position: relative;
+}
+.form-group:has(input[required]) > label::after,
+.form-group:has(select[required]) > label::after,
+.form-group:has(textarea[required]) > label::after {
+  content: " *";
+  color: red;
+  margin-left: 2px;
+}
+
+.btn-next[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-submit[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+fieldset {
+  border: 1px solid #ccc;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+}
+
+legend {
+  color: #f9f9f9;
+  font-weight: bold;
+  padding: 0 5px;
+}
+
+.form-disclaimer {
+  background-color: #f9f9f9;
+  padding: 15px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.form-disclaimer p {
+  margin: 0;
+  color: #1f1f1f;
+}
+
+.form-step {
+  display: none;
+}
+
+/* show only the active step */
+.form-step.active {
+  display: block;
+}
+
+/* layout for nav buttons */
+.form-navigation {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.btn-back,
+.btn-next,
+.btn-submit {
+  background-color: #ff6f61;
+  color: #fff;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.btn-back:hover,
+.btn-next:hover,
+.btn-submit:hover {
+  background-color: #ff5a4d;
+}
+
+/* Reuse button styles from index.css */
+.btn-sign-up {
+  background-color: #ff6f61;
+  color: #fff;
+  padding: 15px 30px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-sign-up:hover {
+  background-color: #ff5a4d;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .form-section {
+    padding: 60px 20px;
+  }
+}

@@ -1,0 +1,151 @@
+<!-- admin-health-inspections-popup.html -->
+<div id="inspection-popup-container" class="popup-container">
+  <div class="popup-content">
+    <button class="close-button">&times;</button>
+    <h2>Health Inspections</h2>
+
+    <!-- LIST OF EXISTING INSPECTIONS -->
+    <div id="inspection-popup-list"></div>
+
+    <!-- “Create New” button -->
+    <button id="create-inspection-btn" class="btn-option">Create New</button>
+
+    <!-- NEW-INSPECTION FORM (hidden by default) -->
+    <form id="inspection-form" style="display:none; margin-top:1em;">
+      <!-- 1) 72-hour hold -->
+      <label>
+        On a 72-hour hold?
+        <label><input type="radio" name="hold72" value="yes"> Yes</label>
+        <label><input type="radio" name="hold72" value="no"> No</label>
+      </label>
+      <br/>
+
+      <!-- 2) Body condition fields -->
+      <fieldset>
+        <legend>Weight</legend>
+        <label><input type="radio" name="weight" value="good"> Good</label>
+        <label><input type="radio" name="weight" value="overweight"> Overweight</label>
+        <label><input type="radio" name="weight" value="underweight"> Underweight</label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Posture</legend>
+        <label><input type="radio" name="posture" value="good"> Good</label>
+        <label><input type="radio" name="posture" value="poor"> Poor</label>
+        <input type="text" name="postureExplain" placeholder="If poor, explain…" />
+      </fieldset>
+
+      <label>
+        Hydration:
+        <select name="hydration">
+          <option value="good">Good</option>
+          <option value="dehydrated">Dehydrated</option>
+        </select>
+      </label>
+      <br/>
+
+      <label>
+        Energy Level:
+        <select name="energy">
+          <option value="alert">Alert</option>
+          <option value="lethargic">Lethargic</option>
+        </select>
+      </label>
+      <br/>
+
+      <!-- 3) Clear/Infected fields -->
+      <label>
+        Vent:
+        <select name="vent">
+          <option value="clear">Clear</option>
+          <option value="infected">Infected/Irritated</option>
+        </select>
+      </label>
+      <br/>
+      <label>
+        Eyes:
+        <select name="eyes">
+          <option value="clear">Clear</option>
+          <option value="infected">Infected/Irritated</option>
+        </select>
+      </label>
+      <br/>
+      <label>
+        Nostrils:
+        <select name="nostrils">
+          <option value="clear">Clear</option>
+          <option value="blocked">Blocked</option>
+          <option value="infected">Infected/Irritated</option>
+        </select>
+      </label>
+      <br/>
+
+      <!-- 4) Toes / Nails / Tail -->
+      <fieldset>
+        <legend>Toes</legend>
+        <label><input type="radio" name="toes" value="all-clear"> All present & clear</label>
+        <label><input type="radio" name="toes" value="missing"> Missing toes</label>
+        <label><input type="radio" name="toes" value="stuck-shed"> Stuck shed on toes</label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Nails</legend>
+        <label><input type="radio" name="nails" value="good"> Good</label>
+        <label><input type="radio" name="nails" value="trim"> Need trimming</label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Tail</legend>
+        <label><input type="radio" name="tail" value="original"> Original & complete</label>
+        <label><input type="radio" name="tail" value="partial"> Partially missing</label>
+        <label><input type="radio" name="tail" value="regenerated"> Regenerated</label>
+      </fieldset>
+
+      <!-- 5) Y/N questions with explain -->
+      <label>
+        Any blemishes, cuts, scabs, or scars?
+        <label><input type="radio" name="blemish" value="yes"> Yes</label>
+        <label><input type="radio" name="blemish" value="no"> No</label>
+      </label>
+      <input type="text" name="blemishExplain" placeholder="If yes, explain…" />
+      <br/>
+
+      <label>
+        Any kinks in spine?
+        <label><input type="radio" name="kinks" value="yes"> Yes</label>
+        <label><input type="radio" name="kinks" value="no"> No</label>
+      </label>
+      <input type="text" name="kinksExplain" placeholder="If yes, explain…" />
+      <br/>
+
+      <label>
+        Any stuck shed needing attention?
+        <label><input type="radio" name="shed" value="yes"> Yes</label>
+        <label><input type="radio" name="shed" value="no"> No</label>
+      </label>
+      <input type="text" name="shedExplain" placeholder="If yes, explain…" />
+      <br/>
+
+      <label>
+        Any external parasites?
+        <label><input type="radio" name="parasites" value="yes"> Yes</label>
+        <label><input type="radio" name="parasites" value="no"> No</label>
+      </label>
+      <input type="text" name="parasitesExplain" placeholder="If yes, explain…" />
+      <br/>
+
+      <em>Bearded Dragons: Check for yellow fungus</em>
+      <br/>
+
+      <label>
+        Concluding notes / treatment:
+        <textarea name="notes" rows="3"></textarea>
+      </label>
+      <br/>
+
+      <!-- Cancel / Save -->
+      <button type="button" id="cancel-inspection-btn" class="btn-option">Cancel</button>
+      <button type="submit" id="save-inspection-btn" class="btn-primary">Save</button>
+    </form>
+  </div>
+</div>

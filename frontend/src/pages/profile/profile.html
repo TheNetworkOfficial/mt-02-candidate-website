@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Profile | Reptile Universe</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gideon+Roman&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="header-placeholder"></div>
+    <main>
+      <section id="profile-section">
+        <h2>My Profile</h2>
+        <form id="profile-form">
+          <div class="profile-grid">
+            <div class="left-section">
+              <div class="avatar-zone" id="avatar-dropzone">
+                <img
+                id="profile-avatar"
+                src="../../assets/images/icons/defaultAvatar.png"
+                alt="Avatar"
+                />
+                <p>Drag &amp; drop or click to upload</p>
+                <input type="file" id="avatar-input" accept="image/*" />
+              </div>
+              <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" disabled />
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" disabled />
+              </div>
+              <div class="form-group">
+                <label for="primaryName">Name</label>
+                <input
+                  type="text"
+                  id="primaryName"
+                  name="primaryName"
+                  disabled
+                />
+              </div>
+              <div class="form-group">
+                <label for="primaryPhone">Phone</label>
+                <input
+                  type="tel"
+                  id="primaryPhone"
+                  name="primaryPhone"
+                  disabled
+                />
+              </div>
+              <div class="form-group">
+                <label for="primaryEmail">Alternate Email</label>
+                <input
+                  type="email"
+                  id="primaryEmail"
+                  name="primaryEmail"
+                  disabled
+                />
+              </div>
+              <div class="form-group">
+                <label for="address">Address</label>
+                <input type="text" id="address" name="address" disabled />
+              </div>
+              <div class="form-group">
+                <label for="city">City</label>
+                <input type="text" id="city" name="city" disabled />
+              </div>
+              <div class="form-group">
+                <label for="stateZip">State/Zip</label>
+                <input type="text" id="stateZip" name="stateZip" disabled />
+              </div>
+            </div>
+            <div class="right-section">
+              <div class="form-group">
+                <label for="primaryEmployment">Employment</label>
+                <input
+                  type="text"
+                  id="primaryEmployment"
+                  name="primaryEmployment"
+                  disabled
+                />
+              </div>
+              <div class="form-group">
+                <label for="primaryWorkPhone">Work Phone</label>
+                <input
+                  type="tel"
+                  id="primaryWorkPhone"
+                  name="primaryWorkPhone"
+                  disabled
+                />
+              </div>
+              <div class="form-group">
+                <label for="primaryOccupation">Occupation</label>
+                <input
+                  type="text"
+                  id="primaryOccupation"
+                  name="primaryOccupation"
+                  disabled
+                />
+              </div>
+              <div class="form-group">
+                <label for="previousExperience">Previous Experience</label>
+                <input
+                  type="text"
+                  id="previousExperience"
+                  name="previousExperience"
+                  disabled
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="rentOrOwn">Rent or Own</label>
+                <input type="text" id="rentOrOwn" name="rentOrOwn" disabled />
+              </div>
+              <div class="form-group">
+                <label for="landlordName">Landlord Name</label>
+                <input
+                  type="text"
+                  id="landlordName"
+                  name="landlordName"
+                  disabled
+                />
+              </div>
+              <div class="form-group">
+                <label for="landlordPhone">Landlord Phone</label>
+                <input
+                  type="tel"
+                  id="landlordPhone"
+                  name="landlordPhone"
+                  disabled
+                />
+              </div>
+              <div class="form-group">
+                <label for="othersResiding">Others Residing</label>
+                <input
+                  type="text"
+                  id="othersResiding"
+                  name="othersResiding"
+                  disabled
+                />
+              </div>
+              <div class="form-group">
+                <label for="residingDetails">Residing Details</label>
+                <input
+                  type="text"
+                  id="residingDetails"
+                  name="residingDetails"
+                  disabled
+                />
+              </div>
+              <div class="form-group">
+                <label for="childrenLiving">Children Living</label>
+                <input
+                  type="text"
+                  id="childrenLiving"
+                  name="childrenLiving"
+                  disabled
+                />
+              </div>
+            </div>
+          </div>
+          <div class="form-buttons">
+            <button type="button" id="edit-btn" class="btn">Edit</button>
+            <button
+              type="button"
+              id="save-btn"
+              class="btn"
+              style="display: none"
+            >
+              Save
+            </button>
+            <button
+              type="button"
+              id="cancel-btn"
+              class="btn"
+              style="display: none"
+            >
+              Cancel
+            </button>
+          </div>
+        </form>
+      </section>
+    </main>
+    <div id="footer-placeholder"></div>
+  </body>
+</html>

@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin | Reptile Universe</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gideon+Roman&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Placeholder for Header -->
+    <div id="header-placeholder"></div>
+
+    <!-- Main Content -->
+
+    <main>
+      <section class="admin-dashboard">
+        <div class="tab-buttons">
+          <button class="tab-button" data-target="clients">Clients</button>
+          <button class="tab-button" data-target="adoption-animals">
+            Adoption Animals
+          </button>
+          <button class="tab-button" data-target="pending-apps">
+            Pending Adoptions
+          </button>
+          <button class="tab-button" data-target="pending-payment">
+            Pending Payment
+          </button>
+          <button class="tab-button" data-target="stock">Stock</button>
+        </div>
+        <section id="clients" class="tab-content">
+          <table>
+            <thead>
+              <tr>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Pending</th>
+                <th>Approved</th>
+                <th>Declined</th>
+                <th>Owned Animals</th>
+              </tr>
+            </thead>
+            <tbody id="clients-table-body"></tbody>
+          </table>
+        </section>
+        <section id="adoption-animals" class="tab-content">
+          <div class="filters">
+            <input type="text" id="filter-name" placeholder="Filter by name" />
+            <input
+              type="text"
+              id="filter-species"
+              placeholder="Filter by species"
+            />
+            <button id="filter-btn" class="btn-option">Apply</button>
+            <button id="add-animal-btn" class="btn-option">Add Animal</button>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Species</th>
+                <th>Sex</th>
+                <th>Age</th>
+                <th>Location</th>
+                <th>Traits</th>
+                <th>Bio</th>
+                <th>Requirements</th>
+                <th class="inspection-header">Inspections</th>
+                <th>Images</th>
+                <th>Update</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
+            <tbody id="animal-table-body"></tbody>
+          </table>
+        </section>
+        <section id="pending-apps" class="tab-content">
+          <table>
+            <thead>
+              <tr>                
+                <th>ID</th>
+                <th data-sort="reptileDescription">Reptile</th>
+                <th data-sort="primaryName">Applicant</th>
+                <th data-sort="primaryEmail">Email</th>
+                <th>Details</th>
+              </tr>
+            </thead>
+            <tbody id="pending-apps-body"></tbody>
+          </table>
+        </section>
+        <section id="pending-payment" class="tab-content">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Applicant</th>
+              </tr>
+            </thead>
+            <tbody id="pending-payment-body"></tbody>
+          </table>
+        </section>
+        <section id="stock" class="tab-content">
+          <p>Coming soon...</p>
+        </section>
+      </section>
+    </main>
+
+    <!-- Placeholder for Footer -->
+    <div id="footer-placeholder"></div>
+  </body>
+</html>

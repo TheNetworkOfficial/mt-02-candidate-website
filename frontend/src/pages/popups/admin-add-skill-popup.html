@@ -1,0 +1,73 @@
+<!-- Popup for adding a new skill -->
+<div id="skill-popup-container" class="popup-container">
+    <div class="popup-content">
+        <button class="close-button">&times;</button>
+        <h2>Add New Skill</h2>
+        <form id="add-skill-form">
+        <div class="form-group">
+            <label for="skill-name">Name</label>
+            <input type="text" id="skill-name" name="name" required>
+        </div>
+        <div class="form-group">
+            <label for="skill-type">Type</label>
+            <input type="text" id="skill-type" name="skill_type" required>
+        </div>
+        <div class="form-group">
+            <label for="skill-category">Category</label>
+            <input type="text" id="skill-category" name="skill_category">
+        </div>
+        <div class="form-group">
+            <label for="skill-rarity">Rarity</label>
+            <input type="text" id="skill-rarity" name="rarity">
+        </div>
+        <div class="form-group">
+            <label for="trigger-time">Trigger Time</label>
+            <input type="text" id="trigger-time" name="trigger_time">
+        </div>
+        <div class="form-group">
+            <label for="skill-range">Range</label>
+            <input type="text" id="skill-range" name="range">
+        </div>
+        <div class="form-group">
+            <label for="skill-duration">Duration</label>
+            <input type="text" id="skill-duration" name="duration">
+        </div>
+        <div class="form-group">
+            <label for="area-of-effect">Area of Effect</label>
+            <input type="text" id="area-of-effect" name="area_of_effect">
+        </div>
+        <div class="form-group">
+            <label for="skill-attribute">Attribute</label>
+            <input type="text" id="skill-attribute" name="attribute">
+        </div>
+        <div class="form-group">
+            <label for="cooldown-actions">Cooldown (Actions)</label>
+            <input type="number" id="cooldown-actions" name="cooldown_actions" min="0" value="0">
+        </div>
+        <div class="form-group">
+            <label for="base-modifier">Base Modifier</label>
+            <input type="number" step="any" id="base-modifier" name="base_modifier">
+        </div>
+        <div class="form-group">
+            <label for="icon-url">Icon URL</label>
+            <input type="text" id="icon-url" name="icon_url">
+        </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea id="description" name="description"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="effect-details">Effect Details (JSON)</label>
+            <textarea id="effect-details" name="effect_details"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="requirements">Requirements (JSON)</label>
+            <textarea id="requirements" name="requirements"></textarea>
+        </div>
+        <div class="form-actions">
+            <button type="submit" class="btn-get-started">Confirm</button>
+            <button type="button" id="cancel-add-skill" class="btn-option">Cancel</button>
+        </div>
+        </form>
+    </div>
+</div>

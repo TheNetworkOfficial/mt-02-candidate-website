@@ -1,0 +1,87 @@
+<header class="site-header">
+    <div class="logo-wrapper">
+        <!-- Wrap the logo and site title in an anchor tag -->
+        <a href="index.html" class="logo-link">
+            <img src="../../assets/images/logos/reptileUniverseLogo.jpg" alt="Reptile Universe Logo" class="logo-image" />
+            <span class="logo-title">Reptile Universe</span>
+        </a>
+    </div>
+
+    <div class="nav-and-toolkit">
+        <nav class="navigation">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="list.html">Adoptions</a></li>
+            <li class="dropdown">
+                <a href="#" class="account-display dropdown-trigger">Forms <i class="fas fa-caret-down"></i></a>
+                <ul class="dropdown-content">
+                    <li><a href="adoptionForm.html">Adoption Form</a></li>
+                    <li><a href="surrenderForm.html">Surrender Form</a></li>
+                    <li><a href="volunteerForm">Volunteer Form</a></li>
+                    <!-- Add more feature links as needed -->
+                </ul>
+            </li>
+            <!-- LOGIN button, shown when not authenticated -->
+            <li id="login-container">
+                <a href="login.html" class="btn-login">Log In</a>
+            </li>
+
+            <!-- PROFILE dropdown, hidden by default -->
+            <li id="profile-dropdown" class="dropdown" style="display:none;">
+                <a href="#" class="dropdown-trigger">
+                <img src="../../assets/images/icons/defaultAvatar.png"
+                    alt="Avatar"
+                    class="profile-pic"
+                    width="24" height="24"/>
+                <span class="profile-username">User</span>
+                <i class="fas fa-caret-down"></i>
+                </a>
+                <ul class="dropdown-content">
+                <li><a href="profile.html">My Profile</a></li>
+                <li><a href="myAdoptions.html">Pending Adoptions</a></li>
+                <li><a href="#" id="logout-btn">Log Out</a></li>
+                </ul>
+            </li>
+        </nav>
+
+        <!-- Mobile Menu Toggle -->
+        <div class="mobile-menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+    </div>
+</header>
+
+<!-- Mobile Menu (Hidden by default) -->
+<div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-content">
+      <div class="mobile-menu-close" id="mobileMenuClose">
+        <i class="fas fa-times"></i>
+      </div>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="list.html">Adoptions</a></li>
+        <li><a href="#" id="logout-btn">Log Out</a></li>
+      </ul>
+      
+      <!-- Mobile version of Quick Links and Contact Us -->
+      <div class="mobile-footer-extra">
+        <div class="mobile-footer-contact">
+          <h3>Contact Us</h3>
+          <h4>Phone:</h4> 
+          <a href="tel:4068992633">(406) 899-2633</a>
+          <h4>Email:</h4> 
+          <a href="mailto:reptileuniverse@yahoo.com">reptileuniverse@yahoo.com</a>
+        </div>
+        <div class="mobile-footer-links">
+            <h3>Quick Links</h3>
+            <div class="social-media">
+                <a href="https://www.facebook.com/profile.php?id=100064250825243"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/reptileuniversemt/"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.tiktok.com/@reptile.universe"><i class="fab fa-tiktok"></i></a>
+            </div>
+        </div>
+      </div>
+      
+    </div>
+</div>
+<!-- Overlay element -->
+<div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>

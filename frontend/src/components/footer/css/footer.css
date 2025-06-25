@@ -1,0 +1,123 @@
+/* Footer Styles */
+.site-footer {
+  flex-shrink: 0; /* Ensures footer stays at the bottom */
+  margin-top: auto; /* Pushes the footer to the bottom when there's extra space */
+  background-color: #141414;
+  color: white;
+  padding-top: 1rem;
+  width: 100%;
+}
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 50px;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding: 20px;
+  background-color: #141414;
+}
+
+.footer-about, .footer-links, .footer-contact {
+  max-width: 30%;
+  margin-bottom: 20px;
+}
+
+.footer-about p, .footer-contact p {
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0; /* Remove default list padding */
+}
+
+.footer-links ul li {
+  margin-bottom: 10px;
+}
+
+.footer-links ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer-links ul li a:hover {
+  text-decoration: underline;
+}
+
+.footer-contact h4 {
+  font-size: 1rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0rem;
+}
+
+.footer-contact a {
+  font-size: 1rem;
+  color: #fff;
+}
+
+.social-media {
+  margin-top: 20px;
+}
+
+.social-media a {
+  color: #fff;
+  margin-right: 10px;
+  font-size: 20px;
+}
+
+.social-icons {
+  text-align: center;
+  margin-bottom: 1rem; /* Adds space below the icon links */
+  width: 100%;
+}
+
+.social-icons a {
+  color: white; /* Sets the icon color */
+  margin: 0 10px; /* Adds space between icon links */
+  font-size: 1.5rem; /* Sets the size of the icons */
+  display: inline-block; /* Aligns icons in line */
+}
+
+.social-icons a:hover,
+.social-icons a:focus {
+  color: #5b92e5; /* Change color on hover/focus for visual feedback */
+  text-decoration: none; /* Removes underline from links */
+}
+
+
+/* Extra Small Devices (e.g., ~412px width, less than 576px) */
+@media (max-width: 575.98px) {
+  .footer-content {
+    display: none;
+  }
+  .footer-extra {
+    display: none;
+  }
+  .footer-about,
+  .footer-links,
+  .footer-contact {
+    max-width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .footer-about p,
+  .footer-contact p {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  .footer-links ul li {
+    margin-bottom: 8px;
+  }
+  .footer-links ul li a {
+    font-size: 14px;
+  }
+  .social-media a {
+    font-size: 18px;
+    margin-right: 8px;
+  }
+}

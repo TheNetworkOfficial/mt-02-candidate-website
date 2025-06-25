@@ -1,0 +1,135 @@
+/* Popup Container */
+.popup-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none; /* Hidden by default */
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+  z-index: 1000; /* Ensure it's above other content */
+}
+
+/* Popup Content */
+.popup-content {
+  background-color: #1f1f1f; /* Light background to match your site */
+  padding: 30px;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 800px;
+  text-align: center;
+  position: relative;
+}
+
+/* Close Button */
+.popup-content .close-button {
+  position: absolute;
+  top: 0px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 40px;
+  cursor: pointer;
+  color: #ffffff;
+}
+
+/* Popup Heading */
+.popup-content h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+.popup-content h3 {
+  font-weight: 600;
+}
+
+/* Style for the images in the popup options */
+.option-image {
+  width: 40%;           /* Adjusts the width to 80% of the container */
+  height: auto;         /* Maintains aspect ratio */
+  border-radius: 50% / 25%; /* Creates the oval shape */
+  margin-bottom: 15px;
+  object-fit: contain;  /* Ensures the entire image is visible */
+  display: block;       /* Centers the image horizontally */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.popup-content p {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* Popup Options */
+.popup-options {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+/* Option Styles */
+.popup-options .option {
+  flex: 1;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Option Content */
+.option-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Option Headings */
+.popup-options .option h3 {
+  font-size: 22px;
+  margin-bottom: 10px;
+  color: #333;
+  text-align: center;
+}
+
+/* Option Paragraphs */
+.popup-options .option p {
+  font-size: 16px;
+  margin-bottom: 20px;
+  color: #666;
+  text-align: center;
+}
+
+/* Option Buttons */
+.btn-option {
+  display: inline-block;
+  background-color: #ff6f61;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: auto;
+  align-self: center;
+}
+
+.popup-options .btn-option:hover {
+  background-color: #ff5a4d;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .popup-options {
+    flex-direction: column;
+  }
+
+  .popup-options .option {
+    margin-bottom: 20px;
+  }
+}

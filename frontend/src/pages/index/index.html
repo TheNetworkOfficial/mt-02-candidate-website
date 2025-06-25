@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home | Reptile Universe</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gideon+Roman&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Placeholder for Header -->
+    <div id="header-placeholder"></div>
+
+    <!-- Main Content -->
+    <main>
+      <!-- Hero Section -->
+      <section class="hero">
+            <div class="hero-content">
+              <div class="hero-content-overlay">
+                  <h1>Find Your Scaly Companion Today</h1>
+                  <p>Explore our vibrant collection of reptiles and amphibians, ready for adoption today.</p>
+                  <a href="list.html" class="btn-get-started">Get Started</a>
+              </div>
+          </div>
+          <div class="hero-image">
+              <!-- Placeholder for Hero Image -->
+              <img src="../../assets/images/logos/reptileUniverseLogo.jpg" alt="Hero Image">
+          </div>
+      </section>
+
+      <!-- Features Showcase -->
+      <section class="features">
+          <div class="features-grid">
+              <div class="feature-item-left">
+                <h3>Our Mission</h3>
+                <p>At Reptile Universe, we are dedicated to connecting people with healthy, well-cared-for reptiles that make wonderful companions. 
+                  Our passion drives us to ensure that each reptile finds a loving home, and we strive to make reptile ownership accessible and rewarding for everyone.</p>
+                <a href="adoptionForm.html" class="btn">Adoption Application</a>
+
+                <hr class="section-divider" />
+
+                <h3>Adoption Policy</h3>
+                <p>Learn more about the adoption process here</p>
+                <a href="adoptionPolicy.html" class="btn">Learn More</a>
+
+              </div>
+              <div class="feature-item-right">
+                <div class="hours-container">
+                  <!-- Hours Dropdown -->
+                  <h3>Today's Hours</h3>
+                  <div class="hours-dropdown" id="hoursDropdown">
+                    <div class="selected-day" id="selectedDay">Loading...</div>
+                    <ul class="all-hours" id="allHours"></ul>
+                  </div>
+                </div>
+
+                <div class="map-container">
+                  <iframe
+                    src="https://www.google.com/maps?q=404+1st+Ave+NW+Great+Falls+MT+59404&output=embed"
+                    frameborder="0"
+                    allowfullscreen
+                    loading="lazy"
+                  ></iframe>
+                </div>
+
+                <!-- Get Directions Button -->
+                <a
+                  href="https://www.google.com/maps/dir/?api=1&destination=404+1st+Ave+NW+Great+Falls+MT+59404"
+                  class="btn directions-btn"
+                  target="_blank"
+                >
+                  Get Directions
+                </a>
+
+                <div class="features-social-media">
+                  <a href="https://www.facebook.com/profile.php?id=100064250825243"><i class="fab fa-facebook"></i></a>
+                  <a href="https://www.instagram.com/reptileuniversemt/"><i class="fab fa-instagram"></i></a>
+                  <a href="https://www.tiktok.com/@reptile.universe"><i class="fab fa-tiktok"></i></a>
+                </div>
+              </div>
+          </div>
+      </section>
+
+      <!-- Creature Feature -->
+      <section class="creature-feature">
+        <h2>Featured Creatures</h2>
+
+        <!-- container for our tiles -->
+        <div id="creature-feature-list"></div>
+      </section>
+    </main>
+
+    <!-- Placeholder for Footer -->
+    <div id="footer-placeholder"></div>
+  </body>
+</html>

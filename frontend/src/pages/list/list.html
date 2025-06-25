@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Adoption List | Reptile Universe</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gideon+Roman&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Placeholder for Header -->
+    <div id="header-placeholder"></div>
+
+    <!-- Main Content -->
+   <main>
+     <section id="animal-list">
+       <div class="search-container">
+         <input type="text" id="search-name" placeholder="Search by name..." />
+         <select id="filter-species">
+           <option value="">All Species</option>
+           <option value="allosaurus">Allosaurus</option>
+           <option value="bearded dragon">Bearded Dragon</option>
+           <option value="ball python">Ball Python</option>
+           <option value="blue tongue skink">Blue Tongue Skink</option>
+           <option value="corn snake">Corn Snake</option>
+           <option value="crested gecko">Crested Gecko</option>
+           <option value="leopard gecko">Leopard Gecko</option>
+           <option value="red tail boa">Red Tail Boa</option>
+           <option value="tortoise">Tortoise</option>
+           <option value="western fence lizard">Western Fence Lizard</option>
+         </select>
+         <button id="search-btn">Search</button>
+       </div>
+        <div class="tile-container">
+          <!-- JS will populate this list with real reptiles from the database -->
+        </div>
+     </section>
+   </main>
+    
+    <!-- Placeholder for Footer -->
+    <div id="footer-placeholder"></div>
+  </body>
+</html>

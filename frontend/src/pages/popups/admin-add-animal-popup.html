@@ -1,0 +1,62 @@
+<!-- Popup for adding a new animal -->
+<div id="animal-popup-container" class="popup-container">
+  <div class="popup-content">
+    <button class="close-button">&times;</button>
+    <h2 id="animal-popup-title">Add New Animal</h2>
+    <form id="add-animal-form">
+      <div class="form-group">
+        <label for="animal-name">Name</label>
+        <input type="text" id="animal-name" name="name" required />
+      </div>
+      <div class="form-group">
+        <label for="animal-species">Species</label>
+        <input type="text" id="animal-species" name="species" required />
+      </div>
+      <div class="form-group">
+        <label for="animal-age">Age</label>
+        <input type="text" id="animal-age" name="age" />
+      </div>
+      <div class="form-group">
+        <label for="animal-location">Location</label>
+        <input type="text" id="animal-location" name="location" />
+      </div>
+      <div class="form-group">
+        <label for="animal-sex">Sex</label>
+        <input type="text" id="animal-sex" name="sex" />
+      </div>
+      <div class="form-group">
+        <label for="animal-traits">Traits</label>
+        <input type="text" id="animal-traits" name="traits" />
+      </div>
+      <div class="form-group">
+        <label for="animal-bio">Bio</label>
+        <textarea id="animal-bio" name="bio"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="animal-requirements">Requirements</label>
+        <textarea id="animal-requirements" name="requirements"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="animal-images">Upload Images</label>
+        <input
+          type="file"
+          id="animal-images"
+          name="images"
+          accept="image/*"
+          multiple
+        />
+      </div>
+     <!-- Existing Images (shown only in “Edit” mode) -->
+     <div id="existing-images-container" class="form-group">
+       <label>Existing Images</label>
+       <div id="existing-images"></div>
+     </div>
+      <div class="form-actions">
+        <button type="submit" class="btn-get-started">Save</button>
+        <button type="button" id="cancel-add-animal" class="btn-option">
+          Cancel
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

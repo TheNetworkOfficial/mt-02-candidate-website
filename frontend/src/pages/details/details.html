@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Animal Details | Reptile Universe</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gideon+Roman&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Placeholder for Header -->
+    <div id="header-placeholder"></div>
+
+    <!-- Main Content -->
+     <main>
+       <div class="details-container">
+         <section id="animal-details">
+           <div class="carousel-container">
+             <div class="carousel">
+               <!-- Three image elements populated dynamically -->
+               <img class="carousel-img left" tabindex="0" role="button" alt="Previous image">
+               <img class="carousel-img center" alt="Current image">
+               <img class="carousel-img right" tabindex="0" role="button" alt="Next image">
+               <!-- Translucent arrow overlays -->
+               <div class="arrow left-arrow" tabindex="0" role="button">
+                 <i class="fas fa-chevron-left"></i>
+               </div>
+               <div class="arrow right-arrow" tabindex="0" role="button">
+                 <i class="fas fa-chevron-right"></i>
+               </div>
+             </div>
+             <!-- Dots indicator -->
+             <div class="carousel-dots"></div>
+           </div>
+           <div class="details-info">
+             <div class="info-main-container">
+               <div class="bio-adoption-container">
+                <div class="header-information-container">
+                  <!-- will be overwritten by details.js -->
+                  <h2>Loading…</h2>
+                  <div class="info-row">
+                    <div class="info-item"><strong>Species:</strong> </div>
+                    <div class="info-item"><strong>Age:</strong> </div>
+                  </div>
+                  <h3><strong>Location:</strong> </h3>
+                  <h4><strong></strong></h4>
+                </div>
+                <p>
+                  <!-- will be overwritten by details.js for Bio -->
+                  <strong>Bio:</strong> …
+                </p>
+                <p>
+                  <!-- will be overwritten by details.js for Requirements/Adoption Info -->
+                  <strong>Adoption Information:</strong> …
+                </p>
+               </div>
+               <div class="side-panel-container">
+                 <div class="application-container">
+                   <p class="application-tagline">Interested in adopting?</p>
+                   <button class="application-button">Begin Your Application</button>
+                 </div>
+                 <div class="contact-container">
+                   <h3>Reptile Universe Supplier &amp; Rescue</h3>
+                   <div class="contact-info">
+                     <div class="logo">
+                       <img src="../../assets/images/icons/reptileUniverseLogo.jpg" alt="Reptile Universe Logo">
+                     </div>
+                     <div class="contact-details">
+                       <p><strong>Phone:</strong> (406) 899-2633</p>
+                       <p><strong>Email:</strong> reptileuniverse@yahoo.com</p>
+                       <p><strong>Address:</strong> 123 Rescue Rd, Great Falls, MT</p>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+             </div>
+           </div>
+         </section>
+       </div>
+     </main>
+    
+    <!-- Placeholder for Footer -->
+    <div id="footer-placeholder"></div>
+  </body>
+</html>
