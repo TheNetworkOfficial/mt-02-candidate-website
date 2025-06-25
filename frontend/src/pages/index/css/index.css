@@ -56,7 +56,11 @@
 /* ─── News Section ─────────────────────────────────────────────────────── */
 .news-section {
   padding: var(--section-vertical) 0;
-  background: var(--background-main);
+  background: #f7f9fc;
+}
+.news-section h2 {
+  text-align: center;
+  color: black;
 }
 .news-list {
   display: grid;
@@ -65,13 +69,15 @@
   margin-top: 1rem;
 }
 .news-list li {
-  background: var(--background-main);
+  background: #fff;
+  border-left: 4px solid var(--secondary-color);
   border-radius: var(--radius);
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  transition: transform .2s;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  transition: transform .2s, box-shadow .2s;
 }
 .news-list li:hover {
   transform: translateY(-4px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
 }
 .news-list a {
   display: block;
@@ -116,15 +122,32 @@
   margin-top: 2rem;
 }
 .issues-list li {
-  background: var(--background-main);
+  background: #fff;
   border-radius: var(--radius);
   padding: 1.5rem;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  border-top: 4px solid var(--primary-color);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
   transition: transform .3s, box-shadow .3s;
+  position: relative;
+}
+.issues-list li::before {
+  content: "\f0a9";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  color: var(--secondary-color);
+  opacity: 0.2;
 }
 .issues-list li:hover {
   transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+
+.section.issues h2 {
+  text-align: center;
+  color: #f7f9fc;
 }
 .issues-list li h3 {
   color: var(--primary-color);
