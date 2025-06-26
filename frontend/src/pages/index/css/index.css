@@ -6,7 +6,7 @@
 #hero {
   position: relative;
   height: 90vh;
-  background: url('../../../assets/images/hero/hero.jpg') center/cover no-repeat;
+  background: url("../../../assets/images/hero/hero.jpg") center/cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -16,7 +16,8 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg,
+  background: linear-gradient(
+    135deg,
     rgba(0, 86, 166, 0.7),
     rgba(0, 0, 0, 0.3)
   );
@@ -30,14 +31,14 @@
 .hero-content h1 {
   font-size: clamp(2.5rem, 5vw, 4rem);
   margin-bottom: 1rem;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 .hero-content p {
   font-size: clamp(1rem, 2.5vw, 1.5rem);
   margin-bottom: 2rem;
 }
 .hero-buttons .btn {
-  margin: 0 .5rem;
+  margin: 0 0.5rem;
   min-width: 140px;
 }
 
@@ -50,7 +51,35 @@
 .video-section video {
   max-width: 100%;
   border-radius: var(--radius);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* layout for video and events side by side */
+.video-events {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+}
+.video-wrapper {
+  flex: 1;
+  margin-left: -1rem;
+}
+.events-wrapper {
+  flex: 1;
+}
+.events-grid {
+  list-style: none;
+  padding: 0;
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+.events-grid li {
+  background: var(--background-main);
+  padding: 1rem;
+  border-radius: var(--radius);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 /* ─── News Section ─────────────────────────────────────────────────────── */
@@ -64,7 +93,7 @@
 }
 .news-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 1.5rem;
   margin-top: 1rem;
 }
@@ -72,12 +101,14 @@
   background: #fff;
   border-left: 4px solid var(--secondary-color);
   border-radius: var(--radius);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-  transition: transform .2s, box-shadow .2s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
 }
 .news-list li:hover {
   transform: translateY(-4px);
-  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 }
 .news-list a {
   display: block;
@@ -85,11 +116,11 @@
   color: var(--text-main);
 }
 .news-list h3 {
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
   color: var(--primary-color);
 }
 .news-list time {
-  font-size: .85rem;
+  font-size: 0.85rem;
   color: #666;
 }
 
@@ -101,7 +132,7 @@
   align-items: center;
 }
 .about-text h2 {
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
 }
 .about-text p {
   font-size: 1.1rem;
@@ -110,7 +141,7 @@
 .about-image img {
   width: 100%;
   border-radius: var(--radius);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   object-fit: cover;
 }
 
@@ -126,8 +157,10 @@
   border-radius: var(--radius);
   padding: 1.5rem;
   border-top: 4px solid var(--primary-color);
-  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
-  transition: transform .3s, box-shadow .3s;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s;
   position: relative;
 }
 .issues-list li::before {
@@ -142,7 +175,7 @@
 }
 .issues-list li:hover {
   transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 }
 
 .section.issues h2 {
@@ -151,11 +184,11 @@
 }
 .issues-list li h3 {
   color: var(--primary-color);
-  margin-bottom: .75rem;
+  margin-bottom: 0.75rem;
 }
 .issues-list li p {
   color: var(--text-main);
-  font-size: .95rem;
+  font-size: 0.95rem;
   line-height: 1.6;
 }
 
@@ -174,42 +207,6 @@
   background: var(--container-background);
 }
 
-/* 5) Events Section — Vertical timeline */
-.events-list {
-  position: relative;
-  margin-top: 2rem;
-  padding-left: 2rem;
-}
-.events-list::before {
-  content: "";
-  position: absolute;
-  left: 1rem;
-  top: 0;
-  bottom: 0;
-  width: 4px;
-  background: var(--primary-color);
-}
-.events-list li {
-  position: relative;
-  margin-bottom: 1.5rem;
-  padding-left: 1.5rem;
-}
-.events-list li::before {
-  content: "";
-  position: absolute;
-  left: -8px;
-  top: 0;
-  width: 16px;
-  height: 16px;
-  background: var(--primary-color);
-  border-radius: 50%;
-}
-.events-list li strong {
-  display: block;
-  margin-bottom: .25rem;
-  color: var(--text-main);
-}
-
 /* 6) Contact Section — Centered card */
 .section.contact .container {
   display: flex;
@@ -224,9 +221,10 @@
 
 /* 7) Responsive tweaks */
 @media (max-width: 768px) {
-  #hero { height: 70vh; }
-  .section.about .container { grid-template-columns: 1fr; }
-  .events-list::before { left: .5rem; }
-  .events-list li { padding-left: 1rem; }
-  .events-list li::before { left: -6px; width: 12px; height: 12px; }
+  #hero {
+    height: 70vh;
+  }
+  .section.about .container {
+    grid-template-columns: 1fr;
+  }
 }
