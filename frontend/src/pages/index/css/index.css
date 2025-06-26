@@ -139,7 +139,7 @@
   line-height: 1.8;
 }
 .about-image img {
-  width: 100%;
+  width: 75%;
   border-radius: var(--radius);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   object-fit: cover;
