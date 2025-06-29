@@ -47,27 +47,36 @@
             </video>
           </div>
           <div class="events-wrapper">
-            <h2>Upcoming Events</h2>
-            <ul class="events-grid">
-              <li>
-                <strong>July 4, 2025</strong> — Independence Day Parade in Great
-                Falls
+              <a href="events.html" class="btn btn-events"><h2>Click to view event calendar</h2></a>
+            <ul class="events-grid" id="eventsList">
+              <li data-date="2025-07-04">
+                <a href="#">
+                  <h3>Independence Day Parade in Great Falls</h3>
+                  <time datetime="2025-07-04">July 4, 2025</time>
+                </a>
               </li>
-              <li>
-                <strong>July 12, 2025</strong> — Town Hall Meeting at Community
-                Center
+              <li data-date="2025-07-12">
+                <a href="#">
+                  <h3>Town Hall Meeting at Community Center</h3>
+                  <time datetime="2025-07-12">July 12, 2025</time>
+                </a>
               </li>
-              <li>
-                <strong>July 20, 2025</strong> — Volunteer Kickoff BBQ
+              <li data-date="2025-07-20">
+                <a href="#">
+                  <h3>Volunteer Kickoff BBQ</h3>
+                  <time datetime="2025-07-20">July 20, 2025</time>
+                </a>
               </li>
-              <li>
-                <strong>July 20, 2025</strong> — Volunteer Kickoff BBQ
-              </li>
-              <li>
-                <strong>Upcoming</strong> — See All Events
-                <a href="events.html" class="btn btn-secondary">View Events</a>
+              <li data-date="2025-07-20">
+                <a href="#">
+                  <h3>Volunteer Kickoff BBQ</h3>
+                  <time datetime="2025-07-20">July 20, 2025</time>
+                </a>
               </li>
             </ul>
+            <div class="more-events">
+              <a href="events.html" class="btn btn-secondary">View All Events</a>
+            </div>
           </div>
         </div>
       </section>
@@ -76,7 +85,11 @@
       <section id="news" class="section news-section">
         <div class="container">
           <h2>Recent News</h2>
-          <ul class="news-list">
+          <div class="news-carousel">
+            <button class="carousel-btn news-prev" aria-label="Previous news">
+              &#10094;
+            </button>
+            <ul class="news-list">
             <li>
               <a href="news/july-1-press-release.html">
                 <h3>Campaign Launch Press Release</h3>
@@ -96,27 +109,10 @@
               </a>
             </li>
             <!-- add more as needed -->
-          </ul>
-        </div>
-      </section>
-
-      <!-- About -->
-      <section id="about" class="section about">
-        <div class="container">
-          <div class="about-text">
-            <h2>About Sam Lux</h2>
-            <p>
-              Sam Lux is a proud Montanan and small-business owner fighting to
-              bring real change to MT-02. Committed to fiscal responsibility,
-              quality healthcare, and education reform, [he/she/they] will
-              always put constituents first.
-            </p>
-          </div>
-          <div class="about-image">
-            <img
-              src="../../assets/images/icons/defaultAvatar.png"
-              alt="Sam Lux"
-            />
+            </ul>
+            <button class="carousel-btn news-next" aria-label="Next news">
+              &#10095;
+            </button>
           </div>
         </div>
       </section>

@@ -61,7 +61,7 @@
   align-items: flex-start;
 }
 .video-wrapper {
-  flex: 1;
+  flex: 1.2;
   margin-left: -1rem;
 }
 .events-wrapper {
@@ -77,9 +77,25 @@
 }
 .events-grid li {
   background: var(--background-main);
+  border-left: 4px solid var(--primary-color);
   padding: 1rem;
   border-radius: var(--radius);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+.events-grid li:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+.events-grid a {
+  display: block;
+  color: var(--text-main);
+}
+.more-events {
+  text-align: center;
+  margin-top: 1rem;
 }
 
 /* ─── News Section ─────────────────────────────────────────────────────── */
@@ -87,17 +103,18 @@
   padding: var(--section-vertical) 0;
   background: #f7f9fc;
 }
-.news-section h2 {
-  text-align: center;
-  color: black;
+.news-carousel {
+  position: relative;
+  max-width: 500px;
+  margin: 0 auto;
 }
 .news-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 1.5rem;
+  list-style: none;
+  padding: 0;
   margin-top: 1rem;
 }
 .news-list li {
+  display: none;
   background: #fff;
   border-left: 4px solid var(--secondary-color);
   border-radius: var(--radius);
@@ -105,6 +122,9 @@
   transition:
     transform 0.2s,
     box-shadow 0.2s;
+}
+.news-list li.active {
+  display: block;
 }
 .news-list li:hover {
   transform: translateY(-4px);
@@ -122,6 +142,24 @@
 .news-list time {
   font-size: 0.85rem;
   color: #666;
+}
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--secondary-color);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+}
+.news-prev {
+  left: -2.5rem;
+}
+.news-next {
+  right: -2.5rem;
 }
 
 /* 2) About Section — Two-column with candidate photo */
@@ -217,6 +255,12 @@
   text-align: center;
   font-size: 1.1rem;
   line-height: 1.6;
+}
+
+.btn-events {
+  background: var(--secondary-color);
+  width: 110%;
+  height: 50px;
 }
 
 /* 7) Responsive tweaks */
