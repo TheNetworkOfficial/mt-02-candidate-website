@@ -263,6 +263,13 @@
   z-index: 1;
 }
 
+.issues-list li a {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+
 /* 4) Get Involved — Accent-color banner */
 .section.get-involved {
   background: var(--secondary-color);

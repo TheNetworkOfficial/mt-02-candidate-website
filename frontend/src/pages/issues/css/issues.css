@@ -1,0 +1,26 @@
+.issues-wrapper {
+  align-items: flex-start;
+  padding: 2rem 0;
+}
+
+.issues-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.issues-nav {
+  flex: 0 0 250px;
+}
+
+.issues-content {
+  flex: 1;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}

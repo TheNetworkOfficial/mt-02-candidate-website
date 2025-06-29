@@ -8,6 +8,7 @@ module.exports = {
   entry: {
     main: "./src/main.js",
     index: "./src/pages/index/index.js",
+    issues: "./src/pages/issues/issues.js",
     forgotPassword: "./src/pages/forgotPassword/forgotPassword.js",
     forgotUsername: "./src/pages/forgotUsername/forgotUsername.js",
     login: "./src/pages/login/login.js",
@@ -64,6 +65,12 @@ module.exports = {
       template: "./src/pages/index/index.html",
       filename: "index.html",
       chunks: ["main", "index"],
+      favicon: "./src/assets/images/icons/reptileUniverseLogo.jpg",
+    }),
+    new HtmlWebpackPlugin({
+      template: "./src/pages/issues/issues.html",
+      filename: "issues.html",
+      chunks: ["main", "issues"],
       favicon: "./src/assets/images/icons/reptileUniverseLogo.jpg",
     }),
     new HtmlWebpackPlugin({
