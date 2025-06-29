@@ -11,9 +11,13 @@ document.addEventListener("DOMContentLoaded", () => {
   let current = 0;
 
   const show = (index) => {
-    items.forEach((item, i) => {
-      item.classList.toggle("active", i === index);
-    });
+    const prevIndex = (index - 1 + items.length) % items.length;
+    const nextIndex = (index + 1) % items.length;
+
+    items.forEach((item) => item.classList.remove("prev", "active", "next"));
+    items[prevIndex].classList.add("prev");
+    items[index].classList.add("active");
+    items[nextIndex].classList.add("next");
   };
 
   const next = () => {
@@ -26,9 +30,9 @@ document.addEventListener("DOMContentLoaded", () => {
     show(current);
   };
 
-  if (prevBtn) prevBtn.addEventListener("click", prev);
-  if (nextBtn) nextBtn.addEventListener("click", next);
+  prevBtn?.addEventListener("click", prev);
+  nextBtn?.addEventListener("click", next);
 
-  show(0);
+  show(current);
   setInterval(next, 15000);
 });

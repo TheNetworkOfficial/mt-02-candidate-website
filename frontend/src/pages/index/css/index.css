@@ -49,7 +49,9 @@
   text-align: center;
 }
 .video-section video {
-  max-width: 100%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   border-radius: var(--radius);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
@@ -58,11 +60,12 @@
 .video-events {
   display: flex;
   gap: 2rem;
-  align-items: flex-start;
+  align-items: stretch;
 }
 .video-wrapper {
   flex: 1.2;
   margin-left: -1rem;
+  display: flex;
 }
 .events-wrapper {
   flex: 1;
@@ -95,7 +98,7 @@
 }
 .more-events {
   text-align: center;
-  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 /* ─── News Section ─────────────────────────────────────────────────────── */
@@ -103,45 +106,59 @@
   padding: var(--section-vertical) 0;
   background: #f7f9fc;
 }
+.news-section h2 {
+  text-align: center;
+  color: var(--primary-color);
+}
 .news-carousel {
   position: relative;
-  max-width: 500px;
+  max-width: 100%;
   margin: 0 auto;
 }
 .news-list {
   list-style: none;
   padding: 0;
   margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
 }
 .news-list li {
+  flex: 0 0 30%;
+  height: 200px;
   display: none;
-  background: #fff;
-  border-left: 4px solid var(--secondary-color);
+  background-size: cover;
+  background-position: center;
   border-radius: var(--radius);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  transition:
-    transform 0.2s,
-    box-shadow 0.2s;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
 }
-.news-list li.active {
+.news-list li::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  border-radius: var(--radius);
+}
+.news-list li.active,
+.news-list li.prev,
+.news-list li.next {
   display: block;
-}
-.news-list li:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 }
 .news-list a {
+  position: relative;
+  z-index: 1;
   display: block;
   padding: 1rem;
-  color: var(--text-main);
+  height: 100%;
+  color: #fff;
 }
 .news-list h3 {
   margin-bottom: 0.5rem;
-  color: var(--primary-color);
 }
 .news-list time {
   font-size: 0.85rem;
-  color: #666;
 }
 .carousel-btn {
   position: absolute;
@@ -156,10 +173,10 @@
   cursor: pointer;
 }
 .news-prev {
-  left: -2.5rem;
+  left: -2rem;
 }
 .news-next {
-  right: -2.5rem;
+  right: -2rem;
 }
 
 /* 2) About Section — Two-column with candidate photo */
@@ -191,7 +208,9 @@
   margin-top: 2rem;
 }
 .issues-list li {
-  background: #fff;
+  background-size: cover;
+  background-position: center;
+  color: #fff;
   border-radius: var(--radius);
   padding: 1.5rem;
   border-top: 4px solid var(--primary-color);
@@ -200,6 +219,15 @@
     transform 0.3s,
     box-shadow 0.3s;
   position: relative;
+  overflow: hidden;
+}
+.issues-list li::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: var(--radius);
+  z-index: 0;
 }
 .issues-list li::before {
   content: "\f0a9";
@@ -210,6 +238,7 @@
   right: 1rem;
   color: var(--secondary-color);
   opacity: 0.2;
+  z-index: 1;
 }
 .issues-list li:hover {
   transform: translateY(-5px);
@@ -221,13 +250,17 @@
   color: #f7f9fc;
 }
 .issues-list li h3 {
-  color: var(--primary-color);
+  color: #fff;
   margin-bottom: 0.75rem;
+  position: relative;
+  z-index: 1;
 }
 .issues-list li p {
-  color: var(--text-main);
+  color: #fff;
   font-size: 0.95rem;
   line-height: 1.6;
+  position: relative;
+  z-index: 1;
 }
 
 /* 4) Get Involved — Accent-color banner */
