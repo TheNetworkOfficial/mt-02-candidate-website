@@ -10,7 +10,25 @@
 }
 
 .issues-nav {
-  flex: 0 0 250px;
+  flex: 0 0 200px;
+}
+
+.issues-nav-toggle {
+  display: block;
+  margin-bottom: 1rem;
+  background: var(--secondary-color);
+  color: #fff;
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+
+.issues-wrapper.collapsed .issues-nav {
+  display: none;
+}
+
+.issues-wrapper.collapsed .issues-content {
+  flex-basis: 100%;
 }
 
 .issues-content {

@@ -1,8 +1,17 @@
 // adjustHeaderPadding.js
-window.addEventListener("load", function () {
-  var header = document.querySelector(".site-header");
+/**
+ * Adjust the body's padding so content isn't hidden behind the
+ * fixed header.
+ */
+function updateHeaderPadding() {
+  const header = document.querySelector(".site-header");
   if (header) {
-    var headerHeight = header.offsetHeight;
-    document.body.style.paddingTop = headerHeight + "px";
+    document.body.style.paddingTop = `${header.offsetHeight}px`;
   }
-});
+}
+
+// Run after dynamic header/footer content is loaded
+document.addEventListener("dynamicContentLoaded", updateHeaderPadding);
+
+// Update padding on resize
+window.addEventListener("resize", updateHeaderPadding);

@@ -108,7 +108,6 @@
   gap: 2rem;
   margin-top: 2rem;
 }
-.issues-list li,
 .events-list li {
   background: var(--background-main);
   padding:    1rem;

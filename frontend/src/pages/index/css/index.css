@@ -135,6 +135,9 @@
   position: relative;
   overflow: hidden;
 }
+.news-item {
+  background-image: url("../../../assets/images/hero/hero.jpg");
+}
 .news-list li::after {
   content: "";
   position: absolute;
@@ -221,6 +224,9 @@
     box-shadow 0.3s;
   position: relative;
   overflow: hidden;
+}
+.issue-card {
+  background-image: url("../../../assets/images/hero/hero.jpg");
 }
 .issues-list li::after {
   content: "";
