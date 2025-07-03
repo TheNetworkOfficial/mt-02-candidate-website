@@ -28,9 +28,15 @@
   padding: 0.25rem 0.5rem;
   border-radius: var(--radius);
   cursor: pointer;
+  font-size: 1.25rem;
 }
 
 .issues-wrapper.collapsed .issues-nav {
+  flex: 0 0 auto;
+  max-width: none;
+}
+
+.issues-wrapper.collapsed .issues-nav ul {
   display: none;
 }
 
@@ -42,6 +48,13 @@
 .issues-content {
   flex: 0 0 80%;
   max-width: 80%;
+}
+
+.issues-nav .tab-button {
+  white-space: normal;
+  overflow: visible;
+  text-overflow: initial;
+  width: 100%;
 }
 
 .tab-content {

@@ -26,11 +26,16 @@ const { RedisStore } = require("connect-redis");
       console.log("✅ Redis connected");
       sessionStore = new RedisStore({ client: redisClient });
     } catch (err) {
-      console.warn("⚠️ Redis connection failed; falling back to in-memory session store");
+      console.warn(
+        "⚠️ Redis connection failed; falling back to in-memory session store",
+        err,
+      );
     }
   } else {
     if (process.env.NODE_ENV === "production") {
-      console.warn("⚠️ REDIS_URL not set; falling back to in-memory session store");
+      console.warn(
+        "⚠️ REDIS_URL not set; falling back to in-memory session store",
+      );
     } else {
       console.log("🔧 Development mode; using in-memory session store");
     }
@@ -54,7 +59,7 @@ const { RedisStore } = require("connect-redis");
     cors({
       origin: "https://reptileuniverse.org",
       credentials: true,
-    })
+    }),
   );
 
   // 7) Session middleware
@@ -66,11 +71,11 @@ const { RedisStore } = require("connect-redis");
       saveUninitialized: false,
       cookie: {
         httpOnly: true,
-        secure: "auto",    // ← only add Secure flag when req.secure===true
+        secure: "auto", // ← only add Secure flag when req.secure===true
         sameSite: "lax",
         maxAge: 1000 * 60 * 60 * 24, // 1 day
       },
-    })
+    }),
   );
 
   // 8) (Optional) A quick debug endpoint
@@ -96,6 +101,7 @@ const { RedisStore } = require("connect-redis");
   const reptileRoutes = require("./routes/reptiles");
   const adoptionRoutes = require("./routes/adoptions");
   const surrenderRoutes = require("./routes/surrenders");
+
   const healthInspectionRoutes = require("./routes/healthInspections");
   const adoptionAppRoutes = require("./routes/adoptionApps");
   const clientsRoutes = require("./routes/clients");
