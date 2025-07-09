@@ -47,6 +47,10 @@ module.exports = {
         test: /\.html$/,
         use: ["html-loader"],
       },
+      {
+        test: /\.md$/,
+        use: "raw-loader"
+      },
     ],
   },
   plugins: [
