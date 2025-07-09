@@ -105,6 +105,7 @@ const { RedisStore } = require("connect-redis");
   const healthInspectionRoutes = require("./routes/healthInspections");
   const adoptionAppRoutes = require("./routes/adoptionApps");
   const clientsRoutes = require("./routes/clients");
+  const volunteerRoutes = require("./routes/volunteers");
   const recoveryRoutes = require("./routes/accountRecovery");
 
   app.use("/api/auth", authLimiter, authRoutes);
@@ -114,6 +115,7 @@ const { RedisStore } = require("connect-redis");
   app.use("/api/health-inspections", healthInspectionRoutes);
   app.use("/api/adoption-apps", adoptionAppRoutes);
   app.use("/api/clients", clientsRoutes);
+  app.use("/api/volunteers", volunteerRoutes);
   app.use("/api/account-recovery", recoveryLimiter, recoveryRoutes);
 
   // 10) Database sync & start
@@ -129,6 +131,7 @@ const { RedisStore } = require("connect-redis");
   require("./models/surrender");
   require("./models/healthInspection");
   require("./models/adoptionApp");
+  require("./models/volunteer");
 
   sequelize
     .sync({ alter: true })

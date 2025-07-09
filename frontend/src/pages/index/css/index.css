@@ -293,14 +293,16 @@
   color: var(--secondary-color);
 }
 .section.get-involved .btn-primary:hover {
-  background: var(--container-background);
+  color: #fff;
+  background: var(--primary-color);
 }
 .section.get-involved .btn-secondary {
   background: var(--primary-color);
   color: #fff;
 }
 .section.get-involved .btn-secondary:hover {
-  background: var(--container-background);
+  background: #fff;
+  color: var(--primary-color);
 }
 
 /* 6) Contact Section — Centered card */

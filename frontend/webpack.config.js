@@ -15,6 +15,7 @@ module.exports = {
     registration: "./src/pages/registration/registration.js",
     resetPassword: "./src/pages/resetPassword/resetPassword.js",
     about: "./src/pages/about/about.js",
+    volunteer: "./src/pages/volunteer/volunteer.js",
   },
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -112,6 +113,12 @@ module.exports = {
       template: "./src/pages/about/about.html",
       filename: "about.html",
       chunks: ["main", "about"],
+      favicon: "./src/assets/images/icons/montanaStarState.png",
+    }),
+    new HtmlWebpackPlugin({
+      template: "./src/pages/volunteer/volunteer.html",
+      filename: "volunteer.html",
+      chunks: ["main", "volunteer"],
       favicon: "./src/assets/images/icons/montanaStarState.png",
     }),
     new HtmlWebpackPlugin({

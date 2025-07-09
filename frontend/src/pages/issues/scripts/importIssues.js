@@ -51,11 +51,16 @@ buttons.forEach((btn) => {
     e.preventDefault();
     const target = btn.dataset.target;
 
+    // update the URL hash for bookmarking/sharing
+    if (target) {
+      window.location.hash = target;
+    }
+
     // deactivate all
-    document.querySelectorAll(".tab-content").forEach(div => {
+    document.querySelectorAll(".tab-content").forEach((div) => {
       div.classList.remove("active");
     });
-    document.querySelectorAll(".tab-button").forEach(b => {
+    document.querySelectorAll(".tab-button").forEach((b) => {
       b.classList.remove("active");
     });
 
@@ -67,6 +72,13 @@ buttons.forEach((btn) => {
 
 // 3) Optionally, activate the first tab on load
 window.addEventListener("DOMContentLoaded", () => {
-  const first = buttons[0];
-  if (first) first.click();
+  const hash = window.location.hash.replace("#", "");
+  const initialBtn = document.querySelector(
+    `.tab-button[data-target="${hash}"]`,
+  );
+  if (initialBtn) {
+    initialBtn.click();
+  } else if (buttons[0]) {
+    buttons[0].click();
+  }
 });
