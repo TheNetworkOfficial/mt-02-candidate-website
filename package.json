@@ -22,9 +22,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "dompurify": "^3.2.6",
     "dotenv": "^16.4.7",
     "express-session": "^1.18.1",
     "helmet": "^8.1.0",
+    "marked": "^16.0.0",
     "nodemailer": "^7.0.3",
     "pg": "^8.16.0",
     "pg-hstore": "^2.3.4",

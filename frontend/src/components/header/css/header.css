@@ -11,6 +11,7 @@
 }
 
 .header-inner {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -23,8 +24,8 @@
 }
 
 .logo-image {
-  width: 40px;
-  height: 40px;
+  width: 100px;
+  height: 100px;
   object-fit: contain;
   margin-right: 0.5rem;
 }
@@ -36,6 +37,10 @@
 }
 
 .site-nav {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
 }
 
@@ -46,6 +51,7 @@
 
 .nav-list a {
   color: var(--text-main);
+  font-size: 20px;
   padding: 0.5rem;
   border-radius: var(--radius);
   transition: background 0.2s;

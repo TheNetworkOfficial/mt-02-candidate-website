@@ -1,0 +1,51 @@
+/* about.css — styles for the About page */
+
+.about-hero {
+  position: relative;
+  height: 60vh;
+  background: url("../../../assets/images/hero/hero.jpg") center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 var(--padding-side);
+}
+
+.about-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 86, 166, 0.7),
+    rgba(0, 0, 0, 0.3)
+  );
+}
+
+.about-text h2 {
+  margin-bottom: 0.5rem;
+}
+
+.about-text p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+.about-image img {
+  width: 75%;
+  border-radius: var(--radius);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  object-fit: cover;
+}
+
+.section.about .container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .section.about .container {
+    grid-template-columns: 1fr;
+  }
+}

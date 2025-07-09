@@ -295,6 +295,13 @@
 .section.get-involved .btn-primary:hover {
   background: var(--container-background);
 }
+.section.get-involved .btn-secondary {
+  background: var(--primary-color);
+  color: #fff;
+}
+.section.get-involved .btn-secondary:hover {
+  background: var(--container-background);
+}
 
 /* 6) Contact Section — Centered card */
 .section.contact .container {
