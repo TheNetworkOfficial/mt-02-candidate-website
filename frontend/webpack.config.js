@@ -139,7 +139,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "./src/pages/event/event.html",
       filename: "event.html",
-      chunks: ["main, event"],
+      chunks: ["main", "event"],
       favicon: "./src/assets/images/icons/montanaStarState.png",
     }),
   ],
