@@ -18,6 +18,7 @@ module.exports = {
     volunteer: "./src/pages/volunteer/volunteer.js",
     contact: "./src/pages/contact/contact.js",
     events: "./src/pages/events/events.js",
+    event: "./src/pages/event/event.js",
   },
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -133,6 +134,12 @@ module.exports = {
       template: "./src/pages/events/events.html",
       filename: "events.html",
       chunks: ["main", "events"],
+      favicon: "./src/assets/images/icons/montanaStarState.png",
+    }),
+    new HtmlWebpackPlugin({
+      template: "./src/pages/event/event.html",
+      filename: "event.html",
+      chunks: ["main, event"],
       favicon: "./src/assets/images/icons/montanaStarState.png",
     }),
   ],
