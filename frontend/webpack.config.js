@@ -17,6 +17,7 @@ module.exports = {
     about: "./src/pages/about/about.js",
     volunteer: "./src/pages/volunteer/volunteer.js",
     contact: "./src/pages/contact/contact.js",
+    events: "./src/pages/events/events.js",
   },
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -129,20 +130,10 @@ module.exports = {
       favicon: "./src/assets/images/icons/montanaStarState.png",
     }),
     new HtmlWebpackPlugin({
-      template: './src/pages/popups/admin-add-skill-popup.html',
-      filename: 'admin-add-skill-popup.html'
-    }),
-    new HtmlWebpackPlugin({
-      template: './src/pages/popups/admin-add-animal-popup.html',
-      filename: 'admin-add-animal-popup.html'
-    }),
-    new HtmlWebpackPlugin({
-      template: './src/pages/popups/admin-health-inspections-popup.html',
-      filename: 'admin-health-inspections-popup.html'
-    }),
-    new HtmlWebpackPlugin({
-      template: './src/pages/popups/admin-adoption-app-popup.html',
-      filename: 'admin-adoption-app-popup.html'
+      template: "./src/pages/events/events.html",
+      filename: "events.html",
+      chunks: ["main", "events"],
+      favicon: "./src/assets/images/icons/montanaStarState.png",
     }),
   ],
   devServer: {

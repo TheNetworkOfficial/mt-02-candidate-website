@@ -3,10 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // List all popup files to load
   let popupsToLoad = [
-    "admin-add-skill-popup.html",
-    "admin-add-animal-popup.html",
-    "admin-health-inspections-popup.html",
-    "admin-adoption-app-popup.html"
+    //"admin-add-skill-popup.html",
   ];
   let loadedPopupsCount = 0;
 
@@ -41,22 +38,11 @@ document.addEventListener("DOMContentLoaded", () => {
   function initializePopupEvents() {
     console.log("Initializing popup events...");
     const popupConfigurations = [
-      {
-        popupId: "skill-popup-container", // ID from admin-add-skill-popup.html
-        triggerSelector: "#add-skill-btn"  // Button in adminSkills.html
-      },
-      {
-        popupId: "animal-popup-container", // ID from admin-add-animal-popup.html
-        triggerSelector: "#add-animal-btn" // Button in admin.html
-      },
-      {
-        popupId: "inspection-popup-container", // ID from admin-inspection-popup.html
-        triggerSelector: ".inspection-cell" // Button in admin.html
-      },
-      {
-        popupId: "adoption-app-popup-container", // ID from admin-adoption-app-popup.html
-        triggerSelector: ".view-app-btn" // Button in pendingAdoptionsTab.js
-      }
+      //{
+      //  popupId: "skill-popup-container", // ID from admin-add-skill-popup.html
+      //  triggerSelector: "#add-skill-btn"  // Button in adminSkills.html
+      //},
+
     ];
 
     popupConfigurations.forEach((config) => {

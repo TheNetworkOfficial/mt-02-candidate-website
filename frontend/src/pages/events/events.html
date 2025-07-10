@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Events | Sam Lux For Congress</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gideon+Roman&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="header-placeholder"></div>
+
+    <main class="events-page container">
+      <h1>Campaign Events</h1>
+
+      <div class="events-controls">
+        <input type="text" id="searchInput" placeholder="Search events" />
+        <select id="filterSelect">
+          <option value="all">All</option>
+          <option value="today">Today</option>
+          <option value="upcoming">Upcoming</option>
+          <option value="past">Past</option>
+        </select>
+      </div>
+
+      <ul class="events-list" id="eventsList">
+        <li
+          data-name="Independence Day Parade"
+          data-location="Great Falls"
+          data-datetime="2025-07-04T10:00"
+        >
+          <img
+            src="../../assets/images/hero/hero.jpg"
+            alt="Independence Day Parade"
+            class="event-thumb"
+          />
+          <div class="event-info">
+            <h3>Independence Day Parade</h3>
+            <time datetime="2025-07-04T10:00"
+              >July 4, 2025 &mdash; 10:00 AM</time
+            >
+            <p class="event-location">Great Falls, MT</p>
+          </div>
+          <a href="#" class="btn btn-secondary details-btn">Details</a>
+        </li>
+        <li
+          data-name="Town Hall Meeting"
+          data-location="Helena"
+          data-datetime="2025-07-12T18:00"
+        >
+          <img
+            src="../../assets/images/hero/hero.jpg"
+            alt="Town Hall Meeting"
+            class="event-thumb"
+          />
+          <div class="event-info">
+            <h3>Town Hall Meeting at Community Center</h3>
+            <time datetime="2025-07-12T18:00"
+              >July 12, 2025 &mdash; 6:00 PM</time
+            >
+            <p class="event-location">Helena, MT</p>
+          </div>
+          <a href="#" class="btn btn-secondary details-btn">Details</a>
+        </li>
+        <li
+          data-name="Volunteer Kickoff BBQ"
+          data-location="Billings"
+          data-datetime="2025-07-20T12:00"
+        >
+          <img
+            src="../../assets/images/hero/hero.jpg"
+            alt="Volunteer Kickoff BBQ"
+            class="event-thumb"
+          />
+          <div class="event-info">
+            <h3>Volunteer Kickoff BBQ</h3>
+            <time datetime="2025-07-20T12:00"
+              >July 20, 2025 &mdash; 12:00 PM</time
+            >
+            <p class="event-location">Billings, MT</p>
+          </div>
+          <a href="#" class="btn btn-secondary details-btn">Details</a>
+        </li>
+        <li
+          data-name="Neighborhood Canvassing"
+          data-location="Bozeman"
+          data-datetime="2025-07-27T09:00"
+        >
+          <img
+            src="../../assets/images/hero/hero.jpg"
+            alt="Neighborhood Canvassing"
+            class="event-thumb"
+          />
+          <div class="event-info">
+            <h3>Neighborhood Canvassing</h3>
+            <time datetime="2025-07-27T09:00"
+              >July 27, 2025 &mdash; 9:00 AM</time
+            >
+            <p class="event-location">Bozeman, MT</p>
+          </div>
+          <a href="#" class="btn btn-secondary details-btn">Details</a>
+        </li>
+      </ul>
+    </main>
+
+    <div id="footer-placeholder"></div>
+  </body>
+</html>
