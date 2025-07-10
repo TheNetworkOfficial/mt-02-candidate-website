@@ -6,7 +6,7 @@
     <title>Event Details | Sam Lux For Congress</title>
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -20,6 +20,9 @@
 
     <main class="event-container container">
       <article class="event-info">
+        <div class="event-image">
+          <img src="../../assets/images/hero/hero.jpg" alt="Event banner" />
+        </div>
         <h1 id="eventName">Event Name</h1>
         <p class="event-type" id="eventType">Type of Event</p>
         <time id="eventDateTime">Date & Time</time>
@@ -56,30 +59,25 @@
           >
           <button type="submit">Sign Up</button>
         </form>
-        <div class="share-links">
-          <button
-            class="share-btn"
-            data-share="facebook"
-            aria-label="Share on Facebook"
-          >
+        <div class="action-links">
+          <button class="cta-btn">
             <i class="fab fa-facebook-f"></i>
+            Share on Facebook
           </button>
-          <button
-            class="share-btn"
-            data-share="bluesky"
-            aria-label="Share on Bluesky"
-          >
-            <i class="fas fa-cloud"></i>
+
+          <button class="cta-btn">
+            <i class="fab fa-bluesky"></i>
+            Share on BlueSky
           </button>
-          <button
-            class="share-btn"
-            data-share="email"
-            aria-label="Share via email"
-          >
+
+          <button class="cta-btn">
             <i class="fas fa-envelope"></i>
+            Share via Email
           </button>
-          <button class="share-btn" data-share="copy" aria-label="Copy link">
+
+          <button class="cta-btn">
             <i class="fas fa-link"></i>
+            Copy Link
           </button>
         </div>
       </aside>

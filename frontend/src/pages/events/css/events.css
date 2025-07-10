@@ -18,46 +18,29 @@
   border-radius: var(--radius);
 }
 
-.events-list {
-  list-style: none;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
+/* ==========================
+   Events Page Styles
+   ========================== */
+
+.events-page h1 {
+  text-align: center;
+  color: var(--primary-color);
 }
 
-.events-list li {
-  background: var(--background-main);
-  border-radius: var(--radius);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+.events-controls {
   display: flex;
-  flex-direction: column;
-  overflow: hidden;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 1rem;
 }
 
-.event-thumb {
-  width: 100%;
-  height: 150px;
-  object-fit: cover;
+.events-controls input,
+.events-controls select {
+  padding: 0.5rem;
+  font-size: 1rem;
 }
 
-.event-info {
-  padding: 1rem;
-  flex: 1;
-}
-
-.event-info h3 {
-  margin-top: 0;
-  margin-bottom: 0.5rem;
-}
-
-.event-info time,
-.event-info .event-location {
-  display: block;
-  font-size: 0.9rem;
-}
-
-.event-tag-today {
+.events-tag-today {
   display: inline-block;
   margin-top: 0.5rem;
   padding: 0.25rem 0.5rem;
@@ -67,7 +50,72 @@
   font-size: 0.75rem;
 }
 
+/* ==========================
+   Event Cards as Full-Width Rows
+   ========================== */
+
+.events-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.events-list li {
+  display: flex;
+  align-items: center;
+  background: var(--background-main);
+  border-radius: var(--radius);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.events-info {
+  flex: 1;
+  padding: 1.5rem;
+}
+
+.events-thumb {
+  flex-shrink: 0;
+  width: 240px;
+  height: 140px;
+  object-fit: cover;
+}
+
 .details-btn {
-  margin: 0.5rem 1rem 1rem;
-  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  margin: 1rem 1.5rem 1rem 0;
+  padding: 0.75rem 1.25rem;
+  background: var(--primary-color);
+  color: #fff;
+  font-weight: 600;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.details-btn i {
+  margin-left: 0.5rem;
+}
+
+.details-btn:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive: Stack vertically on small screens */
+@media (max-width: 640px) {
+  .events-list li {
+    flex-direction: column;
+  }
+  .events-thumb {
+    width: 100%;
+    height: 180px;
+  }
+  .details-btn {
+    margin: 1rem 0 1.5rem;
+    width: auto;
+  }
 }
