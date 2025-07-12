@@ -4,6 +4,8 @@ const router = express.Router();
 const User = require("../models/user");
 const multer = require("multer");
 const path = require("path");
+const { ensureAuth } = require("../middleware/auth");
+
 
 const avatarStorage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -29,12 +31,6 @@ const avatarUpload = multer({
   fileFilter: avatarFilter,
   limits: { fileSize: 5 * 1024 * 1024 },
 });
-
-// Middleware to protect routes
-function ensureAuth(req, res, next) {
-  if (req.session.userId) return next();
-  res.status(401).json({ error: "Unauthorized" });
-}
 
 // — GET current user — GET /api/auth/profile
 router.get("/profile", ensureAuth, async (req, res) => {
@@ -119,6 +115,7 @@ router.post("/register", async (req, res) => {
     const newUser = await User.create({ username, email, password_hash });
     // Auto-login
     req.session.userId = newUser.id;
+    req.session.isAdmin = newUser.isAdmin;
     res.status(201).json({ message: "User registered successfully" });
   } catch (err) {
     console.error("Register error:", err);
@@ -144,6 +141,7 @@ router.post("/login", async (req, res) => {
     // Success → set session
     req.session.userId = user.id;
     req.session.username = user.username;
+    req.session.isAdmin = user.isAdmin;
     res.json({ message: "Logged in successfully" });
   } catch (err) {
     console.error("Login error:", err);

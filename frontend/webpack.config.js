@@ -19,6 +19,7 @@ module.exports = {
     contact: "./src/pages/contact/contact.js",
     events: "./src/pages/events/events.js",
     event: "./src/pages/event/event.js",
+    admin: "./src/pages/admin/admin.js",
   },
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -140,6 +141,12 @@ module.exports = {
       template: "./src/pages/event/event.html",
       filename: "event.html",
       chunks: ["main", "event"],
+      favicon: "./src/assets/images/icons/montanaStarState.png",
+    }),
+    new HtmlWebpackPlugin({
+      template: "./src/pages/admin/admin.html",
+      filename: "admin.html",
+      chunks: ["main", "admin"],
       favicon: "./src/assets/images/icons/montanaStarState.png",
     }),
   ],

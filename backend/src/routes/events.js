@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Event = require("../models/event");
+const { ensureAdmin } = require("../middleware/auth");
 
 router.get("/", async (_req, res) => {
   try {
@@ -12,7 +13,7 @@ router.get("/", async (_req, res) => {
   }
 });
 
-router.post("/", async (req, res) => {
+router.post("/", ensureAdmin, async (req, res) => {
   try {
     const { title, description, eventDate, location } = req.body;
     if (!title || !eventDate) {

@@ -102,6 +102,7 @@ const { RedisStore } = require("connect-redis");
   const contactRoutes = require("./routes/contactMessages");
   const eventRoutes = require("./routes/events");
   const signupRoutes = require("./routes/eventSignups");
+  const adminRoutes = require("./routes/admin");
   const recoveryRoutes = require("./routes/accountRecovery");
 
   app.use("/api/auth", authLimiter, authRoutes);
@@ -109,6 +110,7 @@ const { RedisStore } = require("connect-redis");
   app.use("/api/contact", contactRoutes);
   app.use("/api/events", eventRoutes);
   app.use("/api/event-signups", signupRoutes);
+  app.use("/api/admin", adminRoutes);
   app.use("/api/account-recovery", recoveryLimiter, recoveryRoutes);
 
   // 10) Database sync & start

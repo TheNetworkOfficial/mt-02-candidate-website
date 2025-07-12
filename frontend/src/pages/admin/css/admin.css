@@ -1,0 +1,14 @@
+.admin-page {
+  padding: 2rem;
+}
+
+.admin-page section {
+  margin-bottom: 2rem;
+}
+
+.admin-page form input,
+.admin-page form textarea {
+  display: block;
+  margin-bottom: 0.5rem;
+  width: 100%;
+}

@@ -18,6 +18,7 @@ const User = sequelize.define(
       allowNull: false,
       unique: true,
     },
+    isAdmin: { type: DataTypes.BOOLEAN, defaultValue: false },
     avatarUrl: { type: DataTypes.STRING },
     primaryName: { type: DataTypes.STRING },
     primaryPhone: { type: DataTypes.STRING },
