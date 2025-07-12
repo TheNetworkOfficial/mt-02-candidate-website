@@ -4,7 +4,7 @@ const typeDefs = `#graphql
   }
 
   type Mutation {
-    rollDice(numDice: Int!, numSides: Int): [Int]
+    _empty: String
   }
 `;
 

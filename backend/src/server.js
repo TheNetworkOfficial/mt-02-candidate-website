@@ -57,7 +57,7 @@ const { RedisStore } = require("connect-redis");
   // 6) CORS (allow credentials + your origin)
   app.use(
     cors({
-      origin: "https://reptileuniverse.org",
+      origin: "https://example-candidate.com",
       credentials: true,
     }),
   );
@@ -98,24 +98,17 @@ const { RedisStore } = require("connect-redis");
   });
 
   const authRoutes = require("./routes/auth");
-  const reptileRoutes = require("./routes/reptiles");
-  const adoptionRoutes = require("./routes/adoptions");
-  const surrenderRoutes = require("./routes/surrenders");
-
-  const healthInspectionRoutes = require("./routes/healthInspections");
-  const adoptionAppRoutes = require("./routes/adoptionApps");
-  const clientsRoutes = require("./routes/clients");
   const volunteerRoutes = require("./routes/volunteers");
+  const contactRoutes = require("./routes/contactMessages");
+  const eventRoutes = require("./routes/events");
+  const signupRoutes = require("./routes/eventSignups");
   const recoveryRoutes = require("./routes/accountRecovery");
 
   app.use("/api/auth", authLimiter, authRoutes);
-  app.use("/api/reptiles", reptileRoutes);
-  app.use("/api/adoptions", adoptionRoutes);
-  app.use("/api/surrenders", surrenderRoutes);
-  app.use("/api/health-inspections", healthInspectionRoutes);
-  app.use("/api/adoption-apps", adoptionAppRoutes);
-  app.use("/api/clients", clientsRoutes);
   app.use("/api/volunteers", volunteerRoutes);
+  app.use("/api/contact", contactRoutes);
+  app.use("/api/events", eventRoutes);
+  app.use("/api/event-signups", signupRoutes);
   app.use("/api/account-recovery", recoveryLimiter, recoveryRoutes);
 
   // 10) Database sync & start
@@ -126,12 +119,10 @@ const { RedisStore } = require("connect-redis");
     .catch((err) => console.error("Postgres connection error", err));
 
   require("./models/user");
-  require("./models/reptile");
-  require("./models/adoption");
-  require("./models/surrender");
-  require("./models/healthInspection");
-  require("./models/adoptionApp");
   require("./models/volunteer");
+  require("./models/contactMessage");
+  require("./models/event");
+  require("./models/eventSignup");
 
   sequelize
     .sync({ alter: true })
