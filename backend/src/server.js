@@ -89,6 +89,7 @@ const { RedisStore } = require("connect-redis");
   const authLimiter = rateLimit({
     windowMs: 15 * 60 * 1000,
     max: 20,
+
     message: { error: "Too many attempts, please try again later" },
   });
   const recoveryLimiter = rateLimit({
@@ -114,11 +115,18 @@ const { RedisStore } = require("connect-redis");
   app.use("/api/account-recovery", recoveryLimiter, recoveryRoutes);
 
   // 10) Database sync & start
-  const sequelize = require("./config/database");
-  sequelize
-    .authenticate()
-    .then(() => console.log("PostgreSQL connected"))
-    .catch((err) => console.error("Postgres connection error", err));
+  let sequelize = require("./config/database");
+  const { Sequelize } = require("sequelize");
+  try {
+    await sequelize.authenticate();
+    console.log(`${sequelize.getDialect()} connected`);
+  } catch (err) {
+    console.error("Postgres connection error", err);
+    if (process.env.DB_DIALECT && process.env.DB_DIALECT !== "sqlite") {
+      console.warn("Falling back to in-memory SQLite");
+      sequelize = new Sequelize("sqlite::memory:", { logging: false });
+    }
+  }
 
   require("./models/user");
   require("./models/volunteer");
