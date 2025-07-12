@@ -50,26 +50,7 @@ router.put("/profile", ensureAuth, async (req, res) => {
   try {
     const user = await User.findByPk(req.session.userId);
     if (!user) return res.status(404).json({ error: "User not found" });
-    const fields = [
-      "username",
-      "email",
-      "primaryName",
-      "primaryPhone",
-      "primaryEmail",
-      "primaryEmployment",
-      "primaryWorkPhone",
-      "primaryOccupation",
-      "previousExperience",
-      "address",
-      "city",
-      "stateZip",
-      "rentOrOwn",
-      "landlordName",
-      "landlordPhone",
-      "othersResiding",
-      "residingDetails",
-      "childrenLiving",
-    ];
+    const fields = ["username", "email", "firstName", "lastName", "phone"];
     const updates = {};
     fields.forEach((f) => {
       if (req.body[f] !== undefined) updates[f] = req.body[f];
@@ -106,13 +87,23 @@ router.post(
 // — REGISTER — POST /api/auth/register
 router.post("/register", async (req, res) => {
   try {
-    const { username, email, password } = req.body;
+    const { username, email, password, firstName, lastName, phone } = req.body;
     if (!username || !email || !password) {
-      return res.status(400).json({ error: "All fields are required" });
+      return res
+        .status(400)
+        .json({ error: "Username, email and password required" });
     }
     // Hash password
     const password_hash = await bcrypt.hash(password, 12);
-    const newUser = await User.create({ username, email, password_hash });
+    const newUser = await User.create({
+      username,
+      email,
+      password_hash,
+      firstName,
+      lastName,
+      phone,
+      isAdmin: true,
+    });
     // Auto-login
     req.session.userId = newUser.id;
     req.session.isAdmin = newUser.isAdmin;
