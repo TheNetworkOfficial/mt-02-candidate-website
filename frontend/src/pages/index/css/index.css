@@ -28,6 +28,48 @@
   text-align: center;
   color: #fff;
 }
+/* ─── Hero ticker marquee ─────────────────────────────────────────── */
+
+.ticker-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 5;
+}
+
+.hero-ticker {
+  display: inline-block;
+  white-space: nowrap;
+  padding: 0.5rem 0;
+  margin: 0;
+  /* start the text off to the right */
+  transform: translateX(100%);
+  /* animate it moving left */
+  animation: marquee 200s linear infinite;
+  font-weight: 600;
+  color: #fff;
+  list-style: none;
+}
+
+.hero-ticker li {
+  display: inline-block;
+  font-size: 20px;
+  margin: 0 8rem;
+}
+
+/* loop it */
+@keyframes marquee {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 .hero-content h1 {
   font-size: clamp(2.5rem, 5vw, 4rem);
   margin-bottom: 1rem;
