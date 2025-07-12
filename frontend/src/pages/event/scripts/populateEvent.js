@@ -1,0 +1,57 @@
+// Populate event details
+document.addEventListener("DOMContentLoaded", async () => {
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get("id");
+
+  let eventData = null;
+  if (id) {
+    try {
+      const res = await fetch(`/api/events/${id}`);
+      eventData = await res.json();
+      if (!res.ok) throw new Error(eventData.error || "Failed to load event");
+    } catch (err) {
+      console.error("Event fetch error:", err);
+    }
+  }
+
+  if (!eventData) {
+    eventData = {
+      name: params.get("name"),
+      type: params.get("type"),
+      eventDate: params.get("datetime"),
+      location: params.get("location"),
+      description: params.get("about"),
+      access: params.get("access"),
+      map: params.get("map"),
+      id,
+    };
+  }
+
+  if (eventData.id) {
+    document.getElementById("eventId").value = eventData.id;
+  }
+  if (eventData.name)
+    document.getElementById("eventName").textContent = eventData.name;
+  if (eventData.type)
+    document.getElementById("eventType").textContent = eventData.type;
+  if (eventData.eventDate) {
+    const dt = new Date(eventData.eventDate);
+    document.getElementById("eventDateTime").textContent = dt.toLocaleString();
+  }
+  if (eventData.location) {
+    const link = document.getElementById("eventLocationLink");
+    link.textContent = eventData.location;
+    link.href =
+      eventData.map ||
+      `https://maps.google.com/?q=${encodeURIComponent(eventData.location)}`;
+  }
+  if (eventData.description)
+    document.getElementById("eventAbout").textContent = eventData.description;
+  if (eventData.access)
+    document.getElementById("accessibilityNotice").textContent =
+      eventData.access;
+  if (eventData.map) {
+    document.getElementById("mapEmbed").innerHTML =
+      `<iframe src="${eventData.map}&output=embed" loading="lazy"></iframe>`;
+  }
+});

@@ -2,7 +2,6 @@
 
 /**
  * Handle signup form submission for an event.
- * Currently posts data to /api/volunteers as a placeholder.
  */
 document
   .getElementById("event-signup-form")
@@ -17,10 +16,11 @@ document
       zip: form.zip.value.trim(),
       newsletter: form.newsletter.checked,
       textAlerts: form.textAlerts.checked,
+      event_id: form.event_id.value,
     };
 
     try {
-      const res = await fetch("/api/volunteers", {
+      const res = await fetch("/api/event-signups", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),

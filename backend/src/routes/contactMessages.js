@@ -4,11 +4,18 @@ const ContactMessage = require("../models/contactMessage");
 
 router.post("/", async (req, res) => {
   try {
-    const { name, email, message } = req.body;
+    const { name, email, phone, zip, subject, message } = req.body;
     if (!name || !email || !message) {
       return res.status(400).json({ error: "All fields are required" });
     }
-    const entry = await ContactMessage.create({ name, email, message });
+    const entry = await ContactMessage.create({
+      name,
+      email,
+      phone,
+      zip,
+      subject,
+      message,
+    });
     res.status(201).json(entry);
   } catch (err) {
     console.error("Contact form error:", err);

@@ -6,6 +6,9 @@ const ContactMessage = sequelize.define(
   {
     name: { type: DataTypes.STRING, allowNull: false },
     email: { type: DataTypes.STRING, allowNull: false },
+    phone: { type: DataTypes.STRING },
+    zip: { type: DataTypes.STRING },
+    subject: { type: DataTypes.STRING },
     message: { type: DataTypes.TEXT, allowNull: false },
   },
   {

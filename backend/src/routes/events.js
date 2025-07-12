@@ -31,4 +31,15 @@ router.post("/", async (req, res) => {
   }
 });
 
+router.get("/:id", async (req, res) => {
+  try {
+    const event = await Event.findByPk(req.params.id);
+    if (!event) return res.status(404).json({ error: "Event not found" });
+    res.json(event);
+  } catch (err) {
+    console.error("Fetch event error:", err);
+    res.status(500).json({ error: "Server error" });
+  }
+});
+
 module.exports = router;

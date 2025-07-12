@@ -1,26 +1,56 @@
 // eventsPage.js
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
   const list = document.getElementById("eventsList");
   if (!list) return;
 
   const searchInput = document.getElementById("searchInput");
   const filterSelect = document.getElementById("filterSelect");
 
-  const items = Array.from(list.querySelectorAll("li"));
+  const items = [];
+
+  try {
+    const res = await fetch("/api/events");
+    const data = await res.json();
+    if (res.ok) {
+      data.forEach((ev) => {
+        const li = document.createElement("li");
+        li.dataset.id = ev.id;
+        li.dataset.name = ev.title;
+        li.dataset.location = ev.location || "";
+        li.dataset.datetime = ev.eventDate;
+        li.dataset.about = ev.description || "";
+        li.innerHTML = `
+          <img src="../../assets/images/hero/hero.jpg" alt="${ev.title}" class="events-thumb" />
+          <div class="events-info">
+            <h3>${ev.title}</h3>
+            <time datetime="${ev.eventDate}">${new Date(ev.eventDate).toLocaleString()}</time>
+            <p class="events-location">${ev.location || ""}</p>
+          </div>
+          <a href="#" class="details-btn">See details &amp; more times <i class="fas fa-arrow-right"></i></a>`;
+        list.appendChild(li);
+        items.push(li);
+      });
+    } else {
+      console.error("Events load failed", data.error);
+    }
+  } catch (err) {
+    console.error("Events fetch error:", err);
+  }
 
   const todayStr = new Date().toISOString().split("T")[0];
 
   // Add "Today" tag to events happening today
   items.forEach((li) => {
-    const dt = li.dataset.datetime || li.querySelector("time").dateTime;
+    const dt = li.dataset.datetime;
     if (!dt) return;
     if (dt.startsWith(todayStr)) {
       const tag = document.createElement("span");
       tag.className = "event-tag-today";
       tag.textContent = "Today";
-      const info = li.querySelector(".event-info");
-      info.appendChild(tag);
+      const info =
+        li.querySelector(".events-info") || li.querySelector(".event-info");
+      if (info) info.appendChild(tag);
     }
   });
 
@@ -59,20 +89,19 @@ document.addEventListener("DOMContentLoaded", () => {
   items.sort(
     (a, b) => new Date(a.dataset.datetime) - new Date(b.dataset.datetime),
   );
+  items.sort(
+    (a, b) => new Date(a.dataset.datetime) - new Date(b.dataset.datetime),
+  );
   items.forEach((li) => list.appendChild(li));
 
   filterEvents();
 
   // open event detail page when clicking Details
   items.forEach((li) => {
-    const btn = li.querySelector('.details-btn');
+    const btn = li.querySelector(".details-btn");
     if (btn) {
-      btn.addEventListener('click', () => {
-        const params = new URLSearchParams();
-        ['name','type','datetime','location','about','access','map'].forEach((k) => {
-          if (li.dataset[k]) params.set(k, li.dataset[k]);
-        });
-        window.location.href = `event.html?${params.toString()}`;
+      btn.addEventListener("click", () => {
+        window.location.href = `event.html?id=${li.dataset.id}`;
       });
     }
   });
