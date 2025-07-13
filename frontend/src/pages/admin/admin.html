@@ -27,8 +27,11 @@
           <input type="datetime-local" id="eventDate" required />
           <input type="text" id="location" placeholder="Location" />
           <textarea id="description" placeholder="Description"></textarea>
+          <input type="file" id="thumbnail" accept="image/*" />
           <button type="submit">Create Event</button>
         </form>
+        <h3>Existing Events</h3>
+        <ul id="events-admin-list"></ul>
       </section>
 
       <section id="messages-section">

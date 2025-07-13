@@ -30,6 +30,12 @@ document.addEventListener("DOMContentLoaded", async () => {
   if (eventData.id) {
     document.getElementById("eventId").value = eventData.id;
   }
+  const img = document.getElementById("eventImage");
+  if (img) {
+    img.src =
+      eventData.thumbnailImage || "../../assets/images/hero/hero.jpg";
+    if (eventData.name) img.alt = eventData.name;
+  }
   if (eventData.name)
     document.getElementById("eventName").textContent = eventData.name;
   if (eventData.type)

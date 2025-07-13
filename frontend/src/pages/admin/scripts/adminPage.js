@@ -7,17 +7,17 @@ document.addEventListener("DOMContentLoaded", async () => {
   try {
     const res = await fetch("/api/auth/profile", { credentials: "include" });
     if (!res.ok) {
-      window.location.href = "../login/login.html";
+      window.location.href = "login.html";
       return;
     }
     const user = await res.json();
     if (!user.isAdmin) {
-      window.location.href = "../login/login.html";
+      window.location.href = "login.html";
       return;
     }
   } catch (err) {
     console.error("Profile fetch failed", err);
-    window.location.href = "../login/login.html";
+    window.location.href = "login.html";
     return;
   }
 
@@ -28,13 +28,20 @@ document.addEventListener("DOMContentLoaded", async () => {
     const eventDate = document.getElementById("eventDate").value;
     const location = document.getElementById("location").value.trim();
     const description = document.getElementById("description").value.trim();
+    const thumbnail = document.getElementById("thumbnail").files[0];
+
+    const formData = new FormData();
+    formData.append("title", title);
+    formData.append("eventDate", eventDate);
+    formData.append("location", location);
+    formData.append("description", description);
+    if (thumbnail) formData.append("thumbnail", thumbnail);
 
     try {
       const res = await fetch("/api/events", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
         credentials: "include",
-        body: JSON.stringify({ title, eventDate, location, description }),
+        body: formData,
       });
       if (res.ok) {
         alert("Event created");
@@ -51,7 +58,12 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
 
   async function loadData() {
-    await Promise.all([loadMessages(), loadVolunteers(), loadSignups()]);
+    await Promise.all([
+      loadMessages(),
+      loadVolunteers(),
+      loadSignups(),
+      loadEvents(),
+    ]);
   }
 
   async function loadMessages() {
@@ -111,6 +123,36 @@ document.addEventListener("DOMContentLoaded", async () => {
       }
     } catch (err) {
       console.error("Load signups error", err);
+    }
+  }
+
+    async function loadEvents() {
+    const list = document.getElementById("events-admin-list");
+    if (!list) return;
+    list.innerHTML = "";
+    try {
+      const res = await fetch("/api/events", { credentials: "include" });
+      if (res.ok) {
+        const data = await res.json();
+        data.forEach((ev) => {
+          const li = document.createElement("li");
+          li.textContent = `${ev.title} - ${new Date(ev.eventDate).toLocaleDateString()}`;
+          const del = document.createElement("button");
+          del.textContent = "Delete";
+          del.addEventListener("click", async () => {
+            if (!confirm("Delete this event?")) return;
+            await fetch(`/api/events/${ev.id}`, {
+              method: "DELETE",
+              credentials: "include",
+            });
+            loadEvents();
+          });
+          li.appendChild(del);
+          list.appendChild(li);
+        });
+      }
+    } catch (err) {
+      console.error("Load events error", err);
     }
   }
 

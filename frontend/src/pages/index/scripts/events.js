@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         .forEach((ev) => {
           const li = document.createElement("li");
           li.innerHTML = `<a href="event.html?id=${ev.id}">
+          <img src="${ev.thumbnailImage || "../../assets/images/hero/hero.jpg"}" alt="${ev.title}" />
             <h3>${ev.title}</h3>
             <time datetime="${ev.eventDate}">${new Date(ev.eventDate).toLocaleDateString()}</time>
           </a>`;

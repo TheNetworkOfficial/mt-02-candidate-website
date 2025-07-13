@@ -12,3 +12,18 @@
   margin-bottom: 0.5rem;
   width: 100%;
 }
+
+.admin-page form button {
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+.admin-page form button:hover {
+  background-color: #0056b3;
+}
+
+#events-admin-list li {
+  margin-bottom: 0.5rem;
+}

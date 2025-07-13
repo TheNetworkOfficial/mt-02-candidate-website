@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         li.dataset.datetime = ev.eventDate;
         li.dataset.about = ev.description || "";
         li.innerHTML = `
-          <img src="../../assets/images/hero/hero.jpg" alt="${ev.title}" class="events-thumb" />
+          <img src="${ev.thumbnailImage || "../../assets/images/hero/hero.jpg"}" alt="${ev.title}" class="events-thumb" />
           <div class="events-info">
             <h3>${ev.title}</h3>
             <time datetime="${ev.eventDate}">${new Date(ev.eventDate).toLocaleString()}</time>
