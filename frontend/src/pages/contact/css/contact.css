@@ -101,3 +101,13 @@
 #contact-form textarea::placeholder {
   color: #aaa;
 }
+@media (max-width: 768px) {
+  .content-wrapper {
+    flex-direction: column;
+    padding: 40px 20px;
+  }
+  .form-container {
+    margin-left: 0;
+    max-width: none;
+  }
+}

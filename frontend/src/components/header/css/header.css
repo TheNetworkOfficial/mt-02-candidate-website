@@ -124,6 +124,10 @@
   .mobile-nav-toggle {
     display: block;
   }
+  /* hide desktop Donate link on small screens */
+  .header-actions .btn-secondary {
+    display: none;
+  }
 }
 
 /*────────────────────────────────────────────────────────────────────────*/

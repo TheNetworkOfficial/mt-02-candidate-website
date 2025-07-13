@@ -64,3 +64,20 @@
 .tab-content.active {
   display: block;
 }
+
+
+@media (min-width: 769px) {
+  .issues-nav-toggle {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .issues-wrapper {
+    flex-direction: column;
+  }
+  .issues-nav,
+  .issues-content {
+    max-width: 100%;
+  }
+}

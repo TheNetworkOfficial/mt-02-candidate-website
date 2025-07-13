@@ -111,3 +111,11 @@
 .cta-btn:hover {
   background-color: rgba(0, 0, 0, 0.05);
 }
+@media (max-width: 768px) {
+  .event-container {
+    grid-template-columns: 1fr;
+  }
+  .event-image img {
+    width: 100%;
+  }
+}

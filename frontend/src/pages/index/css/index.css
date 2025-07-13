@@ -393,4 +393,24 @@
   .section.about .container {
     grid-template-columns: 1fr;
   }
+  .video-events {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* withdraw the negative offset on the video */
+  .video-wrapper {
+    margin-left: 0;
+  }
+
+  /* force both panels to use full width */
+  .video-wrapper,
+  .events-wrapper {
+    width: 100%;
+  }
+
+  /* give the events some breathing room under the video */
+  .events-wrapper {
+    margin-top: 2rem;
+  }
 }
