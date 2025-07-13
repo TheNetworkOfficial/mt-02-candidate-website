@@ -2,6 +2,30 @@ const express = require("express");
 const router = express.Router();
 const Event = require("../models/event");
 const { ensureAdmin } = require("../middleware/auth");
+const multer = require("multer");
+const path = require("path");
+
+const imageStorage = multer.diskStorage({
+  destination: (_req, _file, cb) => {
+    cb(null, path.join(__dirname, "../uploads/"));
+  },
+  filename: (_req, file, cb) => {
+    const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
+    const ext = path.extname(file.originalname);
+    cb(null, uniqueSuffix + ext);
+  },
+});
+
+function imageFilter(_req, file, cb) {
+  if (file.mimetype.startsWith("image/")) cb(null, true);
+  else cb(new Error("Only image files are allowed"), false);
+}
+
+const upload = multer({
+  storage: imageStorage,
+  fileFilter: imageFilter,
+  limits: { fileSize: 5 * 1024 * 1024 },
+});
 
 router.get("/", async (_req, res) => {
   try {
@@ -13,7 +37,7 @@ router.get("/", async (_req, res) => {
   }
 });
 
-router.post("/", ensureAdmin, async (req, res) => {
+router.post("/", ensureAdmin, upload.single("thumbnail"), async (req, res) => {
   try {
     const { title, description, eventDate, location } = req.body;
     if (!title || !eventDate) {
@@ -24,6 +48,7 @@ router.post("/", ensureAdmin, async (req, res) => {
       description,
       eventDate,
       location,
+      thumbnailImage: req.file ? `/uploads/${req.file.filename}` : null,
     });
     res.status(201).json(event);
   } catch (err) {
@@ -39,6 +64,18 @@ router.get("/:id", async (req, res) => {
     res.json(event);
   } catch (err) {
     console.error("Fetch event error:", err);
+    res.status(500).json({ error: "Server error" });
+  }
+});
+
+router.delete("/:id", ensureAdmin, async (req, res) => {
+  try {
+    const event = await Event.findByPk(req.params.id);
+    if (!event) return res.status(404).json({ error: "Event not found" });
+    await event.destroy();
+    res.json({ message: "Event deleted" });
+  } catch (err) {
+    console.error("Delete event error:", err);
     res.status(500).json({ error: "Server error" });
   }
 });
