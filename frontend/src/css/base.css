@@ -7,8 +7,8 @@
   --background-main:   #ffffff;
   --text-main:         #333333;
 
-  --primary-color:     #0056a6;   /* Campaign blue */
-  --secondary-color:   #e63946;   /* Accent red */
+  --primary-color:     #396289;   /* Campaign blue */
+  --secondary-color:   #8d232b;   /* Accent red */
 
   --button-bg:         var(--primary-color);
   --button-hover:      #004080;

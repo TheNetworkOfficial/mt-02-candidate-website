@@ -252,29 +252,44 @@
   object-fit: cover;
 }
 
-/* 3) Issues Section — Interactive cards */
+/* ─── Issues Section — Use theme colors instead of images ─── */
 .issues-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(325px, 1fr));
   gap: 2rem;
   margin-top: 2rem;
+  /* ensure every row is exactly as tall as the tallest item */
+  grid-auto-rows: 1fr;                /* :contentReference[oaicite:0]{index=0} */
 }
+
+.issues-container {
+  max-width: 80vw;
+  margin: 0px auto;
+  padding: 0 var(--padding-side);
+}
+
 .issues-list li {
-  background-size: cover;
-  background-position: center;
-  color: #fff;
+  background-image: none;
+  background-color: var(--primary-color);
+  border: 10px double var(--secondary-color);
   border-radius: var(--radius);
   padding: 1.5rem;
-  border-top: 4px solid var(--primary-color);
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
-  transition:
-    transform 0.3s,
-    box-shadow 0.3s;
   position: relative;
   overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+  aspect-ratio: 1 / 1;                /* perfect square */
 }
+
+
+/* disable the dark overlay */
+.issues-list li::after {
+  display: none;
+}
+
+/* if you have a separate .issue-card background-image rule, turn it off */
 .issue-card {
-  background-image: url("../../../assets/images/hero/hero.jpg");
+  background-image: none;
 }
 .issues-list li::after {
   content: "";
@@ -308,25 +323,24 @@
 }
 .issues-list li h3 {
   color: #fff;
+  font-size: 1.65rem;
   margin-bottom: 0.75rem;
   position: relative;
   z-index: 1;
 }
 .issues-list li p {
   color: #fff;
-  font-size: 0.95rem;
+  font-size: 1.4rem;
   line-height: 1.6;
   position: relative;
   z-index: 1;
 }
 
 .issues-list li a {
-  display: block;
-  color: inherit;
-  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   height: 100%;
-  position: relative;
-  z-index: 1;
 }
 
 /* 4) Get Involved — Accent-color banner */
