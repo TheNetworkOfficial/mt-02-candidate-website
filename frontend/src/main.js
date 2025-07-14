@@ -17,3 +17,4 @@ import "./scripts/checkAuth.js"
 import "./scripts/mobileMenu.js"
 import "./pages/popups/scripts/popupInitilzation.js";
 import "./scripts/tabs.js";
+import "./scripts/googleAnalytics.js";
