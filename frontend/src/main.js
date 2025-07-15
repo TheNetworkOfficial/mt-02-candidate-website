@@ -13,8 +13,7 @@ import "./scripts/adjustHeaderPadding.js";
 import "./scripts/dropDownMenu.js";
 import "./scripts/headerBehavior.js";
 import "./scripts/loadHeaderFooter.js";
-import "./scripts/checkAuth.js"
-import "./scripts/mobileMenu.js"
+import "./scripts/checkAuth.js";
+import "./scripts/mobileMenu.js";
 import "./pages/popups/scripts/popupInitilzation.js";
 import "./scripts/tabs.js";
-import "./scripts/googleAnalytics.js";
