@@ -1,16 +1,21 @@
 ## Energy Production & Environmental Stewardship
+The climate is in crisis. It isn't conjecture or some "woke" propaganda. It is a fact that we see all around us, from year over year record tempratures, droughts, and the growing frequency of natural disasters devistating the nation.
 
-**Your stance:** Continued strides towards energy independence are incredibly important, but should not come at the cost of future generations, or this beautiful land of ours. I firmly believe that there is a middle ground that can be found, supporting environmental stewardship, without disenfranchising the many citizens who rely on coal and oil for their livelihoods.
+That is not to say that I am against energy independance, and in fact, I firmly beleive that continued strides towards scaling energy production are incredibly important, but do not need to come at the cost of future generations, or this beautiful land of ours. I firmly believe that there is a middle ground that can be found, supporting environmental stewardship, without disenfranchising the many citizens who rely on the coal and oil industry for their livelihoods.
 
-It would be among my greatest honors to help usher in an era of sustainable energy independence that would enrich the lives of citizens, secure our independence on the global stage, and bring new jobs, healthier environments, and prosperity to America.
+I am, and have always been, a fierce advocate of the Green New Deal, but I am the first to admit that those Democrats who were in power have handled it horribly. So lets be clear. The Green New Deal isn't coming to change your way of life. No one is going to ban your trucks, or attack the hard working ranchers of America. I ride a Harley myself, and work horses for a living, so trust me when I say that I wont be supporting anything that takes away the rights of individual citizens. The Green New Deal is a plan for the revitalization of the eceonomy, enviroment, and quality of life for all of us.
+
+Like many of my coleagues across the nation, I am a also firm supporter of the creation of a Civilian Climate Corps, responsible for pathing the way towards renewable energy production and enviromental restoration, while providing legacy energy employees with guarenteed education and high paying job opprtunities in the expanding renewables sector.
+
+It would be among my greatest honors to help usher in an era of sustainable energy independence that would enrich the lives of citizens, secure our independence on the global stage, and bring tens of thousands of new jobs, healthier environments, and prosperity to America.
 
 
 **Proposed policies or solutions:**
-On Day 1 I would propose an Energy transition bill. The Bill would focus on creating a sustainable transition to green energy, focused on offsetting the burden to rural communities. 
+On Day 1 I would propose an Energy Transition Bill. The Bill would be an extension of Green New Deal policies with a narrow scope, focused on creating a sustainable transition to green energy, focused on offsetting the burden to rural communities and ensuring the protection of jobs for all legacy energy employees. 
 
 It would do this by creating an energy transition fund to be used in the following ways:
 
-Providing tax credits for companies creating new, long term green energy infrastructure jobs in communities built around fossil fuel production. This would include jobs in green energy component manufacturing, maintenance, installation, ect…
+Providing tax credits for companies creating new, long term green energy infrastructure jobs in communities built specifically around fossil fuel production. This would include jobs in green energy component manufacturing, maintenance, installation, ect…
 
 Offsetting the cost of early retirement for fossil fuel employees within 5 years of retirement, to offset the burden of learning a new career shortly before retirement, while ensuring the pensions of long serving Americans as the industry transitions.
 
