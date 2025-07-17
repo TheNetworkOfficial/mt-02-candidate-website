@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Load each popup HTML into the DOM
   function loadPopupHtml(popupFileName) {
-    fetch(`/popups/${popupFileName}`)
+    fetch(`${popupFileName}`)
       .then(response => response.text())
       .then(html => {
         const container = document.createElement("div");
