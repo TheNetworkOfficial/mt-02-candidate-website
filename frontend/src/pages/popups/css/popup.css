@@ -153,13 +153,39 @@
   /* inherits all the styling from .btn-option */
 }
 
-/* Responsive Design */
+/* always limit popup height and allow scrolling */
+.popup-content {
+  /* never exceed 90% of viewport height */
+  max-height: 90vh;
+  /* if content is taller, allow inner scroll */
+  overflow-y: auto;
+}
+
+/* at mobile sizes, shrink everything down */
 @media (max-width: 768px) {
-  .popup-options {
-    flex-direction: column;
+  .popup-content {
+    width: 90%;        /* narrower on small screens */
+    padding: 20px;     /* less padding so you see more content */
   }
 
-  .popup-options .option {
-    margin-bottom: 20px;
+  /* make the signup form full‑width inside the popup */
+  .wip-signup-form {
+    width: 100%;
+  }
+
+  /* (optional) scale down text and buttons */
+  .popup-content h2 {
+    font-size: 24px;
+  }
+  .popup-content p {
+    font-size: 18px;
+  }
+  .wip-signup-form input {
+    padding: 0.75rem;
+    font-size: 16px;
+  }
+  .btn-option {
+    padding: 0.75rem 1.5rem;
+    font-size: 16px;
   }
 }
