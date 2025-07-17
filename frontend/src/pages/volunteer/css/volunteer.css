@@ -57,7 +57,7 @@
 #volunteer-form {
   width: 100%;
   padding: 20px;
-  background-color: #2a2a2a;
+  background-color: var(--form-background-color);
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
@@ -65,17 +65,17 @@
   width: 100%;
   padding: 10px;
   margin-bottom: 15px;
-  background-color: #1a1a1a;
+  background-color: var(--form-input-color);
   border: 1px solid #555;
   border-radius: 5px;
-  color: #e0e0e0;
+  color: var(--text-main);
   font-size: 1rem;
 }
 #volunteer-form button {
   width: 100%;
   padding: 10px;
   background-color: #444;
-  color: #e0e0e0;
+  color: var(--text-main);
   border: none;
   border-radius: 5px;
   font-size: 1rem;
@@ -85,7 +85,7 @@
   background-color: #555;
 }
 #volunteer-form input::placeholder {
-  color: #aaa;
+  color: var(--form-input-placeholder);
 }
 
 /* Discord link */

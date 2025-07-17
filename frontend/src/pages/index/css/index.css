@@ -74,10 +74,12 @@
   font-size: clamp(2.5rem, 5vw, 4rem);
   margin-bottom: 1rem;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  color:#ffffff;
 }
 .hero-content p {
   font-size: clamp(1rem, 2.5vw, 1.5rem);
   margin-bottom: 2rem;
+  color:#ffffff;
 }
 .hero-buttons .btn {
   margin: 0 0.5rem;
@@ -153,11 +155,11 @@
 /* ─── News Section ─────────────────────────────────────────────────────── */
 .news-section {
   padding: var(--section-vertical) 0;
-  background: #f7f9fc;
+  background: var(--primary-color);
 }
 .news-section h2 {
   text-align: center;
-  color: var(--primary-color);
+  color:#ffffff;
 }
 .news-carousel {
   position: relative;
@@ -298,7 +300,7 @@
 
 .section.issues h2 {
   text-align: center;
-  color: #f7f9fc;
+  color: var(--text-main);
 }
 .issues-list li h3 {
   color: #fff;
@@ -328,6 +330,10 @@
   color: #fff;
   text-align: center;
   padding: var(--section-vertical) 0;
+}
+.section.get-involved h2 {
+  margin-bottom: 1rem;
+  color:#ffffff;;
 }
 .section.get-involved .btn-primary {
   background: #fff;

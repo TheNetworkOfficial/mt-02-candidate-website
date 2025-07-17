@@ -54,7 +54,7 @@
 }
 
 .signup form {
-  background-color: #2a2a2a;
+  background-color: var(--form-background-color);
   padding: 1rem;
   border-radius: var(--radius);
   display: flex;
@@ -65,10 +65,10 @@
 .signup input[type="text"],
 .signup input[type="tel"],
 .signup input[type="email"] {
-  background-color: #1a1a1a;
+  background-color: var(--form-input-color);
   border: 1px solid #555;
   border-radius: 5px;
-  color: #e0e0e0;
+  color: var(--text-main);
   padding: 0.5rem;
 }
 
