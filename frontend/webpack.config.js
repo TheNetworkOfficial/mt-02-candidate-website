@@ -149,6 +149,10 @@ module.exports = {
       chunks: ["main", "admin"],
       favicon: "./src/assets/images/icons/montanaStarState.png",
     }),
+    new HtmlWebpackPlugin({
+      template: './src/pages/popups/workInProgressPopup.html',
+      filename: 'workInProgressPopup.html',
+    }),
   ],
   devServer: {
     proxy: [

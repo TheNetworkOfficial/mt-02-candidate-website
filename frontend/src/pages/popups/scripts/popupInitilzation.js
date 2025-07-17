@@ -1,9 +1,11 @@
+// popupInitilzation.js
+
 document.addEventListener("DOMContentLoaded", () => {
   console.log("DOM fully loaded and parsed");
 
   // List all popup files to load
   let popupsToLoad = [
-    //"admin-add-skill-popup.html",
+    "workInProgressPopup.html",
   ];
   let loadedPopupsCount = 0;
 
@@ -12,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const popup = document.getElementById(popupId);
     if (!popup) return;
 
-    // 1) Always wire up the close-button
+    // 1) Always wire up the close‑button
     const closeButton = popup.querySelector(closeButtonSelector);
     if (closeButton) {
       closeButton.addEventListener("click", () => {
@@ -20,56 +22,52 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
-    // 2) Then wire up whatever triggers you have
-    const triggers = document.querySelectorAll(triggerSelector);
-    triggers.forEach(trigger => {
-      trigger.addEventListener("click", e => {
-        e.preventDefault();
-        popup.style.display = "flex";
+    // 2) Only wire up triggers if a valid selector string was passed
+    if (typeof triggerSelector === 'string' && triggerSelector.trim()) {
+      const triggers = document.querySelectorAll(triggerSelector);
+      triggers.forEach(trigger => {
+        trigger.addEventListener("click", e => {
+          e.preventDefault();
+          popup.style.display = "flex";
+        });
       });
-    });
-
-    if (triggers.length === 0) {
-      console.warn(`No triggers found for selector ${triggerSelector}.`);
+      if (triggers.length === 0) {
+        console.warn(`No triggers found for selector "${triggerSelector}".`);
+      }
     }
   }
 
-  // Initialize events for all popups using a configuration mapping
+  // Initialize popup wiring and session‑only display
   function initializePopupEvents() {
-    console.log("Initializing popup events...");
-    const popupConfigurations = [
-      //{
-      //  popupId: "skill-popup-container", // ID from admin-add-skill-popup.html
-      //  triggerSelector: "#add-skill-btn"  // Button in adminSkills.html
-      //},
+    // Wire up only the close‑buttons (no click‑triggers)
+    setupPopup("workInProgressPopup", null, ".close-button");
 
-    ];
-
-    popupConfigurations.forEach((config) => {
-      setupPopup(config.popupId, config.triggerSelector, ".close-button");
+    // Show the popup once per session after all popups have loaded
+    document.addEventListener("popupsLoaded", () => {
+      if (!sessionStorage.getItem("popupDisplayed")) {
+        sessionStorage.setItem("popupDisplayed", "true");
+        const popup = document.getElementById("workInProgressPopup");
+        if (popup) popup.style.display = "flex";
+      }
     });
   }
 
-  // Load a popup's HTML and append it to the body
+  // Load each popup HTML into the DOM
   function loadPopupHtml(popupFileName) {
-    console.log(`Attempting to load ${popupFileName} into body`);
-    const placeholder = document.body;
-    fetch(popupFileName)
-      .then((response) => response.text())
-      .then((data) => {
-        console.log(`Successfully loaded ${popupFileName}`);
-        const popupContainer = document.createElement("div");
-        popupContainer.innerHTML = data;
-        placeholder.appendChild(popupContainer);
-        loadedPopupsCount++;
+    fetch(`/popups/${popupFileName}`)
+      .then(response => response.text())
+      .then(html => {
+        const container = document.createElement("div");
+        container.innerHTML = html;
+        document.body.appendChild(container);
 
-        // Once all popups are loaded, initialize events and dispatch event
+        loadedPopupsCount++;
         if (loadedPopupsCount === popupsToLoad.length) {
           initializePopupEvents();
           document.dispatchEvent(new Event("popupsLoaded"));
         }
       })
-      .catch((error) => {
+      .catch(error => {
         console.error(`Error loading ${popupFileName}:`, error);
         loadedPopupsCount++;
         if (loadedPopupsCount === popupsToLoad.length) {
@@ -79,8 +77,8 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   }
 
-  // Load each popup file
-  popupsToLoad.forEach((popupFileName) => {
+  // Kick off loading of all popups
+  popupsToLoad.forEach(popupFileName => {
     loadPopupHtml(popupFileName);
   });
 });
