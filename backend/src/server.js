@@ -103,6 +103,7 @@ const { RedisStore } = require("connect-redis");
   const contactRoutes = require("./routes/contactMessages");
   const eventRoutes = require("./routes/events");
   const signupRoutes = require("./routes/eventSignups");
+  const mailingListRoutes = require("./routes/mailingList");
   const adminRoutes = require("./routes/admin");
   const recoveryRoutes = require("./routes/accountRecovery");
 
@@ -111,6 +112,7 @@ const { RedisStore } = require("connect-redis");
   app.use("/api/contact", contactRoutes);
   app.use("/api/events", eventRoutes);
   app.use("/api/event-signups", signupRoutes);
+  app.use("/api/mailing-list", mailingListRoutes);
   app.use("/api/admin", adminRoutes);
   app.use("/api/account-recovery", recoveryLimiter, recoveryRoutes);
 
@@ -133,6 +135,7 @@ const { RedisStore } = require("connect-redis");
   require("./models/contactMessage");
   require("./models/event");
   require("./models/eventSignup");
+  require("./models/mailingListSignup");
 
   sequelize
     .sync({ alter: true })

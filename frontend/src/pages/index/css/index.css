@@ -231,27 +231,6 @@
   right: -2rem;
 }
 
-/* 2) About Section — Two-column with candidate photo */
-.section.about .container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  align-items: center;
-}
-.about-text h2 {
-  margin-bottom: 0.5rem;
-}
-.about-text p {
-  font-size: 1.1rem;
-  line-height: 1.8;
-}
-.about-image img {
-  width: 75%;
-  border-radius: var(--radius);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  object-fit: cover;
-}
-
 /* ─── Issues Section — Use theme colors instead of images ─── */
 .issues-list {
   display: grid;
@@ -259,7 +238,7 @@
   gap: 2rem;
   margin-top: 2rem;
   /* ensure every row is exactly as tall as the tallest item */
-  grid-auto-rows: 1fr;                /* :contentReference[oaicite:0]{index=0} */
+  grid-auto-rows: 1fr;
 }
 
 .issues-container {

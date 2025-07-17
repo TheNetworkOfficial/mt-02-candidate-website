@@ -90,8 +90,8 @@
 .about-section:first-of-type .about-image img {
   height: 100%;
   width: 100%;
-  max-width: 250px;                /* fixed width for the image */
-  max-height: 250px;
+  max-width: 350px;                /* fixed width for the image */
+  max-height: 350px;
   object-fit: cover;
 }
 
