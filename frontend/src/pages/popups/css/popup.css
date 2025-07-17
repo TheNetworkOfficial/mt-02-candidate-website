@@ -65,10 +65,11 @@
 
 /* Signup Form */
 .wip-signup-form {
+  width: 60%;
+  margin: 1rem auto 0;   /* top margin stays, left/right auto‑centers */
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  margin-top: 1rem;
 }
 
 .wip-signup-form input[type="email"],
