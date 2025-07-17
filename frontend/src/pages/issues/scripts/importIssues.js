@@ -1,6 +1,6 @@
 // importIssues.js
-import { marked }  from "marked";
-import DOMPurify   from "dompurify";
+import { marked } from "marked";
+import DOMPurify from "dompurify";
 
 // raw imports of each Markdown file
 import md_commitment  from "../../../assets/content/issues/commitment.md";
@@ -44,16 +44,16 @@ Object.keys(contentMap).forEach((id) => {
   }
 });
 
-// 2) Set up your tab-switching (if not already wired)
+// 2) Set up your tab-switching (with consistent scroll-to-top)
 const buttons = document.querySelectorAll(".tab-button");
 buttons.forEach((btn) => {
   btn.addEventListener("click", (e) => {
     e.preventDefault();
     const target = btn.dataset.target;
 
-    // update the URL hash for bookmarking/sharing
+    // update the URL hash without causing native scroll
     if (target) {
-      window.location.hash = target;
+      history.pushState(null, "", `#${target}`);
     }
 
     // deactivate all
@@ -65,16 +65,27 @@ buttons.forEach((btn) => {
     });
 
     // activate the clicked one
-    document.getElementById(target).classList.add("active");
+    const pane = document.getElementById(target);
+    if (pane) pane.classList.add("active");
     btn.classList.add("active");
+
+    // always scroll to top
+    window.scrollTo(0, 0);
   });
+});
+
+// optional: handle browser back/forward
+window.addEventListener("popstate", () => {
+  const hash = window.location.hash.replace("#", "");
+  const btn = document.querySelector(`.tab-button[data-target="${hash}"]`);
+  if (btn) btn.click();
 });
 
 // 3) Optionally, activate the first tab on load
 window.addEventListener("DOMContentLoaded", () => {
   const hash = window.location.hash.replace("#", "");
   const initialBtn = document.querySelector(
-    `.tab-button[data-target="${hash}"]`,
+    `.tab-button[data-target="${hash}"]`
   );
   if (initialBtn) {
     initialBtn.click();
