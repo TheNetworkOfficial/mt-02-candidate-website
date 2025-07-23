@@ -81,6 +81,9 @@
   margin-bottom: 2rem;
   color:#ffffff;
 }
+.hero-buttons {
+  margin-bottom: 20px;
+}
 .hero-buttons .btn {
   margin: 0 0.5rem;
   min-width: 140px;
@@ -244,9 +247,9 @@
 }
 
 .issues-container {
-  max-width: 80vw;
-  margin: 0px auto;
-  padding: 0 var(--padding-side);
+  max-width: 100%;
+  margin: 0;
+  padding: 0 1rem;
 }
 
 .issues-list li {

@@ -144,6 +144,9 @@
 }
 
 @media (max-width: 768px) {
+  #about-hero {
+    display: none; /* hide hero on small screens */
+  }
   .about-section {
     grid-template-columns: 1fr;
     text-align: center;

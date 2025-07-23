@@ -69,11 +69,12 @@
 
 .mobile-nav-toggle {
   display: none;
-  font-size: 1.25rem;
+  font-size: 1.75rem;
   background: var(--primary-color);
   color: #fff;
   padding: 0.5rem;
   border-radius: var(--radius);
+  width: 50px;
 }
 
 /* ─── Dropdown in Desktop Nav ─────────────────────────────────────────── */
@@ -146,6 +147,10 @@
   z-index: 1100;
 }
 
+.header-actions {
+  padding-right: 25px;
+}
+
 .mobile-menu.open {
   left: 0;
 }
@@ -181,6 +186,14 @@
   text-decoration: none;
 }
 
+.mobile-footer-links .social-media {
+  display: flex;
+  font-size: 25px;
+  gap: 1rem;
+  padding: 2rem 1.5rem;
+  flex-direction: row;
+  
+}
 /* overlay */
 .mobile-menu-overlay {
   position: fixed;
