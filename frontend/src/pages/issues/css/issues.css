@@ -96,6 +96,7 @@
 @media (max-width: 768px) {
   .issues-wrapper {
     flex-direction: column;
+    padding: 0rem 2rem;
   }
   .issues-nav,
   .issues-content {
