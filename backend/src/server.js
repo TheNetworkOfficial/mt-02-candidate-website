@@ -105,6 +105,7 @@ const { RedisStore } = require("connect-redis");
   const signupRoutes = require("./routes/eventSignups");
   const mailingListRoutes = require("./routes/mailingList");
   const adminRoutes = require("./routes/admin");
+  const newsRoutes = require("./routes/news");
   const recoveryRoutes = require("./routes/accountRecovery");
 
   app.use("/api/auth", authLimiter, authRoutes);
@@ -114,6 +115,7 @@ const { RedisStore } = require("connect-redis");
   app.use("/api/event-signups", signupRoutes);
   app.use("/api/mailing-list", mailingListRoutes);
   app.use("/api/admin", adminRoutes);
+  app.use("/api/news", newsRoutes);
   app.use("/api/account-recovery", recoveryLimiter, recoveryRoutes);
 
   // 10) Database sync & start
@@ -136,6 +138,7 @@ const { RedisStore } = require("connect-redis");
   require("./models/event");
   require("./models/eventSignup");
   require("./models/mailingListSignup");
+  require("./models/newsArticle");
 
   sequelize
     .sync({ alter: true })

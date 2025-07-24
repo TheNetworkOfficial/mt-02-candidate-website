@@ -33,7 +33,24 @@
     <main class="admin-page container">
       <h1>Admin Dashboard</h1>
 
-      <section id="event-section">
+      <nav class="admin-nav">
+        <a href="#events" class="tab-button" data-target="events">Events</a>
+        <a href="#news" class="tab-button" data-target="news">News</a>
+        <a href="#messages" class="tab-button" data-target="messages"
+          >Messages</a
+        >
+        <a href="#volunteers" class="tab-button" data-target="volunteers"
+          >Volunteers</a
+        >
+        <a href="#mailing" class="tab-button" data-target="mailing"
+          >Newsletter Signups</a
+        >
+        <a href="#signups" class="tab-button" data-target="signups"
+          >Event Signups</a
+        >
+      </nav>
+
+      <section id="events" class="tab-content">
         <h2>Add Event</h2>
         <form id="event-form">
           <input type="text" id="title" placeholder="Title" required />
@@ -47,17 +64,34 @@
         <ul id="events-admin-list"></ul>
       </section>
 
-      <section id="messages-section">
+      <section id="news" class="tab-content">
+        <h2>Add News Article</h2>
+        <form id="news-form">
+          <input type="text" id="news-title" placeholder="Title" required />
+          <input type="url" id="news-url" placeholder="URL" required />
+          <textarea id="news-summary" placeholder="Summary"></textarea>
+          <button type="submit">Add Article</button>
+        </form>
+        <h3>Recent News</h3>
+        <ul id="news-list"></ul>
+      </section>
+
+      <section id="messages" class="tab-content">
         <h2>Contact Messages</h2>
         <ul id="messages-list"></ul>
       </section>
 
-      <section id="volunteers-section">
+      <section id="volunteers" class="tab-content">
         <h2>Volunteers</h2>
         <ul id="volunteers-list"></ul>
       </section>
 
-      <section id="signups-section">
+      <section id="mailing" class="tab-content">
+        <h2>Newsletter Signups</h2>
+        <ul id="mailing-list"></ul>
+      </section>
+
+      <section id="signups" class="tab-content">
         <h2>Event Signups</h2>
         <ul id="signups-list"></ul>
       </section>

@@ -4,6 +4,7 @@ const { ensureAdmin } = require("../middleware/auth");
 const ContactMessage = require("../models/contactMessage");
 const Volunteer = require("../models/volunteer");
 const EventSignup = require("../models/eventSignup");
+const MailingListSignup = require("../models/mailingListSignup");
 
 router.use(ensureAdmin);
 
@@ -39,6 +40,18 @@ router.get("/event-signups", async (_req, res) => {
     res.json(signups);
   } catch (err) {
     console.error("Fetch event signups error:", err);
+    res.status(500).json({ error: "Server error" });
+  }
+});
+
+router.get("/mailing-list", async (_req, res) => {
+  try {
+    const list = await MailingListSignup.findAll({
+      order: [["createdAt", "DESC"]],
+    });
+    res.json(list);
+  } catch (err) {
+    console.error("Fetch mailing list error:", err);
     res.status(500).json({ error: "Server error" });
   }
 });

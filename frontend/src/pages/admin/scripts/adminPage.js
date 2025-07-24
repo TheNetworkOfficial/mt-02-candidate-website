@@ -57,11 +57,41 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   });
 
+  const newsForm = document.getElementById("news-form");
+  newsForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const title = document.getElementById("news-title").value.trim();
+    const url = document.getElementById("news-url").value.trim();
+    const summary = document.getElementById("news-summary").value.trim();
+
+    try {
+      const res = await fetch("/api/news", {
+        method: "POST",
+        credentials: "include",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ title, url, summary }),
+      });
+      if (res.ok) {
+        alert("News article added");
+        newsForm.reset();
+        loadNews();
+      } else {
+        const data = await res.json();
+        alert(data.error || "Error adding article");
+      }
+    } catch (err) {
+      console.error("Create news error", err);
+      alert("Server error");
+    }
+  });
+
   async function loadData() {
     await Promise.all([
       loadMessages(),
       loadVolunteers(),
       loadSignups(),
+      loadMailingList(),
+      loadNews(),
       loadEvents(),
     ]);
   }
@@ -126,7 +156,56 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   }
 
-    async function loadEvents() {
+  async function loadMailingList() {
+    const list = document.getElementById("mailing-list");
+    list.innerHTML = "";
+    try {
+      const res = await fetch("/api/admin/mailing-list", {
+        credentials: "include",
+      });
+      if (res.ok) {
+        const data = await res.json();
+        data.forEach((m) => {
+          const li = document.createElement("li");
+          li.textContent = `${m.email || ""} ${m.phone || ""}`.trim();
+          list.appendChild(li);
+        });
+      }
+    } catch (err) {
+      console.error("Load mailing list error", err);
+    }
+  }
+
+  async function loadNews() {
+    const list = document.getElementById("news-list");
+    list.innerHTML = "";
+    try {
+      const res = await fetch("/api/news", { credentials: "include" });
+      if (res.ok) {
+        const data = await res.json();
+        data.forEach((n) => {
+          const li = document.createElement("li");
+          li.innerHTML = `<a href="${n.url}" target="_blank">${n.title}</a>`;
+          const del = document.createElement("button");
+          del.textContent = "Delete";
+          del.addEventListener("click", async () => {
+            if (!confirm("Delete this article?")) return;
+            await fetch(`/api/news/${n.id}`, {
+              method: "DELETE",
+              credentials: "include",
+            });
+            loadNews();
+          });
+          li.appendChild(del);
+          list.appendChild(li);
+        });
+      }
+    } catch (err) {
+      console.error("Load news error", err);
+    }
+  }
+
+  async function loadEvents() {
     const list = document.getElementById("events-admin-list");
     if (!list) return;
     list.innerHTML = "";

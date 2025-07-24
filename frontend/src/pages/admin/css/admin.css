@@ -2,6 +2,25 @@
   padding: 2rem;
 }
 
+.admin-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.admin-nav .tab-button {
+  background: var(--secondary-color, #007bff);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius, 4px);
+  text-decoration: none;
+}
+
+.admin-nav .tab-button.active {
+  background: #0056b3;
+}
+
 .admin-page section {
   margin-bottom: 2rem;
 }
@@ -26,4 +45,12 @@
 
 #events-admin-list li {
   margin-bottom: 0.5rem;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
 }
