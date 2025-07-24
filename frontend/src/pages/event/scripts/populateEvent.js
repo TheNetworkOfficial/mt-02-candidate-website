@@ -44,20 +44,22 @@ document.addEventListener("DOMContentLoaded", async () => {
     const dt = new Date(eventData.eventDate);
     document.getElementById("eventDateTime").textContent = dt.toLocaleString();
   }
+  let mapUrl = null;
   if (eventData.location) {
     const link = document.getElementById("eventLocationLink");
     link.textContent = eventData.location;
-    link.href =
+    mapUrl =
       eventData.map ||
       `https://maps.google.com/?q=${encodeURIComponent(eventData.location)}`;
+    link.href = mapUrl;
   }
   if (eventData.description)
     document.getElementById("eventAbout").textContent = eventData.description;
   if (eventData.access)
     document.getElementById("accessibilityNotice").textContent =
       eventData.access;
-  if (eventData.map) {
+  if (mapUrl) {
     document.getElementById("mapEmbed").innerHTML =
-      `<iframe src="${eventData.map}&output=embed" loading="lazy"></iframe>`;
+      `<iframe src="${mapUrl}&output=embed" loading="lazy"></iframe>`;
   }
 });

@@ -78,6 +78,8 @@
 
 .signup button {
   background-color: #444;
+  font-size: 15px;
+  font-weight: 600;
   color: #e0e0e0;
   border: none;
   padding: 0.5rem;
@@ -122,5 +124,9 @@
   }
   .event-image img {
     width: 100%;
+  }
+
+  .signup {
+    padding: 0rem 1rem;
   }
 }
