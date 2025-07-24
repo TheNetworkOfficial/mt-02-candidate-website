@@ -106,9 +106,47 @@ document.addEventListener("DOMContentLoaded", async () => {
       if (res.ok) {
         const data = await res.json();
         data.forEach((m) => {
-          const li = document.createElement("li");
-          li.textContent = `${m.name} (${m.email}): ${m.message}`;
-          list.appendChild(li);
+          const details = document.createElement("details");
+          details.className = "message-item";
+          if (!m.read) details.classList.add("unread");
+
+          const summary = document.createElement("summary");
+          summary.textContent = `${m.subject || "(no subject)"} - ${m.name}`;
+          details.appendChild(summary);
+
+          const body = document.createElement("div");
+          body.innerHTML = `
+            <p><strong>Email:</strong> ${m.email}</p>
+            <p><strong>Phone:</strong> ${m.phone || ""}</p>
+            <p><strong>Zip:</strong> ${m.zip || ""}</p>
+            <p>${m.message}</p>`;
+          const del = document.createElement("button");
+          del.textContent = "Delete";
+          del.className = "delete-btn";
+          del.className = "delete-btn";
+          del.addEventListener("click", async () => {
+            if (!confirm("Delete this message?")) return;
+            await fetch(`/api/admin/contact-messages/${m.id}`, {
+              method: "DELETE",
+              credentials: "include",
+            });
+            loadMessages();
+          });
+          body.appendChild(del);
+          details.appendChild(body);
+
+          details.addEventListener("toggle", async () => {
+            if (details.open && !m.read) {
+              await fetch(`/api/admin/contact-messages/${m.id}/read`, {
+                method: "PATCH",
+                credentials: "include",
+              });
+              details.classList.remove("unread");
+              m.read = true;
+            }
+          });
+
+          list.appendChild(details);
         });
       }
     } catch (err) {
@@ -117,24 +155,55 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   async function loadVolunteers() {
-    const list = document.getElementById("volunteers-list");
-    list.innerHTML = "";
+    const table = document.getElementById("volunteers-table");
+    const tbody = table.querySelector("tbody");
+    tbody.innerHTML = "";
     try {
       const res = await fetch("/api/admin/volunteers", {
         credentials: "include",
       });
       if (res.ok) {
-        const data = await res.json();
-        data.forEach((v) => {
-          const li = document.createElement("li");
-          li.textContent = `${v.firstName} ${v.lastName} - ${v.email}`;
-          list.appendChild(li);
-        });
+        volunteerData = await res.json();
+        renderVolunteers();
       }
     } catch (err) {
       console.error("Load volunteers error", err);
     }
   }
+
+  let volunteerData = [];
+  let sortKey = null;
+  let sortAsc = true;
+
+  function renderVolunteers() {
+    const table = document.getElementById("volunteers-table");
+    const tbody = table.querySelector("tbody");
+    tbody.innerHTML = "";
+    volunteerData.forEach((v) => {
+      const row = tbody.insertRow();
+      row.innerHTML = `<td>${v.firstName}</td><td>${v.lastName}</td><td>${v.email}</td><td>${v.phone || ""}</td><td>${v.zip || ""}</td><td>${v.discord || ""}</td>`;
+    });
+  }
+
+  function sortVolunteers(key) {
+    if (sortKey === key) sortAsc = !sortAsc;
+    else {
+      sortKey = key;
+      sortAsc = true;
+    }
+    volunteerData.sort((a, b) => {
+      if (a[key] > b[key]) return sortAsc ? 1 : -1;
+      if (a[key] < b[key]) return sortAsc ? -1 : 1;
+      return 0;
+    });
+    renderVolunteers();
+  }
+
+  document
+    .querySelectorAll("#volunteers-table th[data-key]")
+    .forEach((th) =>
+      th.addEventListener("click", () => sortVolunteers(th.dataset.key)),
+    );
 
   async function loadSignups() {
     const list = document.getElementById("signups-list");
@@ -188,6 +257,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           li.innerHTML = `<a href="${n.url}" target="_blank">${n.title}</a>`;
           const del = document.createElement("button");
           del.textContent = "Delete";
+          del.className = "delete-btn";
           del.addEventListener("click", async () => {
             if (!confirm("Delete this article?")) return;
             await fetch(`/api/news/${n.id}`, {

@@ -54,3 +54,55 @@
 .tab-content.active {
   display: block;
 }
+
+.delete-btn {
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  padding: 0.25rem 0.5rem;
+  margin-left: 0.5rem;
+  cursor: pointer;
+}
+
+.message-item {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+}
+
+.message-item summary {
+  cursor: pointer;
+  padding: 0.5rem;
+  background: #959595;
+  color: #000000;
+  font-weight: 600;
+  font-size: 18px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.message-item.unread summary {
+  font-weight: bold;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.admin-table th {
+  color: #000000;
+  border: 1px solid #ccc;
+  padding: 0.25rem;
+}
+
+.admin-table td {
+  color: #ffffff;
+  border: 1px solid #ccc;
+  padding: 0.25rem;
+}
+
+.admin-table th {
+  cursor: pointer;
+  background: #f0f0f0;
+}

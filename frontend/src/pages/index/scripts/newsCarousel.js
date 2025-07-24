@@ -1,7 +1,7 @@
 /**
  * Simple carousel for the recent news section.
  */
-document.addEventListener("DOMContentLoaded", () => {
+export default function initNewsCarousel() {
   const list = document.querySelector(".news-list");
   if (!list) return;
 
@@ -35,4 +35,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
   show(current);
   setInterval(next, 15000);
-});
+}

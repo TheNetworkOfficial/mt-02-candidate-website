@@ -20,6 +20,31 @@ router.get("/contact-messages", async (_req, res) => {
   }
 });
 
+router.patch("/contact-messages/:id/read", async (req, res) => {
+  try {
+    const msg = await ContactMessage.findByPk(req.params.id);
+    if (!msg) return res.status(404).json({ error: "Message not found" });
+    msg.read = true;
+    await msg.save();
+    res.json({ message: "marked read" });
+  } catch (err) {
+    console.error("Mark read error:", err);
+    res.status(500).json({ error: "Server error" });
+  }
+});
+
+router.delete("/contact-messages/:id", async (req, res) => {
+  try {
+    const msg = await ContactMessage.findByPk(req.params.id);
+    if (!msg) return res.status(404).json({ error: "Message not found" });
+    await msg.destroy();
+    res.json({ message: "deleted" });
+  } catch (err) {
+    console.error("Delete message error:", err);
+    res.status(500).json({ error: "Server error" });
+  }
+});
+
 router.get("/volunteers", async (_req, res) => {
   try {
     const volunteers = await Volunteer.findAll({

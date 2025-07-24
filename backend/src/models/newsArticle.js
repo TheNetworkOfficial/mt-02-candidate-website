@@ -7,6 +7,7 @@ const NewsArticle = sequelize.define(
     title: { type: DataTypes.STRING, allowNull: false },
     url: { type: DataTypes.STRING, allowNull: false },
     summary: { type: DataTypes.TEXT },
+    thumbnailImage: { type: DataTypes.STRING },
   },
   {
     tableName: "news_articles",

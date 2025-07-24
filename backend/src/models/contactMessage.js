@@ -10,6 +10,7 @@ const ContactMessage = sequelize.define(
     zip: { type: DataTypes.STRING },
     subject: { type: DataTypes.STRING },
     message: { type: DataTypes.TEXT, allowNull: false },
+    read: { type: DataTypes.BOOLEAN, defaultValue: false },
   },
   {
     tableName: "contact_messages",

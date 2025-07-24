@@ -3,6 +3,25 @@ const router = express.Router();
 const NewsArticle = require("../models/newsArticle");
 const { ensureAdmin } = require("../middleware/auth");
 
+async function fetchThumbnail(url) {
+  try {
+    const res = await fetch(url);
+    if (!res.ok) return null;
+    const html = await res.text();
+    const og =
+      html.match(
+        /<meta[^>]*property=['"]og:image['"][^>]*content=['"]([^'"]+)['"]/i,
+      ) ||
+      html.match(
+        /<meta[^>]*name=['"]twitter:image['"][^>]*content=['"]([^'"]+)['"]/i,
+      );
+    return og ? og[1] : null;
+  } catch (err) {
+    console.error("Thumbnail fetch error:", err);
+    return null;
+  }
+}
+
 router.get("/", async (_req, res) => {
   try {
     const articles = await NewsArticle.findAll({
@@ -21,7 +40,13 @@ router.post("/", ensureAdmin, async (req, res) => {
     if (!title || !url) {
       return res.status(400).json({ error: "Title and URL required" });
     }
-    const article = await NewsArticle.create({ title, url, summary });
+    const thumbnailImage = await fetchThumbnail(url);
+    const article = await NewsArticle.create({
+      title,
+      url,
+      summary,
+      thumbnailImage,
+    });
     res.status(201).json(article);
   } catch (err) {
     console.error("Create news error:", err);
