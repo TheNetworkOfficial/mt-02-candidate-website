@@ -3,31 +3,31 @@ import { marked } from "marked";
 import DOMPurify from "dompurify";
 
 // raw imports of each Markdown file
-import md_commitment  from "../../../assets/content/issues/commitment.md";
-import md_economic    from "../../../assets/content/issues/economic.md";
-import md_housing     from "../../../assets/content/issues/housing.md";
+import md_commitment from "../../../assets/content/issues/commitment.md";
+import md_economic from "../../../assets/content/issues/economic.md";
+import md_housing from "../../../assets/content/issues/housing.md";
 import md_immigration from "../../../assets/content/issues/immigration.md";
 import md_agriculture from "../../../assets/content/issues/agriculture.md";
-import md_energy      from "../../../assets/content/issues/energy.md";
-import md_health      from "../../../assets/content/issues/health.md";
-import md_education   from "../../../assets/content/issues/education.md";
-import md_guns        from "../../../assets/content/issues/guns.md";
-import md_social      from "../../../assets/content/issues/social.md";
-import md_tribal      from "../../../assets/content/issues/tribal.md";
+import md_energy from "../../../assets/content/issues/energy.md";
+import md_health from "../../../assets/content/issues/health.md";
+import md_education from "../../../assets/content/issues/education.md";
+import md_guns from "../../../assets/content/issues/guns.md";
+import md_social from "../../../assets/content/issues/social.md";
+import md_tribal from "../../../assets/content/issues/tribal.md";
 
 // map tab IDs → markdown content
 const contentMap = {
-  commitment:  md_commitment,
-  economic:    md_economic,
-  housing:     md_housing,
+  commitment: md_commitment,
+  economic: md_economic,
+  housing: md_housing,
   immigration: md_immigration,
   agriculture: md_agriculture,
-  energy:      md_energy,
-  health:      md_health,
-  education:   md_education,
-  guns:        md_guns,
-  social:      md_social,
-  tribal:      md_tribal,
+  energy: md_energy,
+  health: md_health,
+  education: md_education,
+  guns: md_guns,
+  social: md_social,
+  tribal: md_tribal,
 };
 
 function loadTabContent(id) {
@@ -54,6 +54,7 @@ buttons.forEach((btn) => {
     // update the URL hash without causing native scroll
     if (target) {
       history.pushState(null, "", `#${target}`);
+      window.dispatchEvent(new HashChangeEvent("hashchange"));
     }
 
     // deactivate all
@@ -85,7 +86,7 @@ window.addEventListener("popstate", () => {
 window.addEventListener("DOMContentLoaded", () => {
   const hash = window.location.hash.replace("#", "");
   const initialBtn = document.querySelector(
-    `.tab-button[data-target="${hash}"]`
+    `.tab-button[data-target="${hash}"]`,
   );
   if (initialBtn) {
     initialBtn.click();
