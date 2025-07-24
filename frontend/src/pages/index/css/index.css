@@ -187,6 +187,7 @@
   color: #fff;
   position: relative;
   overflow: hidden;
+  order: 0;
 }
 .news-item {
   background-image: url("../../../assets/images/hero/hero.jpg");
@@ -202,6 +203,15 @@
 .news-list li.prev,
 .news-list li.next {
   display: block;
+}
+.news-list li.prev {
+  order: 1;
+}
+.news-list li.active {
+  order: 2;
+}
+.news-list li.next {
+  order: 3;
 }
 .news-list a {
   position: relative;
@@ -261,10 +271,11 @@
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
   position: relative;
   overflow: hidden;
-  transition: transform 0.3s, box-shadow 0.3s;
-  aspect-ratio: 1 / 1;                /* perfect square */
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s;
+  aspect-ratio: 1 / 1; /* perfect square */
 }
-
 
 /* disable the dark overlay */
 .issues-list li::after {
@@ -400,5 +411,45 @@
   /* give the events some breathing room under the video */
   .events-wrapper {
     margin-top: 2rem;
+  }
+
+
+  /* Mobile layout for news carousel */
+  .news-carousel {
+    overflow: visible;
+    height: 220px;
+  }
+  .news-list {
+    position: relative;
+    display: block;
+    height: 100%;
+  }
+  .news-list li {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 80%;
+    transition: transform 0.3s;
+  }
+  .news-list li.prev {
+    transform: translateX(-120%) scale(0.8);
+    z-index: 1;
+  }
+  .news-list li.next {
+    transform: translateX(20%) scale(0.8);
+    z-index: 1;
+  }
+  .news-list li.active {
+    transform: translateX(-50%) scale(1);
+    z-index: 2;
+  }
+  .carousel-btn {
+    z-index: 3;
+  }
+  .news-prev {
+    left: 0;
+  }
+  .news-next {
+    right: 0;
   }
 }
