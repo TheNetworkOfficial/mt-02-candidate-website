@@ -102,4 +102,8 @@
   .issues-content {
     max-width: 90%;
   }
+
+  .issues-nav {
+    display: none;
+  }
 }

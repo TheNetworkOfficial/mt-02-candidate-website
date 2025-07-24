@@ -15,6 +15,7 @@ import "./scripts/headerBehavior.js";
 import "./scripts/loadHeaderFooter.js";
 import "./scripts/checkAuth.js";
 import "./scripts/mobileMenu.js";
+import "./scripts/highlightActiveMenu.js";
 import "./pages/popups/scripts/popupInitilzation.js";
 import "./pages/popups/scripts/wipSignup.js";
 import "./scripts/tabs.js";

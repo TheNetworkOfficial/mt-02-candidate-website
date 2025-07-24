@@ -57,9 +57,14 @@
   transition: background 0.2s;
 }
 
+.nav-list a.active {
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
 .nav-list a:hover,
 .nav-list a:focus {
-  background: rgba(0,0,0,0.05);
+  background: rgba(0, 0, 0, 0.05);
 }
 
 .header-actions {
@@ -85,9 +90,10 @@
 .nav-list .dropdown-content {
   display: none;
   position: absolute;
-  top: 100%; left: 0;
+  top: 100%;
+  left: 0;
   background: var(--background-main);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   border-radius: var(--radius);
   padding: 0.5rem 0;
   z-index: 1000;
@@ -113,7 +119,8 @@
   .site-nav {
     display: none;
     position: absolute;
-    top: 100%; left: 0;
+    top: 100%;
+    left: 0;
     width: 100%;
     background: var(--background-main);
     flex-direction: column;
@@ -137,12 +144,13 @@
 
 .mobile-menu {
   position: fixed;
-  top: 0; left: -100%;
+  top: 0;
+  left: -100%;
   width: 80%;
   max-width: 300px;
   height: 100vh;
   background: var(--background-main);
-  box-shadow: 2px 0 6px rgba(0,0,0,0.1);
+  box-shadow: 2px 0 6px rgba(0, 0, 0, 0.1);
   transition: left 0.3s ease;
   z-index: 1100;
 }
@@ -186,20 +194,60 @@
   text-decoration: none;
 }
 
+.nav-list-mobile a.active {
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+.nav-list-mobile li.mobile-dropdown {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.submenu-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-left: 0.25rem;
+}
+
+.caret {
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+.mobile-submenu {
+  list-style: none;
+  padding-left: 1rem;
+  margin-top: 0.5rem;
+  display: none;
+}
+
+.mobile-dropdown.open .mobile-submenu {
+  display: block;
+}
+
+.mobile-dropdown.open .caret {
+  transform: rotate(180deg);
+}
+
 .mobile-footer-links .social-media {
   display: flex;
   font-size: 25px;
   gap: 1rem;
   padding: 2rem 1.5rem;
   flex-direction: row;
-  
 }
 /* overlay */
 .mobile-menu-overlay {
   position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100vh;
-  background: rgba(0,0,0,0.5);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s;
