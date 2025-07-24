@@ -106,7 +106,10 @@
 }
 
 /* Responsive: Stack vertically on small screens */
-@media (max-width: 640px) {
+@media (max-width: 768px) {
+  .container {
+    padding: 0rem;
+  }
   .events-list li {
     flex-direction: column;
   }
