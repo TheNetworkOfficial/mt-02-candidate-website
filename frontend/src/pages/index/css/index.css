@@ -166,7 +166,7 @@
 }
 .news-carousel {
   position: relative;
-  max-width: 80%;
+  max-width: 100%;
   margin: 0 auto;
 }
 .news-list {
@@ -179,7 +179,7 @@
 }
 .news-list li {
   flex: 0 0 30%;
-  height: 100px;
+  height: 200px;
   display: none;
   background-size: cover;
   background-position: center;
