@@ -19,6 +19,10 @@
   object-fit: cover;
 }
 
+.event-info-container {
+  padding: 0rem 1rem;
+}
+
 .event-info {
   flex: 1;
 }
@@ -114,6 +118,7 @@
 @media (max-width: 768px) {
   .event-container {
     grid-template-columns: 1fr;
+    padding: 0rem 0rem;
   }
   .event-image img {
     width: 100%;

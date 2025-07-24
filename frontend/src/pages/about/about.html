@@ -27,17 +27,30 @@
       href="https://fonts.googleapis.com/css2?family=Gideon+Roman&display=swap"
       rel="stylesheet"
     />
+    <!-- Page specific styles -->
+    <link rel="stylesheet" href="./css/about.css" />
+    <script type="module" src="./about.js"></script>
   </head>
   <body>
     <!-- Placeholder for Header -->
     <div id="header-placeholder"></div>
 
     <main>
+      <!-- Hero section – displays a header image on desktop and will use the
+           first about image as a hero on mobile. The text inside will be hidden
+           on small screens in favour of a separate heading below. -->
       <section id="about-hero" class="hero about-hero">
         <div class="container hero-content">
-          <h1>Let Me Introduce Myself</h1>
+          <h1>Let Me Introduce myself</h1>
         </div>
       </section>
+
+      <!-- This heading is only shown on mobile to provide a title beneath the
+           header image. It is hidden on larger viewports via CSS. -->
+      <h1 class="mobile-only-intro">Let Me Introduce myself</h1>
+
+      <!-- The biography content will be injected here via the importAbout.js
+           script. -->
       <section id="bio"></section>
     </main>
 

@@ -1,22 +1,25 @@
+/* Styles specific to the About page */
+
+/*
+  The hero section initially uses the default hero image for desktop. A
+  mobile-specific override below will swap this out for the first about
+  section image when viewed on smaller screens. The positioning and
+  gradient remain the same across breakpoints.
+*/
 #about-hero {
   position: relative;
   height: 50vh;
+  /* Use the default hero image on desktop. On mobile this image will be
+     overridden via a media query below to use the first section image instead. */
   background: url("../../../assets/images/hero/hero.jpg") center/cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0 var(--padding-side);
 }
-#about-hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(0, 86, 166, 0.7),
-    rgba(0, 0, 0, 0.3)
-  );
-}
+
+
+/* Container for hero text */
 .about-hero-content {
   position: relative;
   max-width: 700px;
@@ -37,6 +40,7 @@
   min-width: 140px;
 }
 
+/* Generic layout for each about section */
 .about-section {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -63,6 +67,7 @@
   text-align: left;
 }
 
+/* Image styling inside sections */
 .about-section .about-image img {
   height: 100%;
   width: 100%;
@@ -75,7 +80,6 @@
 /* ─────────────────────────────────────────────────────────────────────────────
    First section: square image inset into the text, centered heading
    ───────────────────────────────────────────────────────────────────────────── */
-
 .about-section:first-of-type {
   /* drop the two-column grid so text wraps around the float */
   display: block;
@@ -143,15 +147,49 @@
   line-height: 1.4;
 }
 
+/* Base styling for the mobile heading – hidden by default */
+.mobile-only-intro {
+  display: none;
+}
+
 @media (max-width: 768px) {
-  #about-hero {
-    display: none; /* hide hero on small screens */
-  }
+  /* Make the about sections single column on small screens */
   .about-section {
     grid-template-columns: 1fr;
     text-align: center;
   }
   .about-section .about-image {
     margin-bottom: 1.5rem;
+  }
+
+  /* Use the first about section image as the hero background on mobile */
+  #about-hero {
+    background-image: url("../../../assets/images/about/section0.png");
+  }
+
+  /* Hide the default hero heading inside the hero content on mobile */
+  #about-hero .hero-content h1 {
+    display: none;
+  }
+
+  /* Reveal the mobile-only introduction heading below the hero */
+  .mobile-only-intro {
+    display: block;
+    text-align: center;
+    margin: 1.5rem auto;
+    font-size: 2rem;
+    font-weight: bold;
+    color: inherit;
+  }
+
+  /* Hide images in the second and third about sections on mobile */
+  #bio .about-section:nth-of-type(1) .about-image,
+  #bio .about-section:nth-of-type(2) .about-image,
+  #bio .about-section:nth-of-type(3) .about-image {
+    display: none;
+  }
+
+  .about-section.odd .about-text {
+    text-align: left;
   }
 }
