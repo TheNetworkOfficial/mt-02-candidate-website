@@ -3,12 +3,10 @@ In the days of our parents and grandparents, the dream of owning a home was one 
 
 In addition to the rigorous actions I propose in other areas to reinvigorate the economy and lower the cost of living on the working class, practical investment into affordable housing is a must. By expanding the grant & loan programs for manufactures of sustainable housing, passing new incentive programs for the creation of low and moderate income neighborhoods, and tightening restrictions on investment companies looking to buy out residential construction, we can combat the housing crisis, and ensure opportunities for the next generation.
 
-
 ## Proposed policies or solutions:
-Support or propose a bill to limit or restrict corporate land developers or investment firms from acquiring large scale real estate parcels. 
+**1. Limiting Corporate Real Estate** Support or propose a bill to limit or restrict corporate land developers or investment firms from acquiring large scale real estate parcels. 
 
-Support or propose a second bill to invest in programs to increase access to energy and resource conservative home construction, such as prefab or tiny homes.
-
+**2. Investing In Low Cost Construction** Support or propose a second bill to invest in programs to increase access to energy and resource conservative home construction, such as prefab or tiny homes.
 
 ## How these policies directly benefit MT-02 residents:
 By submitting a bill to restrict or limit corporate land developers and investors from buying up large tracts of land, we can effectively combat the rising sentiment in Montana that land is becoming too expensive for locals to realistically afford, protecting the opportunities for Montana residents to pursue the dream of homeownership.

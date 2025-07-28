@@ -76,6 +76,12 @@
   overflow: visible;
   text-overflow: initial;
   width: 100%;
+  border-bottom: var(--secondary-color) 2px solid;
+}
+
+.issues-nav .tab-button.active {
+  background-color: var(--primary-color);
+  color: #fff;
 }
 
 .tab-content {

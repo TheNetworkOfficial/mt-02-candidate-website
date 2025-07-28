@@ -10,8 +10,8 @@ Like many of my colleagues across the nation, I am a also firm supporter of the 
 It would be among my greatest honors to help usher in an era of sustainable energy independence that would enrich the lives of citizens, secure our independence on the global stage, and bring tens of thousands of new jobs, healthier environments, and prosperity to America.
 
 
-**Proposed policies or solutions:**
-On Day 1 I would propose an Energy Transition Bill. The Bill would be an extension of Green New Deal policies with a narrow scope, focused on creating a sustainable transition to green energy, focused on offsetting the burden to rural communities and ensuring the protection of jobs for all legacy energy employees. 
+## Proposed policies or solutions:
+**Energy Transition Bill** On Day 1 I would propose an Energy Transition Bill. The Bill would be an extension of Green New Deal policies with a narrow scope, focused on creating a sustainable transition to green energy, focused on offsetting the burden to rural communities and ensuring the protection of jobs for all legacy energy employees. 
 
 It would do this by creating an energy transition fund to be used in the following ways:
 
@@ -28,5 +28,5 @@ Under this bill, there would a no one left behind provision, ensuring that every
 By aggressively growing the green energy sector, relocating coal and oil subsidies as those industries are phased out, and promoting new, high paying jobs in the new sector for Americans, not only can new jobs be created, environments protected, and a future secured for our children, but it can actually be a net positive to the United States, generating over 173.5 billion in net profit over 10 years, saving tax payers even more money, and reducing the deficit.
 
 
-**How these policies directly benefit MT-02 residents:**
+## How these policies directly benefit MT-02 residents:
 MT-02 would be among the first to see the benefits of the proposed bill, with its heavy reliance on the fossil fuel sector in places like Coalstrip. By creating localized green energy jobs in the area, residents would not see any undo hardship from the transition away from coal, especially given the already pending closure of the Coalstrip power plant in a few years. In fact, there would be a net value increase for MT-02, which would see over a 50% increase high paying in energy sector jobs.

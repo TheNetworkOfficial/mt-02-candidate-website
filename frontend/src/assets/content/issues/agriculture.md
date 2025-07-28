@@ -2,17 +2,17 @@
 Agriculture has and will continue to be the backbone of Montana, and the farmers & ranchers of our nation must be supported. As a farrier and large animal vet tech before that, I have seen and supported the struggles of working class ranchers most of my life, and I am fully in support of measures that reduce the burden on our farmers & ranchers, increase their fiscal opportunities, and safeguard them from unexpected costs.
 
 
-**Proposed policies or solutions:**
-Although already in congress for voting, I would continue to support measures that reduce or remove inheritance tax on estates. Should the current bill fail due to its wide reach, I would make it a priority to reintroduce a more specific version of the bill for those with land dependent rural livelihoods.
+## Proposed policies or solutions:
+**1. Cutting Inheritance Tax** Although already in congress for voting, I would continue to support measures that reduce or remove inheritance tax on estates. Should the current bill fail due to its wide reach, I would make it a priority to reintroduce a more specific version of the bill for those with land dependent rural livelihoods.
 
-Of critical importance is creating sustainable and long lasting fiscal opportunities that support our farmers. Tariffs and international animosity put our rural communities on the frontline of trade wars, which is not a burden that they can support. It would be among my first priorities to author or support legislation to push congress to revoke the delegation of tariffs from the seat of the president, and return the full powers of the purse to Congress, as originally intended by the Constitution.
+**2. Tariff Control** Of critical importance is creating sustainable and long lasting fiscal opportunities that support our farmers. Tariffs and international animosity put our rural communities on the frontline of trade wars, which is not a burden that they can support. It would be among my first priorities to author or support legislation to push congress to revoke the delegation of tariffs from the seat of the president, and return the full powers of the purse to Congress, as originally intended by the Constitution.
 
 As part of this, or as a secondary bill, I would propose the immediate renegotiation of tariffs with all foreign nations, prioritizing those that act as the largest international trade partners of resources vital to America's agricultural sector. Access to global markets should not be reserved for Wall Street and the rich. It is imperative that we support our farmers on the global market, and provide them the greatest opportunity for financial success.
 
-Concurrently with expanding and protecting our farmers access to foreign markets, it is also important that we continue to develop domestic support as well. Extending or marking parts of the Farm Bill perpetual, preserving access to SNAP, and reducing the cost of crop insurance. I would unequivocally support all of these, as these social programs and subsidies are imperative for the continued success of rural livelihoods.
+**3. Farm Subsidies and SNAP** Concurrently with expanding and protecting our farmers access to foreign markets, it is also important that we continue to develop domestic support as well. Extending or marking parts of the Farm Bill perpetual, preserving access to SNAP, and reducing the cost of crop insurance. I would unequivocally support all of these, as these social programs and subsidies are imperative for the continued success of rural livelihoods.
 
 
-**How these policies directly benefit MT-02 residents:**
+## How these policies directly benefit MT-02 residents:
 Should a new version of inheritance tax bill be required, I would submit an amendment that makes a special exemption for estates used specifically for rural livelihoods that are dependent on land access, such as farms and ranches, making them totally exempt from death and estate taxes, provided that the land continue to be used for the purpose of rural livelihood support over the course of a 10 year period following the inheritance.
 
 Although less impactful then the current version of the bill before congress, should that bill fail, this more specific version may be able to pass, protecting the farmers and ranchers of MT-02 without losing out on revenue from other, wealthier sectors.

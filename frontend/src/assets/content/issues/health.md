@@ -7,8 +7,8 @@ Pharmaceutical companies, corporate hospitals, and insurance providers rob the A
 Luckily, there is an easy solution to all of this. Single payer, universal healthcare, accessible to all American citizens, with an opt out. And before you ask where the money for it would come from, I would say that a good place to start would be pulling the <strong>2+ trillion</strong> in federal subsidies we are already paying insurance companies already each year, since at least to me, paying a company to rob me is a little crazy.
 
 
-**Proposed policies or solutions:**
-As stated above, I firmly believe that a single payer universal health care system is a fundamental change needed in the United States, and I would make it a priority to support such legislation, so long as it can deliver the following:
+## Proposed policies or solutions:
+**1. Single Payer Healthcare** As stated above, I firmly believe that a single payer universal health care system is a fundamental change needed in the United States, and I would make it a priority to support such legislation, so long as it can deliver the following:
 
 * <strong>Full Coverage Healthcare:</strong> deductibles, network providers, & corporate oversight of what qualifies as "necessary care". All of these artificial constraints create unnecessary barriers to accessing medical treatment, and drive up the price you pay for service. At the end of the day, your healthcare should be between you, and your doctor, and absolutely no one else. Preventative healthcare in particular should not be gatekept by what policy you can afford, and it has been definitively proven time and again that greater access to prophylactic care reduces emergency room visits, medical debt, and disability rates. Under a full coverage, single payer healthcare system, you will pay significantly less out of pocket, while getting access to higher quality healthcare.
 
@@ -20,9 +20,9 @@ As stated above, I firmly believe that a single payer universal health care syst
 
 The reformation of the American healthcare system is extremely important, but it is not a task that will happen overnight, and in the meantime, the programs we have must be preserved. From day one in office, I will not only advocate for, but actively work to expand access to Medicare, Medicaid, and veteran healthcare services. Critics say that these programs are “wasteful” and “costly”. I say so what? The government exists to SERVE the American people. To expect the people of our nation to contribute, through their labors, service, and taxes, just to turn around in their hours of need and deny them access to lifesaving treatments is an unacceptable betrayal of the peoples trust.
 
-Additionally, I would support, or author legislation to investigate the exorbitant prices of lifesaving drugs, hospital stays, and preventative care. When exorbitant costs unsupported by manufacturing costs and reasonable profits are uncovered, I would rabidly advocate for, and if necessary author legislation myself to sanction the offending company, hospital, or pharmaceutical company, finding any and all way to punish them for their extortion of the American people.
+**2. Drug Price Control** Additionally, I would support, or author legislation to investigate the exorbitant prices of lifesaving drugs, hospital stays, and preventative care. When exorbitant costs unsupported by manufacturing costs and reasonable profits are uncovered, I would rabidly advocate for, and if necessary author legislation myself to sanction the offending company, hospital, or pharmaceutical company, finding any and all way to punish them for their extortion of the American people.
 
-**How these policies directly benefit MT-02 residents:**
+## How these policies directly benefit MT-02 residents:
 While not directed exclusively at the residents of MT-02, by combating the rising cost of healthcare, and taking an aggressive stance against areas of the healthcare industry that seek to actively undermine the American people, MT-02 would see direct benefit in the form of lower drug prices and healthcare costs, which would be a net benefit for every citizen.
 
 Additionally, as a counter to critics and budget hawks, by making the residents of MT-02, or any district in the nation, healthier, it extends the working life of citizens, reduces drain on social services and disability, and increases the median lifespan and quality of life. That is an investment in the American people, and the American people are worth investing in.

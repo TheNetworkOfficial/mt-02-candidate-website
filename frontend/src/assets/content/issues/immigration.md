@@ -5,9 +5,8 @@ To that end, I believe that the fastest, cheapest, and most American way to prot
 
 We talk a lot about government inefficiency, fraud, and wasteful spending, but I would argue that giving immigration enforcement and border security<strong>$170 billion</strong>, a bigger budget then many countries have for their entire armed forces, while simultaneously cutting off Medicare for 10.4 million Americans, not illegal aliens or migrants, but AMERICAN born citizens, is a prime example of waste, fraud, and inefficiency. I don't know about anyone else, but I have yet to see the "migrant invasion" that requires us to have masked, unmarked secret police be deployed onto American streets. What we need is not a paramilitary, but a more effective and efficient way to distinguish the criminal from the hard working, law abiding immigrant, who believes in building on American dream, as has been the tradition for generations.
 
-
-**Proposed policies or solutions:**
-Propose a bill that would investigate, identify, and fund the required offices & platforms to fast track immigration for lawful immigrants, asylum seekers, and work visa applicants. 
+## Proposed policies or solutions:
+**1. Realistic Immigration Reform** Propose a bill that would investigate, identify, and fund the required offices & platforms to fast track immigration for lawful immigrants, asylum seekers, and work visa applicants. 
 
 Additionally, increase the penalty for new border infractions to disqualify immigrants who cross the border illegally from applying for the new fast track immigration process.
 To ensure these applicants are properly integrated as useful and productive members of society, increase a probationary period with work and tax requirements to their application, with citizenship revocation as a penalty for failure to comply. 
@@ -15,10 +14,9 @@ To ensure these applicants are properly integrated as useful and productive memb
 Additional incentives could be added for probationary citizens that are actively working in an industry or field identified as understaffed.
 Propose or support a second bill, funding anti drug and gang border patrol units who are exclusively tasked with combating the fentanyl epidemic and gang activity.
 
-Create a two part bill that would fund police and mental health services in rural areas, which are often the target of drug related crime. 
+**2. Rural Law Enforcement & Social Services** Create a two part bill that would fund police and mental health services in rural areas, which are often the target of drug related crime. 
 
-
-**How these policies directly benefit MT-02 residents:**
+## How these policies directly benefit MT-02 residents:
 By creating a way to fast track immigration services for lawful immigrants, asylum seekers, and work visa applicants, it will <strong>significantly reduce government inefficiency, increase tax dollars contributing to American communities, and free up border patrol to more effectively combat gang and drug activity at the border</strong>. Additionally, by increasing the scope of work requirements for application, it ensures that integrated citizens are not a drain on American social services, and are in fact contributing to the highest degree.
 
 This could be especially beneficial to rural farming communities like those of MT-02 that have struggled to find adequate labor for ranch and farm work. By offering incentivized programs to migrants in those fields, we can reduce the burden on our farmers.
