@@ -17,6 +17,14 @@
   text-decoration: none;
 }
 
+.logout-btn {
+  background: var(--secondary-color);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius, 4px);
+  text-decoration: none;
+}
+
 .admin-nav .tab-button.active {
   background: #0056b3;
 }

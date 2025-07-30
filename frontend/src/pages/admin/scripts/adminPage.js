@@ -21,6 +21,22 @@ document.addEventListener("DOMContentLoaded", async () => {
     return;
   }
 
+  const logoutBtn = document.getElementById("admin-logout-btn");
+  if (logoutBtn) {
+    logoutBtn.addEventListener("click", async () => {
+      try {
+        await fetch("/api/auth/logout", {
+          method: "POST",
+          credentials: "include",
+        });
+      } catch (err) {
+        console.error("Logout failed", err);
+      } finally {
+        window.location.href = "index.html";
+      }
+    });
+  }
+
   const form = document.getElementById("event-form");
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -226,8 +242,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   async function loadMailingList() {
-    const list = document.getElementById("mailing-list");
-    list.innerHTML = "";
+    const tbody = document.getElementById("mailing-list");
+    tbody.innerHTML = "";
     try {
       const res = await fetch("/api/admin/mailing-list", {
         credentials: "include",
@@ -235,9 +251,14 @@ document.addEventListener("DOMContentLoaded", async () => {
       if (res.ok) {
         const data = await res.json();
         data.forEach((m) => {
-          const li = document.createElement("li");
-          li.textContent = `${m.email || ""} ${m.phone || ""}`.trim();
-          list.appendChild(li);
+          const tr = document.createElement("tr");
+          const emailTd = document.createElement("td");
+          emailTd.textContent = m.email || "";
+          const phoneTd = document.createElement("td");
+          phoneTd.textContent = m.phone || "";
+          tr.appendChild(emailTd);
+          tr.appendChild(phoneTd);
+          tbody.appendChild(tr);
         });
       }
     } catch (err) {
