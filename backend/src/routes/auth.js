@@ -6,7 +6,6 @@ const multer = require("multer");
 const path = require("path");
 const { ensureAuth } = require("../middleware/auth");
 
-
 const avatarStorage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, path.join(__dirname, "../uploads/"));
@@ -102,7 +101,7 @@ router.post("/register", async (req, res) => {
       firstName,
       lastName,
       phone,
-      isAdmin: true,
+      isAdmin: false, // Default to false
     });
     // Auto-login
     req.session.userId = newUser.id;

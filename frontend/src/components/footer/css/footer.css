@@ -23,7 +23,7 @@
   margin: 0;
 }
 
-.footer-copywright-wrapper {
+.footer-copyright-wrapper {
   display: flex;
   flex-direction: row;
   gap: 1rem;
