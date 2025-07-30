@@ -18,6 +18,24 @@
   gap: 1rem;
 }
 
+.footer-inner h2 {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.footer-copywright-wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  align-items: center;
+}
+
+.footer-logo {
+  display: block;
+  margin: 0.5rem auto; /* centers it under the heading */
+  max-height: 40px;     /* adjust to taste */
+}
+
 .social-links {
   display: flex;
   gap: 1rem;
