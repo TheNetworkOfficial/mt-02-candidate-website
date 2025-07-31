@@ -38,6 +38,17 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   const form = document.getElementById("event-form");
+  const eventIdInput = document.getElementById("eventId");
+  const cancelEditBtn = document.getElementById("cancel-edit");
+  const submitBtn = form.querySelector("button[type='submit']");
+
+  cancelEditBtn.addEventListener("click", () => {
+    form.reset();
+    eventIdInput.value = "";
+    submitBtn.textContent = "Create Event";
+    cancelEditBtn.style.display = "none";
+  });
+
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
     const title = document.getElementById("title").value.trim();
@@ -53,22 +64,31 @@ document.addEventListener("DOMContentLoaded", async () => {
     formData.append("description", description);
     if (thumbnail) formData.append("thumbnail", thumbnail);
 
+    const id = eventIdInput.value;
+    const url = id ? `/api/events/${id}` : "/api/events";
+    const method = id ? "PUT" : "POST";
+
     try {
-      const res = await fetch("/api/events", {
-        method: "POST",
+      const res = await fetch(url, {
+        method,
         credentials: "include",
         body: formData,
       });
       if (res.ok) {
-        alert("Event created");
+        alert(id ? "Event updated" : "Event created");
         form.reset();
+        eventIdInput.value = "";
+        submitBtn.textContent = "Create Event";
+        cancelEditBtn.style.display = "none";
         loadData();
       } else {
         const data = await res.json();
-        alert(data.error || "Error creating event");
+        alert(
+          data.error || (id ? "Error updating event" : "Error creating event"),
+        );
       }
     } catch (err) {
-      console.error("Create event error", err);
+      console.error(id ? "Update event error" : "Create event error", err);
       alert("Server error");
     }
   });
@@ -307,6 +327,23 @@ document.addEventListener("DOMContentLoaded", async () => {
         data.forEach((ev) => {
           const li = document.createElement("li");
           li.textContent = `${ev.title} - ${new Date(ev.eventDate).toLocaleDateString()}`;
+
+          const edit = document.createElement("button");
+          edit.textContent = "Edit";
+          edit.addEventListener("click", () => {
+            eventIdInput.value = ev.id;
+            document.getElementById("title").value = ev.title;
+            document.getElementById("eventDate").value = ev.eventDate.slice(
+              0,
+              16,
+            );
+            document.getElementById("location").value = ev.location || "";
+            document.getElementById("description").value = ev.description || "";
+            submitBtn.textContent = "Update Event";
+            cancelEditBtn.style.display = "inline";
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          });
+
           const del = document.createElement("button");
           del.textContent = "Delete";
           del.addEventListener("click", async () => {
@@ -317,6 +354,8 @@ document.addEventListener("DOMContentLoaded", async () => {
             });
             loadEvents();
           });
+
+          li.appendChild(edit);
           li.appendChild(del);
           list.appendChild(li);
         });

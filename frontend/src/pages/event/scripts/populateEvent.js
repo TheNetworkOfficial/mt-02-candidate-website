@@ -1,3 +1,6 @@
+import { marked } from "marked";
+import DOMPurify from "dompurify";
+
 // Populate event details
 document.addEventListener("DOMContentLoaded", async () => {
   const params = new URLSearchParams(window.location.search);
@@ -32,8 +35,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
   const img = document.getElementById("eventImage");
   if (img) {
-    img.src =
-      eventData.thumbnailImage || "../../assets/images/hero/hero.jpg";
+    img.src = eventData.thumbnailImage || "../../assets/images/hero/hero.jpg";
     if (eventData.name) img.alt = eventData.name;
   }
   if (eventData.name)
@@ -53,8 +55,10 @@ document.addEventListener("DOMContentLoaded", async () => {
       `https://maps.google.com/?q=${encodeURIComponent(eventData.location)}`;
     link.href = mapUrl;
   }
-  if (eventData.description)
-    document.getElementById("eventAbout").textContent = eventData.description;
+  if (eventData.description) {
+    const html = DOMPurify.sanitize(marked.parse(eventData.description));
+    document.getElementById("eventAbout").innerHTML = html;
+  }
   if (eventData.access)
     document.getElementById("accessibilityNotice").textContent =
       eventData.access;

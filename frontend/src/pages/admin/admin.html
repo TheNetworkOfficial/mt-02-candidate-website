@@ -54,12 +54,16 @@
       <section id="events" class="tab-content">
         <h2>Add Event</h2>
         <form id="event-form">
+          <input type="hidden" id="eventId" />
           <input type="text" id="title" placeholder="Title" required />
           <input type="datetime-local" id="eventDate" required />
           <input type="text" id="location" placeholder="Location" />
           <textarea id="description" placeholder="Description"></textarea>
           <input type="file" id="thumbnail" accept="image/*" />
           <button type="submit">Create Event</button>
+          <button type="button" id="cancel-edit" style="display: none">
+            Cancel
+          </button>
         </form>
         <h3>Existing Events</h3>
         <ul id="events-admin-list"></ul>

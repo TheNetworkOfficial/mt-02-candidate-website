@@ -68,6 +68,31 @@ router.get("/:id", async (req, res) => {
   }
 });
 
+router.put(
+  "/:id",
+  ensureAdmin,
+  upload.single("thumbnail"),
+  async (req, res) => {
+    try {
+      const event = await Event.findByPk(req.params.id);
+      if (!event) return res.status(404).json({ error: "Event not found" });
+
+      const { title, description, eventDate, location } = req.body;
+      if (title !== undefined) event.title = title;
+      if (description !== undefined) event.description = description;
+      if (eventDate !== undefined) event.eventDate = eventDate;
+      if (location !== undefined) event.location = location;
+      if (req.file) event.thumbnailImage = `/uploads/${req.file.filename}`;
+
+      await event.save();
+      res.json(event);
+    } catch (err) {
+      console.error("Update event error:", err);
+      res.status(500).json({ error: "Server error" });
+    }
+  },
+);
+
 router.delete("/:id", ensureAdmin, async (req, res) => {
   try {
     const event = await Event.findByPk(req.params.id);
