@@ -66,9 +66,12 @@
   gap: 0.75rem;
 }
 
+.signup input[type="firstName"],
+.signup input[type="lastName"],
 .signup input[type="text"],
 .signup input[type="tel"],
-.signup input[type="email"] {
+.signup input[type="email"],
+.signup input[type="zip"]{
   background-color: var(--form-input-color);
   border: 1px solid #555;
   border-radius: 5px;
