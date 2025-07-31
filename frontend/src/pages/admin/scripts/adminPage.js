@@ -52,14 +52,23 @@ document.addEventListener("DOMContentLoaded", async () => {
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
     const title = document.getElementById("title").value.trim();
-    const eventDate = document.getElementById("eventDate").value;
+    const rawLocal = document.getElementById("eventDate").value; // e.g. "2025-07-31T12:00"
+    let eventDateUTC = "";
+    if (rawLocal) {
+      const [datePart, timePart] = rawLocal.split("T");
+      const [year, month, day] = datePart.split("-").map(Number);
+      const [hour, minute] = timePart.split(":").map(Number);
+      // Build a local Date and convert to UTC ISO string
+      const localDate = new Date(year, month - 1, day, hour, minute);
+      eventDateUTC = localDate.toISOString(); // absolute time in UTC
+    }
     const location = document.getElementById("location").value.trim();
     const description = document.getElementById("description").value.trim();
     const thumbnail = document.getElementById("thumbnail").files[0];
 
     const formData = new FormData();
     formData.append("title", title);
-    formData.append("eventDate", eventDate);
+    formData.append("eventDate", eventDateUTC);
     formData.append("location", location);
     formData.append("description", description);
     if (thumbnail) formData.append("thumbnail", thumbnail);
@@ -320,6 +329,19 @@ document.addEventListener("DOMContentLoaded", async () => {
     const list = document.getElementById("events-admin-list");
     if (!list) return;
     list.innerHTML = "";
+
+    // helper: convert ISO UTC timestamp to "YYYY-MM-DDTHH:MM" for datetime-local
+    function isoToLocalDatetimeValue(iso) {
+      const dt = new Date(iso); // parsed as UTC, internal representation is local
+      const pad = (n) => n.toString().padStart(2, "0");
+      const year = dt.getFullYear();
+      const month = pad(dt.getMonth() + 1);
+      const day = pad(dt.getDate());
+      const hours = pad(dt.getHours());
+      const minutes = pad(dt.getMinutes());
+      return `${year}-${month}-${day}T${hours}:${minutes}`;
+    }
+
     try {
       const res = await fetch("/api/events", { credentials: "include" });
       if (res.ok) {
@@ -333,10 +355,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           edit.addEventListener("click", () => {
             eventIdInput.value = ev.id;
             document.getElementById("title").value = ev.title;
-            document.getElementById("eventDate").value = ev.eventDate.slice(
-              0,
-              16,
-            );
+            document.getElementById("eventDate").value = isoToLocalDatetimeValue(ev.eventDate);
             document.getElementById("location").value = ev.location || "";
             document.getElementById("description").value = ev.description || "";
             submitBtn.textContent = "Update Event";

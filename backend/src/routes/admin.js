@@ -5,6 +5,7 @@ const ContactMessage = require("../models/contactMessage");
 const Volunteer = require("../models/volunteer");
 const EventSignup = require("../models/eventSignup");
 const MailingListSignup = require("../models/mailingListSignup");
+const Event = require("../models/event");
 
 router.use(ensureAdmin);
 
