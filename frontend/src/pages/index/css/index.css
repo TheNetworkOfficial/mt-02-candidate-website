@@ -118,7 +118,6 @@
 /* Portrait video at 9:16 */
 .video-responsive {
   position: relative;
-  width: 100%;
   aspect-ratio: 9 / 16;
 }
 
@@ -411,6 +410,9 @@
   .video-section {
     padding-top: 0.5rem;
     max-height: none;
+  }
+  .video-responsive {
+    width: 100%;
   }
   .video-events {
     display: flex;
