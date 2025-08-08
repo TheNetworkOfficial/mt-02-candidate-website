@@ -118,6 +118,7 @@
 /* Portrait video at 9:16 */
 .video-responsive {
   position: relative;
+  min-height: 700px;
   aspect-ratio: 9 / 16;
 }
 
