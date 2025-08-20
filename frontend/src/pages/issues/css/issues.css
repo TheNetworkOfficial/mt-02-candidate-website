@@ -92,6 +92,67 @@
   display: block;
 }
 
+.issue-accordion {
+  border: 1px solid var(--border-color, #e5e7eb);
+  border-radius: var(--radius, 0.75rem);
+  background: var(--form-background-color);
+  color: var(--text-main);
+  border-color: color-mix(in srgb, var(--text-main) 15%, transparent);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+  margin: 1rem 0;
+  overflow: hidden;
+}
+
+.issue-accordion summary {
+  cursor: pointer;
+  list-style: none; /* remove default marker */
+  padding: 1rem 1rem 1rem 2.75rem;
+  position: relative;
+  font-weight: 600;
+  user-select: none;
+}
+
+.issue-accordion summary::-webkit-details-marker { display: none; }
+
+.issue-accordion summary::before {
+  content: "";
+  position: absolute;
+  left: 1rem;
+  top: 1.2rem;
+  width: 0.6rem;
+  height: 0.6rem;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(-45deg);
+  transition: transform 150ms ease;
+}
+
+.issue-accordion[open] summary::before {
+  transform: rotate(45deg); /* chevron down */
+}
+
+.issue-accordion-body {
+  padding: 0.75rem 1rem 1rem 1rem;
+}
+
+.issue-accordion-body > *:first-child { margin-top: 0; }
+.issue-accordion-body > *:last-child { margin-bottom: 0; }
+
+/* Accent variants (automatic based on heading text) */
+.issue-accordion {
+  border-color: var(--primary-color);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+}
+
+/* Improve readability of prose inside accordions */
+.issue-accordion-body p {
+  line-height: 1.65;
+}
+
+/* Optional: constrain measure for better reading */
+.issues-content {
+  max-width: 900px;
+}
 
 @media (min-width: 769px) {
   .issues-nav-toggle {

@@ -30,6 +30,51 @@ const contentMap = {
   tribal: md_tribal,
 };
 
+function enhanceContentSections(rootEl) {
+  // Find all H2/H3 headings produced by Markdown
+  const headings = Array.from(rootEl.querySelectorAll("h2, h3"));
+  if (!headings.length) return;
+
+  // If the very first heading is acting like the page title, keep it as-is
+  let startIdx = 0;
+  const first = headings[0];
+  if (!first.previousElementSibling) startIdx = 1;
+
+  for (let i = startIdx; i < headings.length; i++) {
+    const h = headings[i];
+    const details = document.createElement("details");
+    details.className = "issue-accordion";
+    // start all accordions closed
+
+    // Theme accents based on common section names (optional, safe)
+    const t = h.textContent.toLowerCase();
+    if (t.includes("proposed")) details.dataset.theme = "policies";
+    if (t.includes("how these policies")) details.dataset.theme = "benefits";
+
+    const summary = document.createElement("summary");
+    summary.innerHTML = h.innerHTML;
+    details.appendChild(summary);
+
+    const body = document.createElement("div");
+    body.className = "issue-accordion-body";
+
+    // Move siblings until the next H2/H3 into the accordion body
+    let sib = h.nextSibling;
+    while (
+      sib &&
+      !(sib.nodeType === 1 && /^(H2|H3)$/i.test(sib.tagName))
+    ) {
+      const next = sib.nextSibling;
+      body.appendChild(sib);
+      sib = next;
+    }
+    details.appendChild(body);
+
+    // Replace heading with the details accordion
+    h.replaceWith(details);
+  }
+}
+
 function loadTabContent(id) {
   const raw = contentMap[id] || "";
   const html = marked.parse(raw);
@@ -41,6 +86,9 @@ Object.keys(contentMap).forEach((id) => {
   const container = document.getElementById(id);
   if (container) {
     container.innerHTML = loadTabContent(id);
+    enhanceContentSections(container);
+    // ensure all accordions start closed on each tab switch
+    container.querySelectorAll("details").forEach(d => (d.open = false));
   }
 });
 
