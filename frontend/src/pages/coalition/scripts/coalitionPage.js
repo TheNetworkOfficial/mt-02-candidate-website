@@ -88,6 +88,14 @@ export default function initCoalitionPage() {
   const levelSelect = document.querySelector("[data-filter-level]");
   const sortSelect = document.querySelector("[data-filter-sort]");
   const searchInput = document.querySelector("[data-filter-search]");
+  const modalEl = document.querySelector("[data-coalition-modal]");
+  const modalTrigger = document.querySelector("[data-coalition-modal-trigger]");
+  const modalDialog = modalEl?.querySelector(".coalition-modal__dialog");
+  const modalCloseEls = modalEl
+    ? Array.from(
+        modalEl.querySelectorAll("[data-coalition-modal-close]"),
+      )
+    : [];
 
   const state = {
     candidates: [],
@@ -98,12 +106,55 @@ export default function initCoalitionPage() {
     sort: "featured",
     search: "",
     tags: new Set(),
+    sharedFocusId: null,
   };
 
-  function updateStatus(message, tone = "default") {
+  let modalKeydownHandler = null;
+  let modalLastFocus = null;
+
+  function updateStatus(message, tone = "default", options = {}) {
     if (!statusEl) return;
-    statusEl.textContent = message;
     statusEl.dataset.tone = tone;
+    statusEl.innerHTML = "";
+
+    const textSpan = document.createElement("span");
+    textSpan.textContent = message;
+    statusEl.appendChild(textSpan);
+
+    if (options.action) {
+      statusEl.appendChild(options.action);
+    }
+  }
+
+  function createStatusAction(label, onClick) {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "coalition-directory__status-action";
+    button.textContent = label;
+    button.addEventListener("click", onClick);
+    return button;
+  }
+
+  function createClearSharedFocusButton() {
+    return createStatusAction("Clear shared priorities", () => {
+      clearSharedFocus();
+    });
+  }
+
+  function clearSharedFocus({ silent = false } = {}) {
+    if (!filters.sharedFocusId) return false;
+    filters.sharedFocusId = null;
+    if (!silent) {
+      applyFilters();
+    }
+    return true;
+  }
+
+  function startSharedFocus(candidate) {
+    if (!candidate || !candidate.id) return;
+    if (filters.sharedFocusId === candidate.id) return;
+    filters.sharedFocusId = candidate.id;
+    applyFilters();
   }
 
   function renderTagControls() {
@@ -127,6 +178,7 @@ export default function initCoalitionPage() {
         filters.tags.has(tag) ? "true" : "false",
       );
       button.addEventListener("click", () => {
+        clearSharedFocus({ silent: true });
         if (filters.tags.has(tag)) filters.tags.delete(tag);
         else filters.tags.add(tag);
         applyFilters();
@@ -161,7 +213,14 @@ export default function initCoalitionPage() {
     return cloned;
   }
 
-  function renderCandidates(filtered) {
+  function renderCandidates(filtered, options = {}) {
+    const {
+      sharedFocusId = null,
+      matchMeta = new Map(),
+      onCompareClick = null,
+      disableSort = false,
+    } = options;
+
     groupsContainer.innerHTML = "";
     const grouped = {};
     filtered.forEach((candidate) => {
@@ -177,7 +236,9 @@ export default function initCoalitionPage() {
 
     const fragment = document.createDocumentFragment();
     orderedLevels.forEach((level) => {
-      const levelCandidates = sortEntries(grouped[level]);
+      const levelCandidates = disableSort
+        ? [...grouped[level]]
+        : sortEntries(grouped[level]);
       const wrapper = document.createElement("section");
       wrapper.className = "coalition-group";
 
@@ -198,7 +259,13 @@ export default function initCoalitionPage() {
       const grid = document.createElement("div");
       grid.className = "coalition-group__grid";
       levelCandidates.forEach((candidate) => {
-        grid.appendChild(createCandidateCard(candidate));
+        const card = createCandidateCard(candidate, {
+          onCompareClick,
+          isFocus: sharedFocusId === candidate.id,
+          matchMeta:
+            matchMeta instanceof Map ? matchMeta.get(candidate.id) : undefined,
+        });
+        grid.appendChild(card);
       });
       wrapper.appendChild(grid);
       fragment.appendChild(wrapper);
@@ -207,9 +274,49 @@ export default function initCoalitionPage() {
     groupsContainer.appendChild(fragment);
   }
 
-  function createCandidateCard(candidate) {
+  function buildMatchIndicator(meta, isFocus) {
+    if (!meta) return null;
+    const badge = document.createElement("span");
+    badge.className = "coalition-card__match";
+
+    if (meta.type === "focus") {
+      const total = meta.total || 0;
+      const label = total === 1 ? "Focus priority" : "Focus priorities";
+      badge.textContent = `${label} • ${total}`;
+      badge.classList.add("coalition-card__match--focus");
+      return badge;
+    }
+
+    if (meta.type === "match") {
+      const count = meta.count || 0;
+      const percent = meta.percent ?? 0;
+      badge.textContent = `${count} shared ${count === 1 ? "priority" : "priorities"} • ${percent}% overlap`;
+      return badge;
+    }
+
+    if (meta.type === "emptyFocus") {
+      badge.textContent = "No priorities listed yet";
+      badge.classList.add("coalition-card__match--muted");
+      return badge;
+    }
+
+    if (isFocus) {
+      badge.textContent = "Focus priorities";
+      badge.classList.add("coalition-card__match--focus");
+      return badge;
+    }
+
+    return null;
+  }
+
+  function createCandidateCard(candidate, options = {}) {
+    const { onCompareClick, isFocus = false, matchMeta = null } = options;
+
     const card = document.createElement("article");
     card.className = "coalition-card";
+    if (isFocus) {
+      card.classList.add("coalition-card--focus");
+    }
 
     const top = document.createElement("div");
     top.className = "coalition-card__top";
@@ -272,6 +379,35 @@ export default function initCoalitionPage() {
       card.appendChild(tagsWrapper);
     }
 
+    const compareRow = document.createElement("div");
+    compareRow.className = "coalition-card__compare";
+    let hasCompareContent = false;
+
+    if (typeof onCompareClick === "function") {
+      const compareButton = document.createElement("button");
+      compareButton.type = "button";
+      compareButton.className = "coalition-card__compare-btn";
+      compareButton.textContent = isFocus
+        ? "Viewing shared priorities"
+        : "Find shared priorities";
+      compareButton.disabled = Boolean(isFocus);
+      compareButton.addEventListener("click", () => {
+        onCompareClick(candidate);
+      });
+      compareRow.appendChild(compareButton);
+      hasCompareContent = true;
+    }
+
+    const indicator = buildMatchIndicator(matchMeta, isFocus);
+    if (indicator) {
+      compareRow.appendChild(indicator);
+      hasCompareContent = true;
+    }
+
+    if (hasCompareContent) {
+      card.appendChild(compareRow);
+    }
+
     const linksWrapper = document.createElement("div");
     linksWrapper.className = "coalition-card__links";
 
@@ -309,6 +445,113 @@ export default function initCoalitionPage() {
     if (!state.candidates.length) {
       updateStatus("No coalition members published yet. Check back soon.");
       groupsContainer.innerHTML = "";
+      renderTagControls();
+      return;
+    }
+
+    if (filters.sharedFocusId) {
+      const focusCandidate = state.candidates.find(
+        (candidate) => candidate.id === filters.sharedFocusId,
+      );
+
+      if (!focusCandidate) {
+        filters.sharedFocusId = null;
+        applyFilters();
+        return;
+      }
+
+      const focusTags = Array.from(new Set(focusCandidate.tags || []));
+      const focusTagSet = new Set(focusTags);
+      const statusAction = createClearSharedFocusButton();
+
+      if (!focusTags.length) {
+        updateStatus(
+          `${focusCandidate.name} has no priorities listed yet.`,
+          "warning",
+          { action: statusAction },
+        );
+        const matchMeta = new Map();
+        matchMeta.set(focusCandidate.id, { type: "emptyFocus" });
+        renderCandidates([focusCandidate], {
+          sharedFocusId: focusCandidate.id,
+          matchMeta,
+          onCompareClick: startSharedFocus,
+          disableSort: true,
+        });
+        renderTagControls();
+        return;
+      }
+
+      const matches = state.candidates
+        .filter((candidate) => candidate.id !== focusCandidate.id)
+        .map((candidate) => {
+          const overlapCount = (candidate.tags || []).reduce((count, tag) => {
+            return count + (focusTagSet.has(tag) ? 1 : 0);
+          }, 0);
+          return {
+            candidate,
+            overlapCount,
+            percent: focusTags.length
+              ? Math.round((overlapCount / focusTags.length) * 100)
+              : 0,
+          };
+        })
+        .filter((entry) => entry.overlapCount > 0);
+
+      if (!matches.length) {
+        updateStatus(
+          `No other candidates share priorities with ${focusCandidate.name} yet.`,
+          "warning",
+          { action: statusAction },
+        );
+        const matchMeta = new Map();
+        matchMeta.set(focusCandidate.id, {
+          type: "focus",
+          total: focusTags.length,
+        });
+        renderCandidates([focusCandidate], {
+          sharedFocusId: focusCandidate.id,
+          matchMeta,
+          onCompareClick: startSharedFocus,
+          disableSort: true,
+        });
+        renderTagControls();
+        return;
+      }
+
+      const maxOverlap = Math.max(...matches.map((entry) => entry.overlapCount));
+      const topMatches = matches.filter(
+        (entry) => entry.overlapCount === maxOverlap,
+      );
+
+      const results = [focusCandidate, ...topMatches.map((entry) => entry.candidate)];
+      const matchMeta = new Map();
+      matchMeta.set(focusCandidate.id, {
+        type: "focus",
+        total: focusTags.length,
+      });
+      topMatches.forEach((entry) => {
+        matchMeta.set(entry.candidate.id, {
+          type: "match",
+          count: entry.overlapCount,
+          percent: entry.percent,
+          total: focusTags.length,
+        });
+      });
+
+      const matchCount = topMatches.length;
+      updateStatus(
+        `Showing ${matchCount} candidate${matchCount === 1 ? "" : "s"} sharing ${maxOverlap} priority${maxOverlap === 1 ? "" : "ies"} with ${focusCandidate.name}.`,
+        "default",
+        { action: statusAction },
+      );
+
+      renderCandidates(results, {
+        sharedFocusId: focusCandidate.id,
+        matchMeta,
+        onCompareClick: startSharedFocus,
+        disableSort: true,
+      });
       renderTagControls();
       return;
     }
@@ -369,7 +612,7 @@ export default function initCoalitionPage() {
       );
     }
 
-    renderCandidates(filtered);
+    renderCandidates(filtered, { onCompareClick: startSharedFocus });
     renderTagControls();
   }
 
@@ -395,13 +638,88 @@ export default function initCoalitionPage() {
       applyFilters();
     } catch (err) {
       console.error("Coalition fetch error", err);
-      updateStatus("We couldn't load the coalition right now. Please try again soon.", "error");
+      updateStatus(
+        "We couldn't load the coalition right now. Please try again soon.",
+        "error",
+      );
       groupsContainer.innerHTML = "";
     }
   }
 
+  function openModal() {
+    if (!modalEl) return;
+    modalLastFocus =
+      document.activeElement instanceof HTMLElement
+        ? document.activeElement
+        : null;
+
+    modalEl.hidden = false;
+    if (modalDialog && !modalDialog.hasAttribute("tabindex")) {
+      modalDialog.setAttribute("tabindex", "-1");
+    }
+
+    requestAnimationFrame(() => {
+      modalEl.classList.add("coalition-modal--open");
+    });
+    document.body.classList.add("coalition-modal-open");
+
+    const focusTarget =
+      modalDialog?.querySelector(".coalition-modal__close") || modalDialog;
+    if (focusTarget && typeof focusTarget.focus === "function") {
+      focusTarget.focus({ preventScroll: true });
+    }
+
+    modalKeydownHandler = (event) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        closeModal();
+      }
+    };
+    document.addEventListener("keydown", modalKeydownHandler);
+  }
+
+  function closeModal() {
+    if (!modalEl) return;
+    modalEl.classList.remove("coalition-modal--open");
+    const hideTimeout = setTimeout(() => {
+      modalEl.hidden = true;
+    }, 320);
+
+    const onTransitionEnd = (event) => {
+      if (event.target !== modalEl) return;
+      clearTimeout(hideTimeout);
+      modalEl.hidden = true;
+    };
+
+    modalEl.addEventListener("transitionend", onTransitionEnd, { once: true });
+    document.body.classList.remove("coalition-modal-open");
+
+    if (modalKeydownHandler) {
+      document.removeEventListener("keydown", modalKeydownHandler);
+      modalKeydownHandler = null;
+    }
+
+    if (modalLastFocus && typeof modalLastFocus.focus === "function") {
+      modalLastFocus.focus({ preventScroll: true });
+    }
+    modalLastFocus = null;
+  }
+
+  if (modalTrigger && modalEl) {
+    modalTrigger.addEventListener("click", () => {
+      openModal();
+    });
+  }
+
+  modalCloseEls.forEach((element) => {
+    element.addEventListener("click", () => {
+      closeModal();
+    });
+  });
+
   if (levelSelect) {
     levelSelect.addEventListener("change", () => {
+      clearSharedFocus({ silent: true });
       filters.level = levelSelect.value;
       applyFilters();
     });
@@ -409,6 +727,7 @@ export default function initCoalitionPage() {
 
   if (sortSelect) {
     sortSelect.addEventListener("change", () => {
+      clearSharedFocus({ silent: true });
       filters.sort = sortSelect.value;
       applyFilters();
     });
@@ -420,12 +739,14 @@ export default function initCoalitionPage() {
       applyFilters();
     }, 200);
     searchInput.addEventListener("input", (event) => {
+      clearSharedFocus({ silent: true });
       updateSearch(event.target.value);
     });
   }
 
   if (clearTagsBtn) {
     clearTagsBtn.addEventListener("click", () => {
+      clearSharedFocus({ silent: true });
       filters.tags.clear();
       applyFilters();
     });
