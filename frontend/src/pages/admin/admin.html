@@ -37,6 +37,9 @@
       <nav class="admin-nav">
         <a href="#events" class="tab-button" data-target="events">Events</a>
         <a href="#news" class="tab-button" data-target="news">News</a>
+        <a href="#coalition" class="tab-button" data-target="coalition"
+          >Coalition</a
+        >
         <a href="#messages" class="tab-button" data-target="messages"
           >Messages</a
         >
@@ -79,6 +82,123 @@
         </form>
         <h3>Recent News</h3>
         <ul id="news-list"></ul>
+      </section>
+
+      <section id="coalition" class="tab-content">
+        <h2>Coalition Candidates</h2>
+        <form id="coalition-form">
+          <input type="hidden" id="coalition-id" />
+          <div class="coalition-form-grid">
+            <label>
+              <span>Candidate Name</span>
+              <input type="text" id="coalition-name" placeholder="Full name" required />
+            </label>
+            <label>
+              <span>Level</span>
+              <select id="coalition-level" required>
+                <option value="">Select level</option>
+                <option value="federal">Federal</option>
+                <option value="state">State</option>
+                <option value="county">County</option>
+                <option value="city">City</option>
+              </select>
+            </label>
+            <label>
+              <span>Office</span>
+              <input
+                type="text"
+                id="coalition-office"
+                placeholder="Office or ballot title"
+              />
+            </label>
+            <label>
+              <span>Region</span>
+              <input
+                type="text"
+                id="coalition-region"
+                placeholder="E.g., Montana's 1st District"
+              />
+            </label>
+            <label>
+              <span>Website</span>
+              <input
+                type="url"
+                id="coalition-website"
+                placeholder="https://example.com"
+              />
+            </label>
+            <label>
+              <span>Sort Order</span>
+              <input type="number" id="coalition-sort-order" value="0" />
+            </label>
+          </div>
+
+          <label class="coalition-full-row">
+            <span>Tags (comma separated)</span>
+            <input
+              type="text"
+              id="coalition-tags"
+              placeholder="Healthcare reform, Environmental stewardship"
+            />
+          </label>
+
+          <label class="coalition-full-row">
+            <span>Description</span>
+            <textarea id="coalition-description" rows="4" required></textarea>
+          </label>
+
+          <div class="coalition-socials">
+            <div class="coalition-socials__header">
+              <span>Social Links</span>
+              <button type="button" id="add-social-link" class="secondary-btn">
+                Add Link
+              </button>
+            </div>
+            <div id="coalition-social-links"></div>
+          </div>
+
+          <label class="coalition-full-row">
+            <span>Headshot</span>
+            <input type="file" id="coalition-headshot" accept="image/*" />
+          </label>
+
+          <div
+            id="coalition-headshot-preview"
+            class="coalition-headshot-preview"
+            hidden
+          ></div>
+
+          <label class="coalition-remove-headshot" hidden>
+            <input type="checkbox" id="coalition-remove-headshot" />
+            <span>Remove existing headshot</span>
+          </label>
+
+          <div class="coalition-form-actions">
+            <button type="submit" id="coalition-submit-btn">Add Candidate</button>
+            <button
+              type="button"
+              id="coalition-cancel-edit"
+              class="secondary-btn"
+              style="display: none"
+            >
+              Cancel
+            </button>
+          </div>
+        </form>
+
+        <h3>Current Coalition</h3>
+        <table class="admin-table coalition-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Level</th>
+              <th>Tags</th>
+              <th>Updated</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="coalition-table-body"></tbody>
+        </table>
       </section>
 
       <section id="messages" class="tab-content">

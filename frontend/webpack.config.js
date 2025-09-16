@@ -1,7 +1,11 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const webpack = require("webpack");
 const path = require("path");
+const dotenv = require("dotenv");
+
+dotenv.config({ path: path.resolve(__dirname, "../.env") });
 
 module.exports = {
   mode: "production",
@@ -20,6 +24,8 @@ module.exports = {
     events: "./src/pages/events/events.js",
     event: "./src/pages/event/event.js",
     admin: "./src/pages/admin/admin.js",
+    campaignFinances: "./src/pages/campaign-finances/campaign-finances.js",
+    coalition: "./src/pages/coalition/coalition.js",
   },
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -60,6 +66,11 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin(),
+    new webpack.DefinePlugin({
+      "process.env.FRONTEND_FINANCE_SHEET_ID_REVERSED": JSON.stringify(
+        process.env.FRONTEND_FINANCE_SHEET_ID_REVERSED || "",
+      ),
+    }),
     new MiniCssExtractPlugin({
       filename: "css/[name].[contenthash].css",
     }),
@@ -141,6 +152,18 @@ module.exports = {
       template: "./src/pages/event/event.html",
       filename: "event.html",
       chunks: ["main", "event"],
+      favicon: "./src/assets/images/icons/montanaStarState.png",
+    }),
+    new HtmlWebpackPlugin({
+      template: "./src/pages/coalition/coalition.html",
+      filename: "coalition.html",
+      chunks: ["main", "coalition"],
+      favicon: "./src/assets/images/icons/montanaStarState.png",
+    }),
+    new HtmlWebpackPlugin({
+      template: "./src/pages/campaign-finances/campaign-finances.html",
+      filename: "campaign-finances.html",
+      chunks: ["main", "campaignFinances"],
       favicon: "./src/assets/images/icons/montanaStarState.png",
     }),
     new HtmlWebpackPlugin({

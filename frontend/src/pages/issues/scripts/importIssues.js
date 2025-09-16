@@ -30,48 +30,86 @@ const contentMap = {
   tribal: md_tribal,
 };
 
-function enhanceContentSections(rootEl) {
-  // Find all H2/H3 headings produced by Markdown
-  const headings = Array.from(rootEl.querySelectorAll("h2, h3"));
-  if (!headings.length) return;
+function buildProposalAccordions(container) {
+  const headings = Array.from(container.querySelectorAll("h2"));
+  const proposalsHeading = headings.find((heading) =>
+    heading.textContent.toLowerCase().includes("proposed policies"),
+  );
 
-  // If the very first heading is acting like the page title, keep it as-is
-  let startIdx = 0;
-  const first = headings[0];
-  if (!first.previousElementSibling) startIdx = 1;
+  if (!proposalsHeading) return;
 
-  for (let i = startIdx; i < headings.length; i++) {
-    const h = headings[i];
-    const details = document.createElement("details");
-    details.className = "issue-accordion";
-    // start all accordions closed
+  const isHeading = (node, level) =>
+    node &&
+    node.nodeType === 1 &&
+    node.tagName.toUpperCase() === `H${level}`;
 
-    // Theme accents based on common section names (optional, safe)
-    const t = h.textContent.toLowerCase();
-    if (t.includes("proposed")) details.dataset.theme = "policies";
-    if (t.includes("how these policies")) details.dataset.theme = "benefits";
+  let cursor = proposalsHeading.nextSibling;
 
-    const summary = document.createElement("summary");
-    summary.innerHTML = h.innerHTML;
-    details.appendChild(summary);
+  while (cursor) {
+    if (cursor.nodeType === 1 && cursor.tagName === "H2") break;
 
-    const body = document.createElement("div");
-    body.className = "issue-accordion-body";
+    if (isHeading(cursor, 3)) {
+      const proposalHeading = cursor;
+      const details = document.createElement("details");
+      details.className = "issue-proposal";
+      details.open = false;
 
-    // Move siblings until the next H2/H3 into the accordion body
-    let sib = h.nextSibling;
-    while (
-      sib &&
-      !(sib.nodeType === 1 && /^(H2|H3)$/i.test(sib.tagName))
-    ) {
-      const next = sib.nextSibling;
-      body.appendChild(sib);
-      sib = next;
+      const summary = document.createElement("summary");
+      summary.innerHTML = proposalHeading.innerHTML;
+      details.appendChild(summary);
+
+      const body = document.createElement("div");
+      body.className = "issue-proposal-body";
+
+      const sections = [];
+      let nextNode = proposalHeading.nextSibling;
+
+      while (
+        nextNode &&
+        !(
+          (isHeading(nextNode, 3) || isHeading(nextNode, 2)) &&
+          nextNode !== proposalHeading
+        )
+      ) {
+        const current = nextNode;
+        nextNode = current.nextSibling;
+
+        if (isHeading(current, 4)) {
+          const sectionWrapper = document.createElement("div");
+          sectionWrapper.className = "issue-proposal-section";
+          const sectionHeading = document.createElement("h4");
+          sectionHeading.innerHTML = current.innerHTML;
+          sectionWrapper.appendChild(sectionHeading);
+          sections.push(sectionWrapper);
+          body.appendChild(sectionWrapper);
+          current.remove();
+        } else {
+          let targetSection = sections[sections.length - 1];
+          if (!targetSection) {
+            targetSection = document.createElement("div");
+            targetSection.className = "issue-proposal-section";
+            sections.push(targetSection);
+            body.appendChild(targetSection);
+          }
+          targetSection.appendChild(current);
+        }
+      }
+
+      if (!sections.length) {
+        const fallback = document.createElement("div");
+        fallback.className = "issue-proposal-section";
+        fallback.innerHTML = "<p>No additional information provided.</p>";
+        body.appendChild(fallback);
+      }
+
+      details.appendChild(body);
+      const replacementAnchor = nextNode;
+      proposalHeading.replaceWith(details);
+      cursor = replacementAnchor;
+      continue;
     }
-    details.appendChild(body);
 
-    // Replace heading with the details accordion
-    h.replaceWith(details);
+    cursor = cursor.nextSibling;
   }
 }
 
@@ -86,9 +124,13 @@ Object.keys(contentMap).forEach((id) => {
   const container = document.getElementById(id);
   if (container) {
     container.innerHTML = loadTabContent(id);
-    enhanceContentSections(container);
+    buildProposalAccordions(container);
     // ensure all accordions start closed on each tab switch
-    container.querySelectorAll("details").forEach(d => (d.open = false));
+    container
+      .querySelectorAll("details")
+      .forEach((d) => {
+        d.open = false;
+      });
   }
 });
 

@@ -34,21 +34,127 @@
 }
 
 .admin-page form input,
-.admin-page form textarea {
+.admin-page form textarea,
+.admin-page form select {
   display: block;
   margin-bottom: 0.5rem;
   width: 100%;
 }
 
-.admin-page form button {
+.admin-page form button:not(.secondary-btn) {
   padding: 0.5rem 1rem;
   background-color: #007bff;
   color: white;
   border: none;
   cursor: pointer;
 }
-.admin-page form button:hover {
+.admin-page form button:not(.secondary-btn):hover {
   background-color: #0056b3;
+}
+
+.secondary-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  background: #6c757d;
+  color: #fff;
+  border: none;
+  padding: 0.45rem 0.9rem;
+  border-radius: var(--radius, 4px);
+  cursor: pointer;
+}
+
+.secondary-btn:hover {
+  background: #5c636a;
+}
+
+.coalition-form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.coalition-form-grid label,
+.coalition-full-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-weight: 600;
+}
+
+.coalition-full-row {
+  margin-bottom: 1rem;
+}
+
+.coalition-full-row textarea {
+  min-height: 120px;
+}
+
+.coalition-socials {
+  margin-bottom: 1rem;
+}
+
+.coalition-socials__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.coalition-social-row {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.coalition-social-row input {
+  margin-bottom: 0;
+}
+
+.coalition-social-row button {
+  padding: 0.35rem 0.65rem;
+}
+
+.coalition-headshot-preview {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.coalition-headshot-preview img {
+  width: 72px;
+  height: 72px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+.coalition-remove-headshot {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.coalition-remove-headshot input {
+  width: auto;
+}
+
+.coalition-form-actions {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.coalition-table th,
+.coalition-table td {
+  text-align: left;
 }
 
 #events-admin-list li {

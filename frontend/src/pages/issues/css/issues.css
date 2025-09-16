@@ -92,7 +92,7 @@
   display: block;
 }
 
-.issue-accordion {
+.issue-proposal {
   border: 1px solid var(--border-color, #e5e7eb);
   border-radius: var(--radius, 0.75rem);
   background: var(--form-background-color);
@@ -103,7 +103,7 @@
   overflow: hidden;
 }
 
-.issue-accordion summary {
+.issue-proposal summary {
   cursor: pointer;
   list-style: none; /* remove default marker */
   padding: 1rem 1rem 1rem 2.75rem;
@@ -112,9 +112,9 @@
   user-select: none;
 }
 
-.issue-accordion summary::-webkit-details-marker { display: none; }
+.issue-proposal summary::-webkit-details-marker { display: none; }
 
-.issue-accordion summary::before {
+.issue-proposal summary::before {
   content: "";
   position: absolute;
   left: 1rem;
@@ -127,31 +127,52 @@
   transition: transform 150ms ease;
 }
 
-.issue-accordion[open] summary::before {
+.issue-proposal[open] summary::before {
   transform: rotate(45deg); /* chevron down */
 }
 
-.issue-accordion-body {
+.issue-proposal-body {
   padding: 0.75rem 1rem 1rem 1rem;
+  display: grid;
+  gap: 1.5rem;
 }
 
-.issue-accordion-body > *:first-child { margin-top: 0; }
-.issue-accordion-body > *:last-child { margin-bottom: 0; }
+.issue-proposal-body > *:first-child { margin-top: 0; }
+.issue-proposal-body > *:last-child { margin-bottom: 0; }
 
 /* Accent variants (automatic based on heading text) */
-.issue-accordion {
+.issue-proposal {
   border-color: var(--primary-color);
   box-shadow: 0 2px 6px rgba(0,0,0,0.06);
 }
 
 /* Improve readability of prose inside accordions */
-.issue-accordion-body p {
+.issue-proposal-body p {
   line-height: 1.65;
+}
+
+.issue-proposal-section {
+  background: color-mix(in srgb, var(--primary-color) 6%, transparent);
+  border-radius: calc(var(--radius, 0.75rem) / 1.5);
+  padding: 1rem;
+}
+
+.issue-proposal-section h4 {
+  font-size: 1.05rem;
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  color: var(--secondary-color);
 }
 
 /* Optional: constrain measure for better reading */
 .issues-content {
   max-width: 900px;
+}
+
+@media (min-width: 992px) {
+  .issue-proposal-body {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (min-width: 769px) {
