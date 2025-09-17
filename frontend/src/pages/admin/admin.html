@@ -187,12 +187,24 @@
         </form>
 
         <h3>Current Coalition</h3>
+        <div class="coalition-table-controls">
+          <label for="coalition-status-filter">Show</label>
+          <select id="coalition-status-filter">
+            <option value="all">All statuses</option>
+            <option value="pending">Pending review</option>
+            <option value="accepted">Accepted</option>
+            <option value="rejected">Rejected</option>
+          </select>
+        </div>
+
         <table class="admin-table coalition-table">
           <thead>
             <tr>
               <th>Name</th>
               <th>Level</th>
+              <th>Status</th>
               <th>Tags</th>
+              <th>Submitted By</th>
               <th>Updated</th>
               <th>Actions</th>
             </tr>

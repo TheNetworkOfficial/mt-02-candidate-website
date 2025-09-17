@@ -26,6 +26,7 @@ module.exports = {
     admin: "./src/pages/admin/admin.js",
     campaignFinances: "./src/pages/campaign-finances/campaign-finances.js",
     coalition: "./src/pages/coalition/coalition.js",
+    suggestCandidate: "./src/pages/suggest-candidate/suggestCandidate.js",
   },
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -161,6 +162,12 @@ module.exports = {
       favicon: "./src/assets/images/icons/montanaStarState.png",
     }),
     new HtmlWebpackPlugin({
+      template: "./src/pages/suggest-candidate/suggest-candidate.html",
+      filename: "suggest-candidate.html",
+      chunks: ["main", "suggestCandidate"],
+      favicon: "./src/assets/images/icons/montanaStarState.png",
+    }),
+    new HtmlWebpackPlugin({
       template: "./src/pages/campaign-finances/campaign-finances.html",
       filename: "campaign-finances.html",
       chunks: ["main", "campaignFinances"],
@@ -175,6 +182,10 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './src/pages/popups/workInProgressPopup.html',
       filename: 'workInProgressPopup.html',
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/pages/popups/coalitionVisionPopup.html',
+      filename: 'coalitionVisionPopup.html',
     }),
   ],
   devServer: {

@@ -88,14 +88,6 @@ export default function initCoalitionPage() {
   const levelSelect = document.querySelector("[data-filter-level]");
   const sortSelect = document.querySelector("[data-filter-sort]");
   const searchInput = document.querySelector("[data-filter-search]");
-  const modalEl = document.querySelector("[data-coalition-modal]");
-  const modalTrigger = document.querySelector("[data-coalition-modal-trigger]");
-  const modalDialog = modalEl?.querySelector(".coalition-modal__dialog");
-  const modalCloseEls = modalEl
-    ? Array.from(
-        modalEl.querySelectorAll("[data-coalition-modal-close]"),
-      )
-    : [];
 
   const state = {
     candidates: [],
@@ -108,9 +100,6 @@ export default function initCoalitionPage() {
     tags: new Set(),
     sharedFocusId: null,
   };
-
-  let modalKeydownHandler = null;
-  let modalLastFocus = null;
 
   function updateStatus(message, tone = "default", options = {}) {
     if (!statusEl) return;
@@ -645,77 +634,6 @@ export default function initCoalitionPage() {
       groupsContainer.innerHTML = "";
     }
   }
-
-  function openModal() {
-    if (!modalEl) return;
-    modalLastFocus =
-      document.activeElement instanceof HTMLElement
-        ? document.activeElement
-        : null;
-
-    modalEl.hidden = false;
-    if (modalDialog && !modalDialog.hasAttribute("tabindex")) {
-      modalDialog.setAttribute("tabindex", "-1");
-    }
-
-    requestAnimationFrame(() => {
-      modalEl.classList.add("coalition-modal--open");
-    });
-    document.body.classList.add("coalition-modal-open");
-
-    const focusTarget =
-      modalDialog?.querySelector(".coalition-modal__close") || modalDialog;
-    if (focusTarget && typeof focusTarget.focus === "function") {
-      focusTarget.focus({ preventScroll: true });
-    }
-
-    modalKeydownHandler = (event) => {
-      if (event.key === "Escape") {
-        event.preventDefault();
-        closeModal();
-      }
-    };
-    document.addEventListener("keydown", modalKeydownHandler);
-  }
-
-  function closeModal() {
-    if (!modalEl) return;
-    modalEl.classList.remove("coalition-modal--open");
-    const hideTimeout = setTimeout(() => {
-      modalEl.hidden = true;
-    }, 320);
-
-    const onTransitionEnd = (event) => {
-      if (event.target !== modalEl) return;
-      clearTimeout(hideTimeout);
-      modalEl.hidden = true;
-    };
-
-    modalEl.addEventListener("transitionend", onTransitionEnd, { once: true });
-    document.body.classList.remove("coalition-modal-open");
-
-    if (modalKeydownHandler) {
-      document.removeEventListener("keydown", modalKeydownHandler);
-      modalKeydownHandler = null;
-    }
-
-    if (modalLastFocus && typeof modalLastFocus.focus === "function") {
-      modalLastFocus.focus({ preventScroll: true });
-    }
-    modalLastFocus = null;
-  }
-
-  if (modalTrigger && modalEl) {
-    modalTrigger.addEventListener("click", () => {
-      openModal();
-    });
-  }
-
-  modalCloseEls.forEach((element) => {
-    element.addEventListener("click", () => {
-      closeModal();
-    });
-  });
 
   if (levelSelect) {
     levelSelect.addEventListener("change", () => {

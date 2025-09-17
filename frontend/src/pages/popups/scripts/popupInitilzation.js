@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // List all popup files to load
   let popupsToLoad = [
     "workInProgressPopup.html",
+    "coalitionVisionPopup.html",
   ];
   let loadedPopupsCount = 0;
 
@@ -41,6 +42,13 @@ document.addEventListener("DOMContentLoaded", () => {
   function initializePopupEvents() {
     // Wire up only the close‑buttons (no click‑triggers)
     setupPopup("workInProgressPopup", null, ".close-button");
+
+    // Coalition hero modal trigger
+    setupPopup(
+      "coalitionVisionPopup",
+      ".coalition-hero__link--modal",
+      ".close-button",
+    );
 
     // Show the popup once per session after all popups have loaded
     document.addEventListener("popupsLoaded", () => {

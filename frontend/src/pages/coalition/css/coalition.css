@@ -58,87 +58,6 @@
   font-size: 0.95rem;
 }
 
-.coalition-modal {
-  position: fixed;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1.5rem;
-  background: rgba(9, 18, 28, 0.55);
-  opacity: 0;
-  pointer-events: none;
-  transform: scale(0.98);
-  transition: opacity 0.25s ease, transform 0.3s ease;
-  z-index: 999;
-}
-
-.coalition-modal--open {
-  opacity: 1;
-  pointer-events: auto;
-  transform: scale(1);
-}
-
-.coalition-modal__backdrop {
-  position: absolute;
-  inset: 0;
-}
-
-.coalition-modal__dialog {
-  position: relative;
-  background: rgba(255, 255, 255, 0.97);
-  border-radius: 24px;
-  max-width: 620px;
-  width: min(620px, 100%);
-  padding: 2.5rem 2.25rem;
-  box-shadow: 0 35px 80px rgba(0, 0, 0, 0.2);
-  overflow: hidden;
-}
-
-.coalition-modal__header h2 {
-  margin: 0;
-  font-size: 1.75rem;
-  color: var(--primary-color);
-}
-
-.coalition-modal__body {
-  margin-top: 1.25rem;
-  font-size: 1.05rem;
-  line-height: 1.7;
-  color: rgba(0, 0, 0, 0.85);
-  min-height: 120px;
-}
-
-.coalition-modal__close {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  border: none;
-  background: rgba(57, 98, 137, 0.12);
-  color: var(--primary-color);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: background 0.2s ease, transform 0.2s ease;
-}
-
-.coalition-modal__close:hover {
-  background: rgba(57, 98, 137, 0.2);
-  transform: translateY(-1px);
-}
-
-.coalition-modal__close i {
-  font-size: 1.1rem;
-}
-
-body.coalition-modal-open {
-  overflow: hidden;
-}
-
 .coalition-filters {
   background: var(--background-main);
   padding: var(--section-vertical) 0;
@@ -603,23 +522,6 @@ body.coalition-modal-open {
     background: rgba(57, 98, 137, 0.4);
   }
 
-  .coalition-modal__dialog {
-    background: rgba(18, 28, 40, 0.96);
-    color: rgba(255, 255, 255, 0.9);
-  }
-
-  .coalition-modal__body {
-    color: rgba(255, 255, 255, 0.82);
-  }
-
-  .coalition-modal__close {
-    background: rgba(57, 98, 137, 0.32);
-    color: #e9f0f6;
-  }
-
-  .coalition-modal__close:hover {
-    background: rgba(57, 98, 137, 0.42);
-  }
 }
 
 @media (max-width: 900px) {

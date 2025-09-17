@@ -48,6 +48,27 @@ const CoalitionCandidate = sequelize.define(
       allowNull: false,
       defaultValue: 0,
     },
+    status: {
+      type: DataTypes.ENUM("pending", "accepted", "rejected"),
+      allowNull: false,
+      defaultValue: "accepted",
+    },
+    submittedByName: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    submittedByEmail: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    submittedByPhone: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    submittedByZip: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
   },
   {
     tableName: "coalition_candidates",
@@ -55,6 +76,9 @@ const CoalitionCandidate = sequelize.define(
     indexes: [
       {
         fields: ["jurisdictionLevel", "sortOrder"],
+      },
+      {
+        fields: ["status"],
       },
     ],
   },

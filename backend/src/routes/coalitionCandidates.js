@@ -29,6 +29,14 @@ const upload = multer({
   limits: { fileSize: 5 * 1024 * 1024 },
 });
 
+const STATUS_VALUES = ["pending", "accepted", "rejected"];
+
+function normalizeStatus(rawStatus, fallback = "accepted") {
+  if (typeof rawStatus !== "string") return fallback;
+  const next = rawStatus.toLowerCase();
+  return STATUS_VALUES.includes(next) ? next : fallback;
+}
+
 function parseJsonArray(rawValue) {
   if (!rawValue && rawValue !== "") return [];
   if (Array.isArray(rawValue)) return rawValue;
@@ -91,9 +99,26 @@ function deleteExistingImage(imagePath) {
     });
 }
 
-router.get("/", async (_req, res) => {
+router.get("/", async (req, res) => {
   try {
+    const includeAll =
+      Boolean(req.session?.isAdmin) && req.query.includeAll === "true";
+
+    let where = {};
+    if (!includeAll) {
+      where = { status: "accepted" };
+    } else {
+      const requestedStatus = req.query.status;
+      if (requestedStatus && requestedStatus !== "all") {
+        const normalized = normalizeStatus(requestedStatus, null);
+        if (normalized) {
+          where.status = normalized;
+        }
+      }
+    }
+
     const candidates = await CoalitionCandidate.findAll({
+      where,
       order: [
         ["jurisdictionLevel", "ASC"],
         ["sortOrder", "ASC"],
@@ -106,6 +131,71 @@ router.get("/", async (_req, res) => {
     res.status(500).json({ error: "Server error" });
   }
 });
+
+router.post(
+  "/suggest",
+  upload.single("headshot"),
+  async (req, res) => {
+    try {
+      const {
+        name,
+        jurisdictionLevel,
+        description,
+        websiteUrl,
+        office,
+        region,
+        sortOrder,
+        submittedByName,
+        submittedByEmail,
+        submittedByPhone,
+        submittedByZip,
+      } = req.body;
+
+      if (
+        !name ||
+        !jurisdictionLevel ||
+        !description ||
+        !submittedByName ||
+        !submittedByEmail ||
+        !submittedByPhone ||
+        !submittedByZip
+      ) {
+        return res.status(400).json({
+          error: "Candidate name, level, description, and submitter contact details are required",
+        });
+      }
+
+      const tags = parseJsonArray(req.body.tags);
+      const socialLinks = parseSocialLinks(req.body.socialLinks);
+
+      const candidate = await CoalitionCandidate.create({
+        name,
+        jurisdictionLevel,
+        description,
+        websiteUrl,
+        office,
+        region,
+        socialLinks,
+        tags,
+        sortOrder: sortOrder ? Number(sortOrder) : 0,
+        headshotImage: req.file ? `/uploads/${req.file.filename}` : null,
+        status: "pending",
+        submittedByName: String(submittedByName).trim(),
+        submittedByEmail: String(submittedByEmail).trim(),
+        submittedByPhone: String(submittedByPhone).trim(),
+        submittedByZip: String(submittedByZip).trim(),
+      });
+
+      res.status(201).json({
+        message: "Candidate suggestion submitted",
+        candidateId: candidate.id,
+      });
+    } catch (err) {
+      console.error("Suggest coalition candidate error:", err);
+      res.status(500).json({ error: "Server error" });
+    }
+  },
+);
 
 router.post(
   "/",
@@ -121,6 +211,11 @@ router.post(
         office,
         region,
         sortOrder,
+        status,
+        submittedByName,
+        submittedByEmail,
+        submittedByPhone,
+        submittedByZip,
       } = req.body;
 
       if (!name || !jurisdictionLevel || !description) {
@@ -143,6 +238,11 @@ router.post(
         tags,
         sortOrder: sortOrder ? Number(sortOrder) : 0,
         headshotImage: req.file ? `/uploads/${req.file.filename}` : null,
+        status: normalizeStatus(status),
+        submittedByName: submittedByName ? String(submittedByName) : null,
+        submittedByEmail: submittedByEmail ? String(submittedByEmail) : null,
+        submittedByPhone: submittedByPhone ? String(submittedByPhone) : null,
+        submittedByZip: submittedByZip ? String(submittedByZip) : null,
       });
 
       res.status(201).json(candidate);
@@ -171,15 +271,32 @@ router.put(
         "websiteUrl",
         "office",
         "region",
+        "submittedByName",
+        "submittedByEmail",
+        "submittedByPhone",
+        "submittedByZip",
       ];
       fields.forEach((field) => {
         if (req.body[field] !== undefined) {
-          candidate[field] = req.body[field];
+          const value = req.body[field];
+          if (value === null || value === undefined) {
+            candidate[field] = null;
+          } else {
+            const normalized = String(value).trim();
+            candidate[field] = normalized || null;
+          }
         }
       });
 
       if (req.body.sortOrder !== undefined) {
         candidate.sortOrder = Number(req.body.sortOrder) || 0;
+      }
+
+      if (req.body.status !== undefined) {
+        candidate.status = normalizeStatus(
+          req.body.status,
+          candidate.status || "accepted",
+        );
       }
 
       if (req.body.tags !== undefined) {
@@ -208,6 +325,26 @@ router.put(
     }
   },
 );
+
+router.patch("/:id/status", ensureAdmin, async (req, res) => {
+  try {
+    const candidate = await CoalitionCandidate.findByPk(req.params.id);
+    if (!candidate) {
+      return res.status(404).json({ error: "Candidate not found" });
+    }
+
+    const nextStatus = normalizeStatus(
+      req.body.status,
+      candidate.status || "pending",
+    );
+    candidate.status = nextStatus;
+    await candidate.save();
+    res.json({ id: candidate.id, status: candidate.status });
+  } catch (err) {
+    console.error("Update coalition candidate status error:", err);
+    res.status(500).json({ error: "Server error" });
+  }
+});
 
 router.delete("/:id", ensureAdmin, async (req, res) => {
   try {

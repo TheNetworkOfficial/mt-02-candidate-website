@@ -149,10 +149,14 @@ document.addEventListener("DOMContentLoaded", async () => {
   );
   const coalitionAddSocialLinkBtn = document.getElementById("add-social-link");
   const coalitionTableBody = document.getElementById("coalition-table-body");
+  const coalitionStatusFilterSelect = document.getElementById(
+    "coalition-status-filter",
+  );
 
   let coalitionCandidates = [];
   let editingCoalitionCandidate = null;
   let coalitionHeadshotObjectUrl = null;
+  let coalitionStatusFilter = "all";
 
   function formatLevel(level) {
     if (!level) return "";
@@ -295,11 +299,18 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   if (coalitionForm) {
-    if (coalitionAddSocialLinkBtn) {
-      coalitionAddSocialLinkBtn.addEventListener("click", () => {
-        addSocialLinkRow();
-      });
-    }
+  if (coalitionAddSocialLinkBtn) {
+    coalitionAddSocialLinkBtn.addEventListener("click", () => {
+      addSocialLinkRow();
+    });
+  }
+
+  if (coalitionStatusFilterSelect) {
+    coalitionStatusFilterSelect.addEventListener("change", () => {
+      coalitionStatusFilter = coalitionStatusFilterSelect.value;
+      loadCoalitionCandidates();
+    });
+  }
 
     if (coalitionCancelBtn) {
       coalitionCancelBtn.addEventListener("click", () => {
@@ -615,7 +626,15 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (!coalitionTableBody) return;
     coalitionTableBody.innerHTML = "";
     try {
-      const res = await fetch("/api/coalition", {
+      const params = new URLSearchParams();
+      params.set("includeAll", "true");
+      if (coalitionStatusFilter && coalitionStatusFilter !== "all") {
+        params.set("status", coalitionStatusFilter);
+      } else {
+        params.set("status", "all");
+      }
+
+      const res = await fetch(`/api/coalition?${params.toString()}`, {
         credentials: "include",
       });
       if (res.ok) {
@@ -632,6 +651,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     coalitionTableBody.innerHTML = "";
     coalitionCandidates.forEach((candidate) => {
       const tr = document.createElement("tr");
+      if (candidate.status === "pending") {
+        tr.classList.add("coalition-row--pending");
+      }
 
       const nameTd = document.createElement("td");
       nameTd.textContent = candidate.name || "";
@@ -639,8 +661,44 @@ document.addEventListener("DOMContentLoaded", async () => {
       const levelTd = document.createElement("td");
       levelTd.textContent = formatLevel(candidate.jurisdictionLevel);
 
+      const statusTd = document.createElement("td");
+      statusTd.appendChild(createStatusBadge(candidate.status));
+
       const tagsTd = document.createElement("td");
       tagsTd.textContent = (candidate.tags || []).join(", ");
+
+      const submittedTd = document.createElement("td");
+      submittedTd.className = "coalition-submitter";
+      if (
+        candidate.submittedByName ||
+        candidate.submittedByEmail ||
+        candidate.submittedByPhone ||
+        candidate.submittedByZip
+      ) {
+        const nameLine = document.createElement("strong");
+        nameLine.textContent = candidate.submittedByName || "";
+        submittedTd.appendChild(nameLine);
+
+        if (candidate.submittedByEmail) {
+          const email = document.createElement("span");
+          email.textContent = candidate.submittedByEmail;
+          submittedTd.appendChild(email);
+        }
+
+        if (candidate.submittedByPhone) {
+          const phone = document.createElement("span");
+          phone.textContent = `Phone: ${candidate.submittedByPhone}`;
+          submittedTd.appendChild(phone);
+        }
+
+        if (candidate.submittedByZip) {
+          const zip = document.createElement("span");
+          zip.textContent = `Zip: ${candidate.submittedByZip}`;
+          submittedTd.appendChild(zip);
+        }
+      } else {
+        submittedTd.textContent = "—";
+      }
 
       const updatedTd = document.createElement("td");
       updatedTd.textContent = candidate.updatedAt
@@ -648,7 +706,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         : "";
 
       const actionsTd = document.createElement("td");
-      actionsTd.style.whiteSpace = "nowrap";
+      actionsTd.className = "coalition-table__actions";
 
       const editBtn = document.createElement("button");
       editBtn.type = "button";
@@ -683,16 +741,74 @@ document.addEventListener("DOMContentLoaded", async () => {
       });
 
       actionsTd.appendChild(editBtn);
+      actionsTd.appendChild(createStatusActionButton(candidate, "accepted"));
+      actionsTd.appendChild(createStatusActionButton(candidate, "pending"));
+      actionsTd.appendChild(createStatusActionButton(candidate, "rejected"));
       actionsTd.appendChild(deleteBtn);
 
       tr.appendChild(nameTd);
       tr.appendChild(levelTd);
+      tr.appendChild(statusTd);
       tr.appendChild(tagsTd);
+      tr.appendChild(submittedTd);
       tr.appendChild(updatedTd);
       tr.appendChild(actionsTd);
 
       coalitionTableBody.appendChild(tr);
     });
+  }
+
+  function createStatusBadge(status) {
+    const badge = document.createElement("span");
+    badge.className = "coalition-status-badge";
+    const normalized = (status || "accepted").toLowerCase();
+    const label =
+      normalized.charAt(0).toUpperCase() + normalized.slice(1).toLowerCase();
+    badge.textContent = label;
+    badge.classList.add(`coalition-status-badge--${normalized}`);
+    return badge;
+  }
+
+  function createStatusActionButton(candidate, nextStatus) {
+    const button = document.createElement("button");
+    button.type = "button";
+    const labelMap = {
+      accepted: "Approve",
+      pending: "Mark Pending",
+      rejected: "Reject",
+    };
+    button.textContent = labelMap[nextStatus] || nextStatus;
+    const baseClass =
+      nextStatus === "rejected" ? "delete-btn" : "secondary-btn";
+    button.className = `${baseClass} coalition-status-action`;
+    if (candidate.status === nextStatus) {
+      button.disabled = true;
+    }
+    button.addEventListener("click", () => {
+      updateCandidateStatus(candidate, nextStatus);
+    });
+    return button;
+  }
+
+  async function updateCandidateStatus(candidate, status) {
+    if (!candidate || !candidate.id) return;
+    try {
+      const res = await fetch(`/api/coalition/${candidate.id}/status`, {
+        method: "PATCH",
+        credentials: "include",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ status }),
+      });
+      if (res.ok) {
+        await loadCoalitionCandidates();
+      } else {
+        const data = await res.json();
+        alert(data.error || "Error updating status");
+      }
+    } catch (err) {
+      console.error("Update coalition candidate status error", err);
+      alert("Server error");
+    }
   }
 
   async function loadEvents() {
