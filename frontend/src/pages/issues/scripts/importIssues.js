@@ -74,6 +74,20 @@ function buildProposalAccordions(container) {
         const current = nextNode;
         nextNode = current.nextSibling;
 
+        // Ignore whitespace or comment nodes so they don't create empty sections
+        if (
+          current.nodeType === Node.TEXT_NODE &&
+          current.textContent.trim().length === 0
+        ) {
+          current.remove();
+          continue;
+        }
+
+        if (current.nodeType === Node.COMMENT_NODE) {
+          current.remove();
+          continue;
+        }
+
         if (isHeading(current, 4)) {
           const sectionWrapper = document.createElement("div");
           sectionWrapper.className = "issue-proposal-section";
