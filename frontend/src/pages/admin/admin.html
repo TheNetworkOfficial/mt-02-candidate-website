@@ -40,6 +40,12 @@
         <a href="#coalition" class="tab-button" data-target="coalition"
           >Coalition</a
         >
+        <a
+          href="#coalition-signups"
+          class="tab-button"
+          data-target="coalition-signups"
+          >Coalition Signups</a
+        >
         <a href="#messages" class="tab-button" data-target="messages"
           >Messages</a
         >
@@ -91,7 +97,12 @@
           <div class="coalition-form-grid">
             <label>
               <span>Candidate Name</span>
-              <input type="text" id="coalition-name" placeholder="Full name" required />
+              <input
+                type="text"
+                id="coalition-name"
+                placeholder="Full name"
+                required
+              />
             </label>
             <label>
               <span>Level</span>
@@ -174,7 +185,9 @@
           </label>
 
           <div class="coalition-form-actions">
-            <button type="submit" id="coalition-submit-btn">Add Candidate</button>
+            <button type="submit" id="coalition-submit-btn">
+              Add Candidate
+            </button>
             <button
               type="button"
               id="coalition-cancel-edit"
@@ -210,6 +223,22 @@
             </tr>
           </thead>
           <tbody id="coalition-table-body"></tbody>
+        </table>
+      </section>
+
+      <section id="coalition-signups" class="tab-content">
+        <h2>Coalition Signups</h2>
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Zip</th>
+              <th>Submitted</th>
+            </tr>
+          </thead>
+          <tbody id="coalition-signups-table-body"></tbody>
         </table>
       </section>
 

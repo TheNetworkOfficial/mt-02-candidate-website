@@ -5,6 +5,7 @@ const ContactMessage = require("../models/contactMessage");
 const Volunteer = require("../models/volunteer");
 const EventSignup = require("../models/eventSignup");
 const MailingListSignup = require("../models/mailingListSignup");
+const CoalitionSignup = require("../models/coalitionSignup");
 
 router.use(ensureAdmin);
 
@@ -65,6 +66,18 @@ router.get("/event-signups", async (_req, res) => {
     res.json(signups);
   } catch (err) {
     console.error("Fetch event signups error:", err);
+    res.status(500).json({ error: "Server error" });
+  }
+});
+
+router.get("/coalition-signups", async (_req, res) => {
+  try {
+    const signups = await CoalitionSignup.findAll({
+      order: [["createdAt", "DESC"]],
+    });
+    res.json(signups);
+  } catch (err) {
+    console.error("Fetch coalition signups error:", err);
     res.status(500).json({ error: "Server error" });
   }
 });
