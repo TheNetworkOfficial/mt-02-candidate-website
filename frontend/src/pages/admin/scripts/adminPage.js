@@ -204,9 +204,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     );
     const links = [];
     rows.forEach((row) => {
-      const label = row
-        .querySelector(".coalition-social-label")
-        .value.trim();
+      const label = row.querySelector(".coalition-social-label").value.trim();
       const url = row.querySelector(".coalition-social-url").value.trim();
       if (label && url) {
         links.push({ label, url });
@@ -299,18 +297,18 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   if (coalitionForm) {
-  if (coalitionAddSocialLinkBtn) {
-    coalitionAddSocialLinkBtn.addEventListener("click", () => {
-      addSocialLinkRow();
-    });
-  }
+    if (coalitionAddSocialLinkBtn) {
+      coalitionAddSocialLinkBtn.addEventListener("click", () => {
+        addSocialLinkRow();
+      });
+    }
 
-  if (coalitionStatusFilterSelect) {
-    coalitionStatusFilterSelect.addEventListener("change", () => {
-      coalitionStatusFilter = coalitionStatusFilterSelect.value;
-      loadCoalitionCandidates();
-    });
-  }
+    if (coalitionStatusFilterSelect) {
+      coalitionStatusFilterSelect.addEventListener("change", () => {
+        coalitionStatusFilter = coalitionStatusFilterSelect.value;
+        loadCoalitionCandidates();
+      });
+    }
 
     if (coalitionCancelBtn) {
       coalitionCancelBtn.addEventListener("click", () => {
@@ -343,9 +341,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     coalitionForm.addEventListener("submit", async (e) => {
       e.preventDefault();
-      const name = coalitionForm
-        .querySelector("#coalition-name")
-        .value.trim();
+      const name = coalitionForm.querySelector("#coalition-name").value.trim();
       const level = coalitionForm
         .querySelector("#coalition-level")
         .value.trim();
@@ -376,7 +372,8 @@ document.addEventListener("DOMContentLoaded", async () => {
       );
       formData.append(
         "sortOrder",
-        coalitionForm.querySelector("#coalition-sort-order").value.trim() || "0",
+        coalitionForm.querySelector("#coalition-sort-order").value.trim() ||
+          "0",
       );
 
       const tagsValue = coalitionForm
@@ -435,6 +432,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       loadNews(),
       loadEvents(),
       loadCoalitionCandidates(),
+      loadCoalitionSignups(),
     ]);
   }
 
@@ -564,6 +562,55 @@ document.addEventListener("DOMContentLoaded", async () => {
       }
     } catch (err) {
       console.error("Load signups error", err);
+    }
+  }
+
+  async function loadCoalitionSignups() {
+    const tbody = document.getElementById("coalition-signups-table-body");
+    if (!tbody) return;
+    tbody.innerHTML = "";
+
+    const renderMessageRow = (message) => {
+      const row = document.createElement("tr");
+      const cell = document.createElement("td");
+      cell.colSpan = 5;
+      cell.textContent = message;
+      row.appendChild(cell);
+      tbody.appendChild(row);
+    };
+
+    try {
+      const res = await fetch("/api/admin/coalition-signups", {
+        credentials: "include",
+      });
+      if (!res.ok) {
+        throw new Error("Failed to load coalition signups");
+      }
+
+      const data = await res.json();
+      if (!data.length) {
+        renderMessageRow("No coalition signups yet.");
+        return;
+      }
+
+      data.forEach((signup) => {
+        const row = document.createElement("tr");
+        const submittedAt = signup.createdAt
+          ? new Date(signup.createdAt).toLocaleString()
+          : "";
+
+        row.innerHTML = `
+          <td>${signup.name || ""}</td>
+          <td>${signup.email || ""}</td>
+          <td>${signup.phone || ""}</td>
+          <td>${signup.zip || ""}</td>
+          <td>${submittedAt}</td>
+        `;
+        tbody.appendChild(row);
+      });
+    } catch (err) {
+      console.error("Load coalition signups error", err);
+      renderMessageRow("Unable to load coalition signups.");
     }
   }
 
@@ -727,7 +774,10 @@ document.addEventListener("DOMContentLoaded", async () => {
           });
           if (res.ok) {
             await loadCoalitionCandidates();
-            if (editingCoalitionCandidate && editingCoalitionCandidate.id === candidate.id) {
+            if (
+              editingCoalitionCandidate &&
+              editingCoalitionCandidate.id === candidate.id
+            ) {
               resetCoalitionForm();
             }
           } else {
@@ -841,7 +891,8 @@ document.addEventListener("DOMContentLoaded", async () => {
           edit.addEventListener("click", () => {
             eventIdInput.value = ev.id;
             document.getElementById("title").value = ev.title;
-            document.getElementById("eventDate").value = isoToLocalDatetimeValue(ev.eventDate);
+            document.getElementById("eventDate").value =
+              isoToLocalDatetimeValue(ev.eventDate);
             document.getElementById("location").value = ev.location || "";
             document.getElementById("description").value = ev.description || "";
             submitBtn.textContent = "Update Event";

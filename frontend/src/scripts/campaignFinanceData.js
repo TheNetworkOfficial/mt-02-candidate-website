@@ -198,7 +198,7 @@ export const fetchFinanceSummary = async () => {
     (async () => {
       try {
         return await fetchSheet(TRANSACTIONS_SHEET_NAME);
-      } catch (error) {
+      } catch {
         return [];
       }
     })(),

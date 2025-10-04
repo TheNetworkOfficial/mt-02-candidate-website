@@ -36,19 +36,24 @@
           <div class="coalition-hero__copy">
             <h1>Coalition for Montana's Future</h1>
             <p>
-              The only way that we defend our democratic values is by standing together,
-              with a unified voice on the issues that matter most to Montana. That is why,
-              as part of my campaign, Lux For Montana is proud to launch the Coalition for Montana's Future.
-              This coalition brings together local patriots running for office across the state,
-              from city council to Congress, who share our vision for a better Montana.
+              The only way that we defend our democratic values is by standing
+              together, with a unified voice on the issues that matter most to
+              Montana. That is why, as part of my campaign, Lux For Montana is
+              proud to launch the Coalition for Montana's Future. This coalition
+              brings together local patriots running for office across the
+              state, from city council to Congress, who share our vision for a
+              better Montana.
             </p>
             <p>
-              Together, we will go to our councils, state house, and Congress not just with promises,
-              but with a plan to deliver real results for our communities, and support in every level of government.
+              Together, we will go to our councils, state house, and Congress
+              not just with promises, but with a plan to deliver real results
+              for our communities, and support in every level of government.
             </p>
           </div>
           <div class="coalition-hero__actions">
-            <a class="btn btn-secondary" href="suggest-candidate.html">Suggest A Candidate</a>
+            <a class="btn btn-secondary" href="suggest-candidate.html"
+              >Suggest A Candidate</a
+            >
             <button
               type="button"
               class="coalition-hero__link coalition-hero__link--modal"
@@ -60,69 +65,117 @@
         </div>
       </section>
 
-      <section class="section coalition-filters">
-        <div class="container">
-          <div class="coalition-filters__header">
-            <h2>Find your next Representative</h2>
+      <section class="section coalition-countdown">
+        <div class="container coalition-countdown__content">
+          <div class="coalition-countdown__intro">
+            <h2>Countdown to Election Day</h2>
             <p>
-              Use the tools below to discover candidates by level of office,
-              priorities, and community.
+              We are pausing the candidate directory while we focus on
+              organizing for Election Day 2025. Check back soon for new
+              endorsements and ways to stand with our coalition in every corner
+              of the state.
+            </p>
+            <p
+              class="coalition-countdown__complete"
+              data-countdown-complete
+              hidden
+            >
+              Election Day is here! Thank you for organizing with us—check back
+              soon for updated coalition resources.
             </p>
           </div>
-          <div class="coalition-filters__controls">
-            <label>
-              <span>Level</span>
-              <select data-filter-level>
-                <option value="all">All</option>
-                <option value="federal">Federal</option>
-                <option value="state">State</option>
-                <option value="county">County</option>
-                <option value="city">City</option>
-              </select>
-            </label>
-            <label>
-              <span>Sort By</span>
-              <select data-filter-sort>
-                <option value="featured">Featured</option>
-                <option value="name">Name A–Z</option>
-                <option value="tag">Tag A–Z</option>
-              </select>
-            </label>
-            <label class="coalition-filters__search">
-              <span>Search</span>
-              <input
-                type="search"
-                placeholder="Search name, region, or issue focus"
-                data-filter-search
-              />
-            </label>
-          </div>
-          <div class="coalition-filter-tags">
-            <div class="coalition-filter-tags__header">
-              <span>Filter by tags</span>
-              <button type="button" class="secondary-btn" data-clear-tags hidden>
-                Clear tags
-              </button>
+          <div
+            class="coalition-countdown__timer"
+            data-countdown-timer
+            data-countdown-target="2025-11-05T00:00:00"
+            aria-live="polite"
+          >
+            <div class="coalition-countdown__unit">
+              <span
+                class="coalition-countdown__number"
+                data-countdown-value="days"
+                >0</span
+              >
+              <span class="coalition-countdown__label">Days</span>
             </div>
-            <div class="coalition-filter-tags__chips" data-filter-tags>
-              <p class="coalition-filter-tags__empty" data-tags-empty>
-                Tags will appear once the coalition loads.
-              </p>
+            <div class="coalition-countdown__unit">
+              <span
+                class="coalition-countdown__number"
+                data-countdown-value="hours"
+                >00</span
+              >
+              <span class="coalition-countdown__label">Hours</span>
+            </div>
+            <div class="coalition-countdown__unit">
+              <span
+                class="coalition-countdown__number"
+                data-countdown-value="minutes"
+                >00</span
+              >
+              <span class="coalition-countdown__label">Minutes</span>
+            </div>
+            <div class="coalition-countdown__unit">
+              <span
+                class="coalition-countdown__number"
+                data-countdown-value="seconds"
+                >00</span
+              >
+              <span class="coalition-countdown__label">Seconds</span>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="section coalition-directory">
-        <div class="container">
-          <div
-            class="coalition-directory__status"
-            data-coalition-status
-            aria-live="polite"
-          >
-            Loading coalition candidates…
+      <section class="section coalition-signup">
+        <div class="container coalition-signup__content">
+          <div class="coalition-signup__copy">
+            <h2>Join the Coalition Organizing List</h2>
+            <p>
+              Add your voice to the Coalition for Montana's Future so we can
+              stay in touch as new leaders join the slate. Sign up to receive
+              coalition updates, organizing opportunities, and Election Day
+              reminders.
+            </p>
           </div>
-          <div class="coalition-directory__groups" data-coalition-groups></div>
+          <form class="coalition-signup__form" data-coalition-form novalidate>
+            <div class="coalition-signup__fields">
+              <label>
+                <span>Full Name</span>
+                <input type="text" name="name" autocomplete="name" required />
+              </label>
+              <label>
+                <span>Email</span>
+                <input
+                  type="email"
+                  name="email"
+                  autocomplete="email"
+                  required
+                />
+              </label>
+              <label>
+                <span>Mobile Phone</span>
+                <input type="tel" name="phone" autocomplete="tel" required />
+              </label>
+              <label>
+                <span>Zip Code</span>
+                <input
+                  type="text"
+                  name="zip"
+                  inputmode="numeric"
+                  pattern="[0-9]{5}"
+                  maxlength="5"
+                  required
+                />
+              </label>
+            </div>
+            <div
+              class="coalition-signup__status"
+              data-coalition-form-status
+              role="status"
+              aria-live="polite"
+            ></div>
+            <button type="submit" class="btn btn-primary">Sign Up</button>
+          </form>
         </div>
       </section>
     </main>
